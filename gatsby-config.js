@@ -1,11 +1,11 @@
 module.exports = {
   siteMetadata: {
-    title: `Gatsby Starter Blog`,
-    author: `Kyle Mathews`,
-    description: `A starter blog demonstrating what Gatsby can do.`,
-    siteUrl: `https://gatsby-starter-blog-demo.netlify.com/`,
+    title: `Reactified`,
+    author: `Julian Garamendy`,
+    description: `A blog about React and Typescript, and sometimes both.`,
+    siteUrl: `https://reactify.netlify.com/`,
     social: {
-      twitter: `kylemathews`,
+      twitter: `juliangweb`,
     },
   },
   plugins: [
@@ -74,5 +74,6 @@ module.exports = {
         pathToConfigModule: `src/utils/typography`,
       },
     },
+    `gatsby-remark-prismjs`
   ],
 }
