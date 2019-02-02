@@ -1,8 +1,8 @@
 module.exports = {
   siteMetadata: {
-    title: `Reactified`,
+    title: `Banana Gists`,
     author: `Julian Garamendy`,
-    description: `A blog about React, TypeScript, and often both.`,
+    description: `A blog about React, TypeScript, and of course bananas.`,
     siteUrl: `https://reactified.netlify.com/`,
     social: {
       twitter: `juliangweb`,
