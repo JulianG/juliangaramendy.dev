@@ -2,10 +2,11 @@ module.exports = {
   siteMetadata: {
     title: `Reactified`,
     author: `Julian Garamendy`,
-    description: `A blog about React and Typescript, and sometimes both.`,
-    siteUrl: `https://reactify.netlify.com/`,
+    description: `A blog about React, TypeScript, and often both.`,
+    siteUrl: `https://reactified.netlify.com/`,
     social: {
       twitter: `juliangweb`,
+      github: `JulianG`
     },
   },
   plugins: [

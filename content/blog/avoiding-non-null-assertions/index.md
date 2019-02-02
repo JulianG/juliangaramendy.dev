@@ -3,85 +3,117 @@ title: Avoiding the Non-null-assertion Operator in React + Mobx + Typescript Pro
 date: '2019-02-01'
 ---
 
-## Problem
+**Today I learned something at work.** I am new to MobX and I had to make changes to a **React + Typescript + MobX** project. I noticed the props of some React components were marked as optional, and I was told it was because of how the dependency injection worked.
 
-When injecting MobX stores into React components in Typescript, MobX recommended approach involves declaring optional props. This requires the use of the [non-null assertion operator (!)](https://www.logicbig.com/tutorials/misc/typescript/non-null-assertion-operator.html)
+## The Problem
 
-**CounterViewA.tsx** declares the dependency in its props as optional (?).
+When injecting MobX stores into React components in Typescript, [the recommended approach in MobX docs](https://github.com/mobxjs/mobx-react#strongly-typing-inject) involves declaring optional props (`?`). This results in having to perform null checks when accessing an injected store, and MobX recommendeds using the [non-null assertion operator (`!`)](https://www.logicbig.com/tutorials/misc/typescript/non-null-assertion-operator.html).
 
 ```typescript
-interface Props {
+interface BananaProps {
   label: string;
-  bananaStore?: BananaStore;
+  bananaStore?: BananaStore; // 👎 note the optional operator
 }
 
-...
+@inject("bananaStore")
+@observer
+class BananaComponent extends Component<BananaProps> {
 
-// but then we need to use the non-null assertion operator. NOT COOL!
+  render() {
+    const bananas = this.props.bananaStore!.bananas; // 👎 note the non-null assertion operator
+    return <p>{this.props.label}:{bananas}</p>
+  }
 
-const count = this.props.bananaStore!.count;
+}
 ```
 
-This is far from ideal. Because we must allow these exclamation marks for injected props, we cannot enforce a linter rule like tslint no-non-null-assertion, and we'll soon start seeing (!) in other places.
+This is far from ideal. We're declaring the store dependencies as optional (`?`). But they're required. Then, because we know it's not optional, and to avoid doing checking for null all the time, we resort to the non-null assertion operator (`!`).
+
+What happens often when we allow the `!` operator, is that we start seeing it (or worse: not-seeing it) in other places, where its use is less justified.
+
+So we believe it would be best to ban the use of `!` and enforce it with a linter rule like [tslint: no-non-null-assertion](https://palantir.github.io/tslint/rules/no-non-null-assertion/).
 
 ## One Solution
 
-**CounterViewB.tsx** declares the dependency in a separate type/interface that extends Props, as suggested in [this article](https://medium.com/@prashaantt/strongly-typing-injected-react-props-635a6828acaf) from December 2016, by Prashant Tiwari.
+A colleague pointed out [this article](https://medium.com/@prashaantt/strongly-typing-injected-react-props-635a6828acaf) from December 2016, by Prashant Tiwari.
+
+Here the author declares the dependency in a separate interface that extends `Props`, and then the injected props can be accessed using a getter function. 
 
 ```typescript
 interface InjectedProps extends Props {
-  bananaStore: BananaStore;
+  bananaStore: BananaStore; // 👍 no question mark here
 }
 
-...
-
-get injected() {
-  return this.props as InjectedProps;
+interface BananaProps {
+  label: string;
 }
-...
 
-// now the this.inject getter access all props and injected props.
+@inject("bananaStore")
+@observer
+class BananaComponent extends Component<BananaProps> {
 
-const count = this.injected.bananaStore.count; 
+  get injected() {
+    return this.props as InjectedProps;
+  }
 
-// no need to use the non-null assertion operator! SUCCESS!
+  render() {
+    const bananas = this.injected.bananaStore.bananas; // 👍 no exclamation mark here
+    return <p>{this.props.label}:{bananas}</p>
+  }
+
+}
 ```
 
-What I don't like from this solution is that it forces us to declare that InjectedProps extends Props.
+This is great! More type safety.
+But there are two things I don't like about this solution:
+1. It forces us to declare that `InjectedProps` extends `BananaProps`.
+2. When typing `this.injected.` IntelliSense will suggest any injected props and any 'normal' props.
+
 Perhaps we can do better.
 
-## An Even Better Solution
+## A Slightly Better Solution
 
-**CounterViewC.tsx** declares the dependency in a separate type/interface, without extending anything.
+We played around with types for a while with a colleague and I think this solution is a bit better.
 
 ```typescript
 interface InjectedProps {
-  bananaStore: BananaStore;
+  bananaStore: BananaStore; // 👍 no question mark here, and no interface inheritance
 }
 
-...
-
-get injected(): InjectedProps {
-  return this.props as Props & InjectedProps;
+interface BananaProps {
+  label: string;
 }
 
-...
+@inject("bananaStore")
+@observer
+class BananaComponent extends Component<BananaProps> {
 
-// now this.inject getter gives access to only the injected stores
+  get injected(): InjectedProps {
+    return this.props as BananaProps & InjectedProps;
+  }
 
-const count = this.injected.bananaStore.count; 
+  render() {
+    const bananas = this.injected.bananaStore.bananas; // 👍 no exclamation mark here
+    return <p>{this.props.label}:{bananas}</p>
+  }
 
-// no need to use the non-null assertion operator! SUCCESS!
+}
 ```
+Now `InjectedProps` declares `bananaStore` as required and it doesn't extend `BananaProps`. And when accessing `this.injected` IntelliSense will only suggest members of `InjectedProps`, as expected.
 
-Alternatively you could write a different getter without explicit return type:
+If we still want to get "access" to all props, we could write a different getter without the explicit return type:
 
 ```typescript
 get allProps() {
-  return this.props as Props & InjectedProps;
+  return this.props as BananaProps & InjectedProps;
 }
 ```
+And that is exactly what `this.props` contains: properties from both interfaces; not because `InjectedProps` extends `BananaProps`, but because the run-time injection results in it.
 
 ## Ok, but WHY!?
 
-Once we get rid of the non-null assertion operator for injected props, we can enforce a linter rule like [tslint: no-non-null-assertion](https://palantir.github.io/tslint/rules/no-non-null-assertion/). This together with [strictPropertyInitialization](https://mariusschulz.com/blog/typescript-2-7-strict-property-initialization)allows us to rely on the static typing more to avoid run-time null pointer errors.
+Once we don't need the non-null assertion operator for injected props, we can enforce a linter rule like [tslint: no-non-null-assertion](https://palantir.github.io/tslint/rules/no-non-null-assertion/) in the entire codebase. This, along with [strictPropertyInitialization](https://mariusschulz.com/blog/typescript-2-7-strict-property-initialization) allows us to rely more on the static typing to avoid run-time null pointer errors.
+
+---
+
+Original Gist: https://gist.github.com/JulianG/18af9b9ff582764a87639d61d4587da1/

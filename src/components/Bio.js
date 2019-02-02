@@ -14,7 +14,7 @@ function Bio() {
           <div
             style={{
               display: `flex`,
-              marginBottom: rhythm(2.5),
+              marginBottom: rhythm(1.0),
             }}
           >
             <Image
@@ -32,8 +32,11 @@ function Bio() {
             />
             <p>
               Written by <strong>{author}</strong>.<br/>
-              <a href={`https://twitter.com/${social.twitter}`}>
+              Twitter: <a href={`https://twitter.com/${social.twitter}`}>
                 @JulianGWeb
+              </a> - 
+              GitHub: <a href={`https://github.com//${social.github}/`}>
+                @JulianG
               </a>
             </p>
           </div>
@@ -56,7 +59,8 @@ const bioQuery = graphql`
       siteMetadata {
         author
         social {
-          twitter
+          twitter,
+          github
         }
       }
     }
