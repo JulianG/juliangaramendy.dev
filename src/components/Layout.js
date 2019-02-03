@@ -66,9 +66,7 @@ class Layout extends React.Component {
         {header}
         {children}
         <footer>
-          © {new Date().getFullYear()}, Built with
-          {` `}
-          <a href="https://www.gatsbyjs.org">Gatsby</a>
+          Built with <a href="https://www.gatsbyjs.org">Gatsby</a> - Banana icon by Freepik from <a href="https://www.flaticon.com/free-icon/banana_688828">FlatIcon</a>.
         </footer>
       </div>
     )

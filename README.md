@@ -1,12 +1,17 @@
+This is my Gatsby blog on Netlify: https://bananas.netlify.com/
+
+[![Netlify Status](https://api.netlify.com/api/v1/badges/9a075c1a-8db0-4c19-82c7-b129808e089b/deploy-status)](https://app.netlify.com/sites/bananas/deploys)
+
+Nothing technically interesting for now. It's based on the Gatsby's blog starter. And below it's the original README.md.
+
+----
+
+
+----
+
 <!-- AUTO-GENERATED-CONTENT:START (STARTER) -->
-<p align="center">
-  <a href="https://www.gatsbyjs.org">
-    <img alt="Gatsby" src="https://www.gatsbyjs.org/monogram.svg" width="60" />
-  </a>
-</p>
-<h1 align="center">
-  Gatsby's blog starter
-</h1>
+
+#  Gatsby's blog starter
 
 Kick off your project with this blog boilerplate. This starter ships with the main Gatsby configuration files you might need to get up and running blazing fast with the blazing fast app generator for React.
 

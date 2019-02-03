@@ -2,3 +2,7 @@ h4.description {
   text-transform: none;
   margin-top: 0;
 }
+
+footer {
+  font-size: 0.75rem;
+}
