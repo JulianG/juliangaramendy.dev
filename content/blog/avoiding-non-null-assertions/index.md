@@ -114,6 +114,8 @@ And that is exactly what `this.props` contains: properties from both interfaces;
 
 Once we don't need the non-null assertion operator for injected props, we can enforce a linter rule like [tslint: no-non-null-assertion](https://palantir.github.io/tslint/rules/no-non-null-assertion/) in the entire codebase. This, along with [strictPropertyInitialization](https://mariusschulz.com/blog/typescript-2-7-strict-property-initialization) allows us to rely more on the static typing to avoid run-time null pointer errors.
 
----
+----
+
+Special thanks to [Albert Plana](https://github.com/aPlana) for his TypeScript wizzardry.
 
 Original Gist: https://gist.github.com/JulianG/18af9b9ff582764a87639d61d4587da1/
