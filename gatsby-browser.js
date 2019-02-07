@@ -2,4 +2,4 @@
 import 'typeface-montserrat'
 import 'typeface-lobster'
 import 'typeface-merriweather'
-import 'prismjs/themes/prism-solarizedlight.css'
+import 'prismjs/themes/prism-okaidia.css'

@@ -7,7 +7,7 @@ date: '2019-02-01'
 
 ## The Problem
 
-When injecting MobX stores into React components in Typescript, [the recommended approach in MobX docs](https://github.com/mobxjs/mobx-react#strongly-typing-inject) involves declaring optional props (`?`). This results in having to perform null checks when accessing an injected store, and MobX recommendeds using the [non-null assertion operator (`!`)](https://www.logicbig.com/tutorials/misc/typescript/non-null-assertion-operator.html).
+When injecting MobX stores into React components in Typescript, [the recommended approach in MobX docs](https://github.com/mobxjs/mobx-react#strongly-typing-inject) involves declaring optional props (`?`). This results in having to perform null checks when accessing an injected store, and MobX recommendeds using the [non-null assertion operator (`!`)](https://www.typescriptlang.org/docs/handbook/release-notes/typescript-2-0.html).
 
 ```typescript
 interface BananaProps {

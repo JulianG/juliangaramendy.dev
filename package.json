@@ -44,7 +44,7 @@
     "eslint-plugin-react": "^7.11.1",
     "prettier": "^1.14.2"
   },
-  "homepage": "https://github.com/gatsbyjs/gatsby-starter-blog#readme",
+  "homepage": "https://bananas.netlify.com/",
   "keywords": [
     "gatsby"
   ],
@@ -52,7 +52,7 @@
   "main": "n/a",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/gatsbyjs/gatsby-starter-blog.git"
+    "url": "git+https://github.com/JulianG/juliang-blog.git"
   },
   "scripts": {
     "dev": "gatsby develop",
