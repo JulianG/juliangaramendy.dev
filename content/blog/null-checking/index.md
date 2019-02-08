@@ -26,11 +26,11 @@ const banana = bananas.find(banana => banana.id === id);
 Our React + Typescript project has a get function like this:
 
 ```typescript
-getBananaById(id: number): Banana {
+function getBananaById(id: number): Banana {
   return bananas.find(banana => banana.id === id)!; // ! bang!
 }
 
-eatBanana(id: number) {
+function openBananaById(id: number) {
   const banana = getBananaById(id);
   banana.open();
 }
@@ -51,16 +51,17 @@ Just cheating the type checker with the [non-null assertion operator](https://ww
 ```typescript
 const bananas: Array<Banana> = [];
 
-getBananaById(id: number): Banana {
+function getBananaById(id: number): Banana {
   return bananas.find(banana => banana.id === id)!; // !
 }
 
-openBananaById(id: number) {
+function openBananaById(id: number) {
   const banana = getBananaById(id);
   banana.open(); // may throw an error here
 }
 ```
-**Result:** The program may throw `Uncaught TypeError: Cannot read property 'open' of undefined` when we "consume" the banana instance. This can happen anywhere we access a property of `banana`.
+**Result:** The program may throw `Uncaught TypeError: Cannot read property 'open' of undefined` when we "consume" the banana instance. This can happen anywhere we access a property of `banana`.  
+([try it on codesandbox](https://codesandbox.io/s/61p58m3l63))
 
 ### No null checking - using bang before access
 
@@ -69,23 +70,24 @@ Just cheating the type checler with the non-null assertion operator, but in a di
 ```typescript
 const bananas: Array<Banana> = [];
 
-getBananaById(id: number): Banana | undefined {
+function getBananaById(id: number): Banana | undefined {
   return bananas.find(banana => banana.id === id);
 }
 
-openBananaById(id: number) {
+function openBananaById(id: number) {
   const banana = getBananaById(id);
   banana!.open(); // may still throw an error here
 }
 ```
-**Result:** The program may throw `Uncaught TypeError: Cannot read property 'open' of undefined` when we "consume" the banana instance. This would tipically happen in multiple places.
+**Result:** The program may throw `Uncaught TypeError: Cannot read property 'open' of undefined` when we "consume" the banana instance. This would tipically happen in multiple places.  
+([try it on codesandbox](https://codesandbox.io/s/x3xpw0q06q))
 
 ### Null checking at the "source"
 
 ```typescript
 const bananas: Array<Banana> = [];
 
-getBananaById(id: number): Banana {
+function getBananaById(id: number): Banana {
   const banana = bananas.find(banana => banana.id === id);
   if (!banana) {
     throw new Error(`Error. Could not find banana with id: ${id}.`);
@@ -93,14 +95,15 @@ getBananaById(id: number): Banana {
   return banana;
 }
 
-openBananaById(id: number) {
+function openBananaById(id: number) {
   const banana = getBananaById(id);
   banana.open(); // will never throw
 }
 ```
-**Result:** The program may throw a custom error "by design" when calling `getBananaById`.
+**Result:** The program may throw a custom error "by design" when calling `getBananaById`.  
+([try it on codesandbox](https://codesandbox.io/s/34kjlwmkm5))
 
-## Supressing Errors
+## Suppressing Errors
 
 If we don't really need our function to throw when a banana is missing, we have two options:
 
@@ -109,18 +112,19 @@ If we don't really need our function to throw when a banana is missing, we have 
 ```typescript
 const bananas: Array<Banana> = [];
 
-getBananaById(id: number): Banana | undefined {
+function getBananaById(id: number): Banana | undefined {
   return bananas.find(banana => banana.id === id);
 }
 
-openBananaById(id: number) {
+function openBananaById(id: number) {
   const banana = getBananaById(id);
   if (banana)
     banana.open();
   }
 }
 ```
-**Result:** The program will not throw. But we need to perform the same null check over and over.
+**Result:** The program will not throw. But we need to perform the same null check over and over.  
+([try it on codesandbox](https://codesandbox.io/s/1o9wknlpll))
 
 ### Null Object Pattern
 
@@ -131,16 +135,17 @@ In our example it would look like this:
 const bananas: Array<Banana> = [];
 const NullBanana: Banana = { id: 0, open: () => {} };
 
-getBananaById(id: number): Banana {
+function getBananaById(id: number): Banana {
   return bananas.find(banana => banana.id === id) || NullBanana;
 }
 
-openBananaById(id: number) {
+function openBananaById(id: number) {
   const banana = getBananaById(id);
   banana.open(); // will never throw
 }
 ```
-**Result:** The program will not throw. And we don't need to perform null checks before using the instance.
+**Result:** The program will not throw. And we don't need to perform null checks before using the instance.  
+([try it on codesandbox](https://codesandbox.io/s/o7y981913q))
 
 In the above code we declare and initialise a `NullBanana` constant, and then the `getBananaById` function returns either the result of the `find` function call or `NullBanana`.
 
@@ -149,7 +154,7 @@ In the above code we declare and initialise a `NullBanana` constant, and then th
 When not finding a banana is unexpected, we prefer to perform null-check and throw at the "source":
 
 ```typescript
-getBananaById(id: number): Banana {
+function getBananaById(id: number): Banana {
   const banana = bananas.find(banana => banana.id === id);
   if (!banana) {
     throw new Error(`Error. Could not find banana with id: ${id}.`);
@@ -163,10 +168,13 @@ When not finding a banana is a valid case, we prefer to use null object pattern:
 ```typescript
 const NullBanana: Banana = { id: 0, open: () => {} };
 
-getBananaById(id: number): Banana {
+function getBananaById(id: number): Banana {
   return bananas.find(banana => banana.id === id) || NullBanana;
 }
 ```
 <br/>
 
 Can you think of other ways of handling null/undefined?
+
+----
+Original Gist: https://gist.github.com/JulianG/bdb60e4b8ba42ff5efc17e88e3ba1085
