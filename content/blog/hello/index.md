@@ -1,6 +1,6 @@
 ---
 title: Hello!
-date: '2019-01-31'
+date: '2018-12-01'
 ---
 
 This is my first post on my new Gatsby + Netlify blog.
