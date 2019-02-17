@@ -71,9 +71,7 @@ You can use [react-list-drag-and-drop](https://www.npmjs.com/package/react-list-
 ```bash
 npm install -s react-list-drag-and-drop
 ```
-.
-
-> TK // make this more about Banana Tabs!
+<br/>
 
 Banana Tabs is on [GitHub](https://github.com/julianG/bananatabs)
 and on the [Chrome Web Store](https://goo.gl/AyrUQL).
