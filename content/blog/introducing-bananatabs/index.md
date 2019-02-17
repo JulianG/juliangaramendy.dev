@@ -10,7 +10,7 @@ You keep lots of tabs in a single window to the point where you can't tell what'
 
 ![too many tabs](./too-many-tabs.png)
 
-Or worse: you try -like me- to to group your tabs by task, or subject, or anything, and as a result you end up with too many windows instead:
+Or worse: you try -like me- to group your tabs by task, or subject, or anything, and as a result you end up with too many windows instead:
 
 ![too many windows](./too-many-windows.png)
 
