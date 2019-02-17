@@ -24,4 +24,10 @@ You can show or hide each tab or window individually. Ideal to suspend some task
 
 You can install [Banana Tabs!](https://goo.gl/AyrUQL) from the Chrome Web Store.
 
-Banana Tabs is open-source: [GitHub repo](https://github.com/julianG/bananatabs).
+### Tech Stack
+
+BananaTabs is written in [TypeScript](https://github.com/Microsoft/TypeScript). I have recently updated the project to [Create React App v2](https://github.com/facebook/create-react-app), so it uses [React 16.8](https://github.com/facebook/react) (with a few hooks), and TypeScript 3.3.
+
+There's a considerable amount of tests which use [jest](https://github.com/facebook/jest) and [react-testing-library](https://github.com/kentcdodds/react-testing-library).
+
+Banana Tabs is open-source. You can clone/fork [the repo](https://github.com/julianG/bananatabs) or ideally contribute to the project.
