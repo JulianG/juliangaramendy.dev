@@ -39,7 +39,7 @@ export function BananaColor({ color }) {
 }
 ```
 
-## How do we test this?
+### How do we test this?
 
 Unit test purists would argue we need to test each component in isolation. That means testing `<BananaType>`, `<BananaLength>`, `<BananaColor>`, and of course, `<Banana>`. For the `<Banana>` component that means we need to pass it some props, and see how it sets the props in its children. More or less like this:
 
@@ -63,7 +63,7 @@ Unit test purists would argue we need to test each component in isolation. That 
 ```
 I disagree. 
 
-I testing how a parent renders its children is [testing implementation details](https://kentcdodds.com/blog/testing-implementation-details) and thus should be avoided.
+Testing how a parent renders its children is [testing implementation details](https://kentcdodds.com/blog/testing-implementation-details) and thus should be avoided.
 
 I think our `<Banana>` component renders those three components, so the "subject under test" can be considered to be the entire thing: the component and its children. 
 
@@ -107,7 +107,7 @@ Some argue that testing against the rendered output (i.e. snapshot test) is simi
 But I consider the rendered markup to be the function's output, not it's implementation details. If the render changes, then the output of my module changes, then **the tests must break**.
 
 
-## About react-testing-library
+### About react-testing-library
 
 I'm using [reac-testing-library](https://testing-library.com/react) in some projects. But the one testing the value of children props was using [Enzyme](https://airbnb.io/enzyme/) instead. Of course you can avoid testing implementation details with Enzyme, but I think react-testing-library makes it easier to avoid bad practices.
 
