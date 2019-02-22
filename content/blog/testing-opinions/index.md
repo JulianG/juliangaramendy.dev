@@ -23,7 +23,7 @@ export function Banana({ type, color, length }) {
 }
 ```
 
-This component renders other banana-related components. In this example they are all very simple, but let's imagine there's a reason for these to be different.
+This component renders other banana-related components. In this example, they are all very simple, but let's imagine there's a reason for these to be different.
 
 ```js
 export function BananaType({ type }) {
@@ -109,7 +109,7 @@ But I consider the rendered markup to be the function's output, not it's impleme
 
 ### About react-testing-library
 
-I'm using [reac-testing-library](https://testing-library.com/react) in some projects. But the one testing the value of children props was using [Enzyme](https://airbnb.io/enzyme/) instead. Of course you can avoid testing implementation details with Enzyme, but I think react-testing-library makes it easier to avoid bad practices.
+I'm using [reac-testing-library](https://testing-library.com/react) in some projects. But the one testing the value of children props was using [Enzyme](https://airbnb.io/enzyme/) instead. Of course, you can avoid testing implementation details with Enzyme, but I think react-testing-library makes it easier to avoid bad practices.
 
 My opinions are probably biased because I've been following Kent C. Dodds' [testing javascript](https://testingjavascript.com/) course.
 
