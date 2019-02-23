@@ -7,8 +7,7 @@ footer {
   font-size: 0.75rem;
 }
 
-li code.language-text,
-p code.language-text {
+:not(pre) code.language-text {
   background: #ffffee;
   color: #333;
   padding-left: 0.2rem;
