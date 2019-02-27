@@ -75,11 +75,9 @@ In some cases a [snapshot](https://jestjs.io/docs/en/snapshot-testing.html) test
 
 ```js
   it("renders a banana properly", () => {
-    
     const banana = { type: "Cavendish", color: "yellow", length: 12 };
     const result = render(<Banana {...banana} />); // from 'react-testing-library'
     expect(result.container).toMatchSnapshot();
-
   });
 ```
 
