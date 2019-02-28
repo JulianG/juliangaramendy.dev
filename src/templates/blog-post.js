@@ -10,11 +10,14 @@ class BlogPostTemplate extends React.Component {
   render() {
     const post = this.props.data.markdownRemark
     const siteTitle = this.props.data.site.siteMetadata.title
+    const siteUrl = this.props.data.site.siteMetadata.siteUrl
     const { previous, next } = this.props.pageContext
+    const { ogimage } = post.frontmatter
+    const ogImageURL = ogimage && `${siteUrl}${ogimage.name}-${ogimage.internal && ogimage.internal.contentDigest}${ogimage.ext}`
 
     return (
       <Layout location={this.props.location} title={siteTitle}>
-        <SEO title={post.frontmatter.title} description={post.excerpt} />
+        <SEO title={post.frontmatter.title} description={post.excerpt} ogimage={ogImageURL} />
         <h1>{post.frontmatter.title}</h1>
         <p
           style={{
@@ -70,6 +73,7 @@ export const pageQuery = graphql`
     site {
       siteMetadata {
         title
+        siteUrl
         author
       }
     }
@@ -80,6 +84,12 @@ export const pageQuery = graphql`
       frontmatter {
         title
         date(formatString: "MMMM DD, YYYY")
+        updated(formatString: "MMMM DD, YYYY")
+        ogimage { 
+          name
+          internal { contentDigest }
+          ext
+        }
       }
     }
   }
