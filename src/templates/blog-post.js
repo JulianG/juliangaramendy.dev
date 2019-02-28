@@ -6,6 +6,8 @@ import Layout from '../components/Layout'
 import SEO from '../components/seo'
 import { rhythm, scale } from '../utils/typography'
 
+import defaultOpenGraphImage from '../../content/assets/opengraph-default.png'
+
 class BlogPostTemplate extends React.Component {
   render() {
     const post = this.props.data.markdownRemark
@@ -13,7 +15,9 @@ class BlogPostTemplate extends React.Component {
     const siteUrl = this.props.data.site.siteMetadata.siteUrl
     const { previous, next } = this.props.pageContext
     const { ogimage } = post.frontmatter
-    const ogImageURL = ogimage && `${siteUrl}${ogimage.name}-${ogimage.internal && ogimage.internal.contentDigest}${ogimage.ext}`
+    const ogImageURL = ogimage
+      ? `${siteUrl}${ogimage.name}-${ogimage.internal && ogimage.internal.contentDigest}${ogimage.ext}`
+      : `${siteUrl}${defaultOpenGraphImage}`
 
     return (
       <Layout location={this.props.location} title={siteTitle}>
