@@ -28,7 +28,7 @@ We want to have a default (or fallback image) for the blog's home page and have 
 
 ## The Solution
 
-First let's add an `ogimage` property in the top section of one of the blog posts.
+First let's add an `ogimage` property in the top section (frontmatter) of one of the blog posts.
 
 ```diff
 ---
@@ -39,7 +39,7 @@ First let's add an `ogimage` property in the top section of one of the blog post
 ```
 <br/>
 
-After restarting `gatsby deveop`, we now can add `ogimage` to the GraphQL query in `src/templates/blog-post.js`.
+After restarting `gatsby deveop`, we now can add `ogimage` to the GraphQL query in src/templates/blog-post.js.
 
 ```diff
  markdownRemark(fields: { slug: { eq: $slug } }) {
@@ -61,7 +61,7 @@ After restarting `gatsby deveop`, we now can add `ogimage` to the GraphQL query 
 ```
 <br/>
 
-The next step is obtaining a file path for the `ogimage` in a blog post, and then passing it on to the `SEO` component.
+The next step is obtaining a file path for the `ogimage` property in a blog post, and then passing it to the `SEO` component.
 
 ```diff
  class BlogPostTemplate extends React.Component {
@@ -83,6 +83,7 @@ The next step is obtaining a file path for the `ogimage` in a blog post, and the
 ```
 
 <br/>
+
 The `SEO` component (src/components/seo.js) now needs accept an `image` prop.
 
 ```diff
@@ -91,6 +92,7 @@ The `SEO` component (src/components/seo.js) now needs accept an `image` prop.
 ```
 
 <br/>
+
 If the `image` prop is undefined `SEO` will use a default value, which we need to import as a static image:
 
 ```diff
@@ -100,7 +102,9 @@ If the `image` prop is undefined `SEO` will use a default value, which we need t
 ...and then we use that as a fallback value.
 
 ```diff
-+ const ogImageUrl = data.site.siteMetadata.siteUrl + ( image || defaultOpenGraphImage )
++ const ogImageUrl = 
++   data.site.siteMetadata.siteUrl +
++   ( image || defaultOpenGraphImage )
 ```
 
 The `data.site.siteMetadata.siteUrl` expression above is needed to prefix the file path with the website's URL. 
