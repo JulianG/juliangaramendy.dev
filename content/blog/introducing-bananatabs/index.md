@@ -19,7 +19,7 @@ Or worse: you try -like me- to group your tabs by task, or subject, or anything,
 
 [**Banana Tabs**](https://goo.gl/AyrUQL) is a chrome extension that displays a list of your currently opened browser windows and the tabs contained in each of them.
 
-![Banana Tabs extension while user drags a window group](./bananatabs-drag-drop.gif)
+![Banana Tabs extension](./bananatabs-list-wins-short.png)
 
 * You can show or hide each tab or window individually. 
 * You can re-arrange your windows in the list.
@@ -27,6 +27,9 @@ Or worse: you try -like me- to group your tabs by task, or subject, or anything,
 
 It's ideal to suspend some task and picking it up later. 
 
+You can even rearrange the windows in the list, to keep the most important at the top.
+
+![Banana Tabs extension while user drags a window group](./bananatabs-drag-drop.gif)
 
 You can install [Banana Tabs!](https://goo.gl/AyrUQL) from the Chrome Web Store.
 
