@@ -1,10 +1,7 @@
 ---
 title: Adding custom OpenGraph images to blog posts in Gatsby
 date: '2019-03-01'
-ogimage: './some-image.png'
 ---
-
-
 
 ## The Problem
 
