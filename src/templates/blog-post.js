@@ -11,10 +11,16 @@ class BlogPostTemplate extends React.Component {
     const post = this.props.data.markdownRemark
     const siteTitle = this.props.data.site.siteMetadata.title
     const { previous, next } = this.props.pageContext
+    const { ogimage } = post.frontmatter
+    const ogImagePath = ogimage && ogimage.childImageSharp.fixed.src
 
     return (
       <Layout location={this.props.location} title={siteTitle}>
-        <SEO title={post.frontmatter.title} description={post.excerpt} />
+        <SEO
+          title={post.frontmatter.title}
+          description={post.excerpt}
+          type="article"
+          image={ogImagePath} />
         <h1>{post.frontmatter.title}</h1>
         <p
           style={{
@@ -80,6 +86,13 @@ export const pageQuery = graphql`
       frontmatter {
         title
         date(formatString: "MMMM DD, YYYY")
+        ogimage { 
+          childImageSharp {
+            fixed {
+              src
+            }
+          }
+        }
       }
     }
   }

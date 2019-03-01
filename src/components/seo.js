@@ -2,14 +2,18 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import Helmet from 'react-helmet'
 import { StaticQuery, graphql } from 'gatsby'
+import defaultOpenGraphImage from '../../content/assets/opengraph-default.png'
 
-function SEO({ description, lang, meta, keywords, title }) {
+function SEO({ description, lang, meta, keywords, title, type, image }) {
+
   return (
     <StaticQuery
       query={detailsQuery}
       render={data => {
         const metaDescription =
           description || data.site.siteMetadata.description
+        const ogImageUrl = data.site.siteMetadata.siteUrl + ( image || defaultOpenGraphImage )
+        const ogType = type;
         return (
           <Helmet
             htmlAttributes={{
@@ -23,6 +27,10 @@ function SEO({ description, lang, meta, keywords, title }) {
                 content: metaDescription,
               },
               {
+                name: `image`,
+                content: ogImageUrl,
+              },
+              {
                 property: `og:title`,
                 content: title,
               },
@@ -32,7 +40,11 @@ function SEO({ description, lang, meta, keywords, title }) {
               },
               {
                 property: `og:type`,
-                content: `website`,
+                content: ogType,
+              },
+              {
+                property: `og:image`,
+                content: ogImageUrl,
               },
               {
                 name: `twitter:card`,
@@ -49,6 +61,10 @@ function SEO({ description, lang, meta, keywords, title }) {
               {
                 name: `twitter:description`,
                 content: metaDescription,
+              },
+              {
+                name: `twitter:image`,
+                content: ogImageUrl,
               },
             ]
               .concat(
@@ -90,6 +106,7 @@ const detailsQuery = graphql`
         title
         description
         author
+        siteUrl
       }
     }
   }
