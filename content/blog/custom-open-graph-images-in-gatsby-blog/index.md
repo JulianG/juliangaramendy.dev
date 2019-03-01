@@ -10,7 +10,7 @@ ogimage: './some-image.png'
 
 My blog is the [Gatsby Starter Blog](https://www.gatsbyjs.org/starters/gatsbyjs/gatsby-starter-blog/) without any modifications, but I want my posts to have a nice image when sharing them on social media. 
 
-A simple inspection of the generated HTML code reveals that the Gatsby Blog renders the following [meta tags](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/meta):
+A simple inspection of the generated HTML reveals that the Gatsby Blog renders the following [meta tags](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/meta):
 
 ```js
 description 
@@ -21,13 +21,13 @@ twitter:title
 twitter:description
 ```
 
-It doesn't render `og:image`, `image` nor `twitter:image`, which are needed to properly share the articles on Twitter, Facebook, and other websites using [Open Graph](http://ogp.me/)
+It doesn't render `og:image`, `image` nor `twitter:image`, which are needed to properly share the articles on Twitter, Facebook, and other websites using [Open Graph](http://ogp.me/).
 
-We can quickly test how a link would look like on Twitter with [Twitter Card Validator](https://cards-dev.twitter.com/validator), or on Facebook with [Facebook Sharing Debugger](https://developers.facebook.com/tools/debug/), or we can simply read the Open Graph metadata using [Open Graph Check](https://opengraphcheck.com/).
+We can quickly see what a link would look like on Twitter with [Twitter Card Validator](https://cards-dev.twitter.com/validator), or on Facebook with [Facebook Sharing Debugger](https://developers.facebook.com/tools/debug/), or we can simply read the Open Graph metadata using [Open Graph Check](https://opengraphcheck.com/).
 
 ## The Requirement
 
-We want to have a default (or fallback image) for the blog's home page and have the option to specify a custom image (even if it's not an image that's being used in the article).
+We want to have a default (or fallback image) for the blog's home page and have the option to specify a custom image (even if it's not in the article's body).
 
 ## The Solution
 
