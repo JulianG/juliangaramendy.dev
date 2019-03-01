@@ -6,6 +6,7 @@ import Layout from '../components/Layout'
 import SEO from '../components/seo'
 import { rhythm } from '../utils/typography'
 
+import defaultOpenGraphImage from '../../content/assets/opengraph-default.png'
 import './styles.css'
 
 class BlogIndex extends React.Component {
@@ -20,6 +21,7 @@ class BlogIndex extends React.Component {
         <SEO
           title="All posts"
           keywords={[`blog`, `gatsby`, `javascript`, `react`]}
+          type="website"
         />
         <Bio />
         {posts.map(({ node }) => {
@@ -52,6 +54,7 @@ export const pageQuery = graphql`
     site {
       siteMetadata {
         title,
+        siteUrl,
         description
       }
     }
