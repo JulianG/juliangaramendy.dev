@@ -2,7 +2,6 @@
 title: Introducing Banana Tabs
 date: '2018-12-10'
 updated: '2019-02-17'
-ogimage: './bananatabs-list-wins-short.png'
 ---
 
 ### Has this ever happened to you?
