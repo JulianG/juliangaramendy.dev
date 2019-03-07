@@ -1,76 +1,21 @@
 import React from 'react'
-import { Link } from 'gatsby'
-
 import { rhythm, scale } from '../utils/typography'
 
-class Layout extends React.Component {
-  render() {
-    const { location, title, children, description } = this.props
-    const rootPath = `${__PATH_PREFIX__}/`
-    let header
+export function BlogLayout({ children }) {
 
-    if (location.pathname === rootPath) {
-      header = (
-        <div>
-        <h1
-          style={{
-            ...scale(1.25),
-            marginBottom: rhythm(0),
-            marginTop: 0,
-          }}
-        >
-          <Link
-            style={{
-              boxShadow: `none`,
-              textDecoration: `none`,
-              color: `inherit`,
-            }}
-            to={`/`}
-          >
-            {title}
-          </Link>
-        </h1>
-        <h4 className="description">{description}</h4>
-        </div>
-      )
-    } else {
-      header = (
-        <h3
-          style={{
-            fontFamily: `Montserrat, sans-serif`,
-            marginTop: 0,
-          }}
-        >
-          <Link
-            style={{
-              boxShadow: `none`,
-              textDecoration: `none`,
-              color: `inherit`,
-            }}
-            to={`/`}
-          >
-            {title}
-          </Link>
-        </h3>
-      )
-    }
-    return (
-      <div
-        style={{
-          marginLeft: `auto`,
-          marginRight: `auto`,
-          maxWidth: rhythm(24),
-          padding: `${rhythm(1.5)} ${rhythm(3 / 4)}`,
-        }}
-      >
-        {header}
-        {children}
-        <footer>
-          Built with <a href="https://www.gatsbyjs.org">Gatsby</a> - Banana icon by Freepik from <a href="https://www.flaticon.com/free-icon/banana_688828">FlatIcon</a>.
-        </footer>
-      </div>
-    )
-  }
-}
-
-export default Layout
+  return (
+    <div
+      style={{
+        marginLeft: `auto`,
+        marginRight: `auto`,
+        maxWidth: rhythm(24),
+        padding: `${rhythm(1.5)} ${rhythm(3 / 4)}`,
+      }}
+    >
+      {children}
+      <footer>
+        Built with <a href="https://www.gatsbyjs.org">Gatsby</a> - Banana icon by Freepik from <a href="https://www.flaticon.com/free-icon/banana_688828">FlatIcon</a>.
+      </footer>
+    </div>
+  )
+};
