@@ -1,6 +1,7 @@
 ---
 title: Avoiding the Non-null-assertion Operator in React + Mobx + Typescript Projects
 date: '2019-02-01'
+type: 'blog-post'
 ---
 
 **Today I learned something at work.** I am new to MobX and I had to make changes to a **React + Typescript + MobX** project. I noticed the props of some React components were marked as optional, and I was told it was because of how the dependency injection worked.

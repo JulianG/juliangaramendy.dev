@@ -1,6 +1,7 @@
 ---
 title: Adding custom OpenGraph images to Gatsby Starter Blog
 date: '2019-03-01'
+type: 'blog-post'
 ---
 
 I have a blog based on the [Gatsby Starter Blog](https://www.gatsbyjs.org/starters/gatsbyjs/gatsby-starter-blog/) without any modifications.

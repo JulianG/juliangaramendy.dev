@@ -1,6 +1,7 @@
 ---
 title: Null Checking in TypeScript
 date: '2019-02-05'
+type: 'blog-post'
 ---
 
 Following up on the previous gist about [avoiding non-null-assertion operator](https://gist.github.com/JulianG/18af9b9ff582764a87639d61d4587da1/) I think it would be good to see some examples of null checking in TypeScript.
