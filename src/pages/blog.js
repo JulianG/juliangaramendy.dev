@@ -24,7 +24,7 @@ class BlogIndex extends React.Component {
         <Header title={siteTitle} />
         <BlogHeader title={blogTitle} description={blogDescription} backLink={`/blog`} />
         <SEO
-          title="All posts"
+          title={blogTitle}
           keywords={keywords}
           type="website"
         />

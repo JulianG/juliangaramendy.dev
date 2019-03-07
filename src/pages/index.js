@@ -28,7 +28,7 @@ class BlogIndex extends React.Component {
       <BlogLayout location={this.props.location} title={siteTitle} description={description}>
         <Header title={siteTitle} description={description} />
         <SEO
-          title="All posts"
+          title={siteTitle}
           keywords={keywords}
           type="website"
         />       
