@@ -1,7 +1,9 @@
 ---
 title: Hello!
 date: '2018-12-01'
+updated: '2018-12-02'
 ogimage: './opengraph-default.png'
+type: 'blog-post'
 ---
 
 This is my first post on my new Gatsby + Netlify blog.

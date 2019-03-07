@@ -17,56 +17,23 @@ class BlogPostTemplate extends React.Component {
     const { ogimage } = post.frontmatter
     const ogImagePath = ogimage && ogimage.childImageSharp.fixed.src
 
+    const pageTitle = post.frontmatter.title;
+
     return (
       <BlogLayout location={this.props.location} title={blogTitle}>
         <Header title={siteTitle} />
         <SEO
           title={post.frontmatter.title}
           description={post.excerpt}
-          type="article"
+          type="website"
           image={ogImagePath} />
-        <h1>{post.frontmatter.title}</h1>
-        <p
-          style={{
-            ...scale(-1 / 5),
-            display: `block`,
-            marginBottom: rhythm(1),
-            marginTop: rhythm(-1),
-          }}
-        >
-          {post.frontmatter.date}
-        </p>
+        {pageTitle && <h1>{pageTitle}</h1>}
         <div dangerouslySetInnerHTML={{ __html: post.html }} />
         <hr
           style={{
             marginBottom: rhythm(1),
           }}
         />
-        <Bio />
-        <ul
-          style={{
-            display: `flex`,
-            flexWrap: `wrap`,
-            justifyContent: `space-between`,
-            listStyle: `none`,
-            padding: 0,
-          }}
-        >
-          <li>
-            {previous && (
-              <Link to={previous.fields.slug} rel="prev">
-                ← {previous.frontmatter.title}
-              </Link>
-            )}
-          </li>
-          <li>
-            {next && (
-              <Link to={next.fields.slug} rel="next">
-                {next.frontmatter.title} →
-              </Link>
-            )}
-          </li>
-        </ul>
       </BlogLayout>
     )
   }
@@ -75,7 +42,7 @@ class BlogPostTemplate extends React.Component {
 export default BlogPostTemplate
 
 export const pageQuery = graphql`
-  query BlogPostBySlug($slug: String!) {
+  query PageBySlug($slug: String!) {
     site {
       siteMetadata {
         title

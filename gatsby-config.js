@@ -1,13 +1,16 @@
 module.exports = {
   siteMetadata: {
-    title: `Banana Gists`,
+    siteUrl: `https://juliangaramendy.dev/`,
+    title: `Julian Garamendy.dev`,
+    description: ``,
+    blogTitle: `Banana Gists`,
+    blogDescription: `A blog about React, TypeScript, and of course bananas.`,
     author: `Julian Garamendy`,
-    description: `A blog about React, TypeScript, and of course bananas.`,
-    siteUrl: `https://bananas.netlify.com/`,
     social: {
       twitter: `juliangweb`,
       github: `JulianG`
     },
+    keywords: [`blog`, `gatsby`, `javascript`, `react`]
   },
   plugins: [
     {
@@ -15,6 +18,13 @@ module.exports = {
       options: {
         path: `${__dirname}/content/blog`,
         name: `blog`,
+      },
+    },
+    {
+      resolve: `gatsby-source-filesystem`,
+      options: {
+        path: `${__dirname}/content/pages`,
+        name: `pages`,
       },
     },
     {
