@@ -68,11 +68,11 @@ module.exports = {
     {
       resolve: `gatsby-plugin-manifest`,
       options: {
-        name: `Banana Gists`,
-        short_name: `Banana Gists`,
+        name: `JulianGaramendy.dev`,
+        short_name: `JulianGaramendy.dev`,
         start_url: `/`,
         background_color: `#ffffff`,
-        theme_color: `#663399`,
+        theme_color: `#D6AB00`,
         display: `minimal-ui`,
         icon: `content/assets/banana-icon.png`,
       },

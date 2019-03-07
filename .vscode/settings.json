@@ -1,9 +1,15 @@
 {
+  "peacock.affectStatusBar": true,
+  "peacock.affectActivityBar": true,
   "workbench.colorCustomizations": {
-    "editor.background": "#111",
-    "titleBar.activeBackground": "#990000",
-    "titleBar.activeForeground":"#ffffff",
-    "statusBar.background" : "#990000",
-    "statusBar.foreground" : "#ffffff",
-    "sideBar.background": "#080808"
+    "activityBar.background": "#D6AB00",
+    "activityBar.foreground": "#15202b",
+    "activityBar.inactiveForeground": "#504c23",
+    "titleBar.activeBackground": "#d6ab00",
+    "titleBar.inactiveBackground": "#6b5600",
+    "titleBar.activeForeground": "#15202b",
+    "titleBar.inactiveForeground": "#454320",
+    "statusBar.background": "#d6ab00",
+    "statusBar.foreground": "#15202b"
+  }
 }
