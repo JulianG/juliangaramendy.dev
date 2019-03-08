@@ -1,6 +1,5 @@
 import React from 'react'
 import { Link, graphql } from 'gatsby'
-
 import Bio from '../components/Bio'
 import { BlogLayout } from '../components/Layout'
 import { Header } from '../components/Header'
@@ -12,11 +11,11 @@ class BlogPostTemplate extends React.Component {
     const post = this.props.data.markdownRemark
     const blogTitle = this.props.data.site.siteMetadata.blogTitle
     const { previous, next } = this.props.pageContext
-    const { ogimage } = post.frontmatter
+    const { ogimage, credits } = post.frontmatter
     const ogImagePath = ogimage && ogimage.childImageSharp.fixed.src
 
     return (
-      <BlogLayout location={this.props.location} title={blogTitle}>
+      <BlogLayout credits={credits}>
         <Header/>
         <SEO
           title={post.frontmatter.title}
@@ -87,6 +86,7 @@ export const pageQuery = graphql`
       frontmatter {
         title
         date(formatString: "MMMM DD, YYYY")
+        credits
         ogimage { 
           childImageSharp {
             fixed {

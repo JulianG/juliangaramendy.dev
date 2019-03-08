@@ -47,3 +47,13 @@ footer {
   text-shadow: none;
 }
 
+p .gatsby-resp-image-wrapper ~ p {
+  font-size: 0.75rem;
+  color: red;
+  margin-top: -1rem;
+}
+
+footer p {
+  margin-top: 0;
+  margin-bottom: 0;
+}
