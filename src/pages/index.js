@@ -13,31 +13,20 @@ class BlogIndex extends React.Component {
   render() {
     const { data } = this.props
     const siteTitle = data.site.siteMetadata.title
-    const description = data.site.siteMetadata.description
     const keywords = data.site.siteMetadata.keywords
-    const posts = data.allMarkdownRemark.edges
-
-    const defaultPageSlug = `/info/`
-
-    const defaultPage = posts.find(page => page.node.fields.slug === defaultPageSlug);
-
-    console.log(defaultPage);
-    console.log(defaultPage.html);
+    const post = data.allMarkdownRemark && data.allMarkdownRemark.edges[0]
+    const credits = post && post.node.frontmatter.credits
 
     return (
-      <BlogLayout location={this.props.location} title={siteTitle} description={description}>
-        <Header/>
+      <BlogLayout credits={credits}>
+        <Header />
         <SEO
           title={siteTitle}
+          description={post && post.excerpt}
           keywords={keywords}
           type="website"
-        />       
-        <div dangerouslySetInnerHTML={{ __html: defaultPage.node.html }} /> 
-        <hr
-          style={{
-            marginBottom: rhythm(1),
-          }}
         />
+        {post && <div dangerouslySetInnerHTML={{ __html: post.node.html }} />}
       </BlogLayout>
     )
   }
@@ -67,6 +56,7 @@ export const pageQuery = graphql`
           frontmatter {
             date(formatString: "MMMM DD, YYYY")
             title
+            credits
           }
         }
       }
