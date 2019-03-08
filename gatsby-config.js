@@ -2,6 +2,7 @@ module.exports = {
   siteMetadata: {
     siteUrl: `https://juliangaramendy.dev/`,
     title: `JulianGaramendy.dev`,
+    description: `JulianGaramendy.dev`,
     blogTitle: `Banana Gists`,
     blogDescription: `A blog about React, TypeScript, and of course bananas.`,
     author: `Julian Garamendy`,
