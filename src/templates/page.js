@@ -10,10 +10,7 @@ import { rhythm, scale } from '../utils/typography'
 class BlogPostTemplate extends React.Component {
   render() {
     const post = this.props.data.markdownRemark
-    const siteTitle = this.props.data.site.siteMetadata.title
     const blogTitle = this.props.data.site.siteMetadata.blogTitle
-    const blogDescription = this.props.data.site.siteMetadata.blogDescription
-    const { previous, next } = this.props.pageContext
     const { ogimage } = post.frontmatter
     const ogImagePath = ogimage && ogimage.childImageSharp.fixed.src
 
@@ -21,7 +18,7 @@ class BlogPostTemplate extends React.Component {
 
     return (
       <BlogLayout location={this.props.location} title={blogTitle}>
-        <Header title={siteTitle} />
+        <Header />
         <SEO
           title={post.frontmatter.title}
           description={post.excerpt}
@@ -45,10 +42,7 @@ export const pageQuery = graphql`
   query PageBySlug($slug: String!) {
     site {
       siteMetadata {
-        title
         blogTitle
-        blogDescription
-        author
       }
     }
     markdownRemark(fields: { slug: { eq: $slug } }) {

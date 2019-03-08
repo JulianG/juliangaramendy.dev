@@ -12060,20 +12060,15 @@ typedarray@^0.0.6:
   resolved "https://registry.yarnpkg.com/typedarray/-/typedarray-0.0.6.tgz#867ac74e3864187b1d3d47d996a78ec5c8830777"
   integrity sha1-hnrHTjhkGHsdPUfZlqeOxciDB3c=
 
-typeface-lobster@^0.0.54:
-  version "0.0.54"
-  resolved "https://registry.yarnpkg.com/typeface-lobster/-/typeface-lobster-0.0.54.tgz#6b04f2afe8e37ecae198abbf2a7404c9679269bf"
-  integrity sha512-/J4NWjdL4+uvt/62217sPp7PO9ZG7CE8CsCXq0BXwxbJ1RdcQ6M8pWvGoaXuxEXffAXbKAQaGa75PJC2heU4PQ==
+typeface-farsan@^0.0.71:
+  version "0.0.71"
+  resolved "https://registry.yarnpkg.com/typeface-farsan/-/typeface-farsan-0.0.71.tgz#2dc4cdb27560741cf507f4f35e24e782aa1170e6"
+  integrity sha512-FsufVUbM7gRkzPAQT/8cDxP5m3s0El8E9WL2AnQnqCuJmEmgOiCTL2rjVnmR191VWmVAtnDqinNWcUew9BM4Sg==
 
-typeface-merriweather@0.0.43:
-  version "0.0.43"
-  resolved "https://registry.yarnpkg.com/typeface-merriweather/-/typeface-merriweather-0.0.43.tgz#b615f7aaf5f826c0cf1da7473af7ef28c7c44428"
-  integrity sha512-Oj6V+KabkcU9jKoDm6o4EnZMRodqNzBaKcRZ0/iY/eR6147+hfsiBAoFKOtAXvWPwc2TOtUYuKMSKaoih4Mrng==
-
-typeface-montserrat@0.0.43:
-  version "0.0.43"
-  resolved "https://registry.yarnpkg.com/typeface-montserrat/-/typeface-montserrat-0.0.43.tgz#c70d76b85ab613a9f4855c061c354eac561c1aae"
-  integrity sha512-lWyRVih5jJqZyOAj1+sCj8MijF+roNHrN11eD4fOGpj1dV7nS82kTnYVoz0TIGTu8/Arqw0eCytV1XdFe/i2aw==
+typeface-ibm-plex-sans-condensed@^0.0.61:
+  version "0.0.61"
+  resolved "https://registry.yarnpkg.com/typeface-ibm-plex-sans-condensed/-/typeface-ibm-plex-sans-condensed-0.0.61.tgz#9e7ec76c14fa6ad96aeec414e1bfcb8ec56bf69e"
+  integrity sha512-lv6wDY/Upf9G1XpXy0HbwQDQZc4sjEzbLAN9QbEShFSCCxsISuEOPsxK09TBpHnVIzJIx523I1/ZAqOjr2NKxQ==
 
 typography-breakpoint-constants@^0.15.10:
   version "0.15.10"

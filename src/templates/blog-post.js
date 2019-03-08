@@ -3,23 +3,21 @@ import { Link, graphql } from 'gatsby'
 
 import Bio from '../components/Bio'
 import { BlogLayout } from '../components/Layout'
-import { Header, BlogHeader } from '../components/Header'
+import { Header } from '../components/Header'
 import SEO from '../components/seo'
 import { rhythm, scale } from '../utils/typography'
 
 class BlogPostTemplate extends React.Component {
   render() {
     const post = this.props.data.markdownRemark
-    const siteTitle = this.props.data.site.siteMetadata.title
     const blogTitle = this.props.data.site.siteMetadata.blogTitle
-    const blogDescription = this.props.data.site.siteMetadata.blogDescription
     const { previous, next } = this.props.pageContext
     const { ogimage } = post.frontmatter
     const ogImagePath = ogimage && ogimage.childImageSharp.fixed.src
 
     return (
       <BlogLayout location={this.props.location} title={blogTitle}>
-        <Header title={siteTitle} />
+        <Header/>
         <SEO
           title={post.frontmatter.title}
           description={post.excerpt}
@@ -78,9 +76,7 @@ export const pageQuery = graphql`
   query BlogPostBySlug($slug: String!) {
     site {
       siteMetadata {
-        title
         blogTitle
-        blogDescription
         author
       }
     }

@@ -1,53 +1,25 @@
 import React from 'react'
 import { Link } from 'gatsby'
 
-import { rhythm, scale } from '../utils/typography'
-
-const linkStyle = {
-};
-
-const titleStyle = {
-  ...scale(1.25),
-  marginBottom: rhythm(0),
-  marginTop: 0,
-};
-
-export function Header({ title, description, backLink }) {
+export function Header() {
 
   return (
     <div>
-      <h1 style={titleStyle}>{title}</h1>
-      <h4 className="description">
-        <Link style={linkStyle} to={`/info`}>Info</Link>
+      <h1 className="brand">Julian&#8203;Garamendy&#8203;.dev</h1>
+      <h4 className="navigation">
+        <Link to={`/info`}>Info</Link>
         |
-        <Link style={linkStyle} to={`/blog`}>Banana Gists Blog</Link>
+        <Link to={`/blog`}>Banana Gists Blog</Link>
       </h4>
-    </div>
+    </div >
   );
 }
 
-export function BlogHeader({ title, description, backLink }) {
+export function BlogHeader({ title, description }) {
   return (
     <>
-    <h2
-      style={{
-        fontFamily: `Montserrat, sans-serif`,
-        marginTop: 0,
-        marginBottom: 0,
-      }}
-    >
-      <Link
-        style={{
-          boxShadow: `none`,
-          textDecoration: `none`,
-          color: `inherit`,
-        }}
-        to={backLink}
-      >
-        {title}
-      </Link>
-    </h2>
-    {description && <h4 className="description">{description}</h4>}
+      <h1 className="blog-title">{title}</h1>
+      <h4 className="description">{description}</h4>
     </>
   );
 }

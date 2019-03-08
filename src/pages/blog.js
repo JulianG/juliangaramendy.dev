@@ -12,7 +12,6 @@ import './styles.css'
 class BlogIndex extends React.Component {
   render() {
     const { data } = this.props
-    const siteTitle = data.site.siteMetadata.title
     const blogTitle = data.site.siteMetadata.blogTitle
     const blogDescription = data.site.siteMetadata.blogDescription
     const posts = data.allMarkdownRemark.edges
@@ -21,7 +20,7 @@ class BlogIndex extends React.Component {
 
     return (
       <BlogLayout>
-        <Header title={siteTitle} />
+        <Header/>
         <BlogHeader title={blogTitle} description={blogDescription} backLink={`/blog`} />
         <SEO
           title={blogTitle}
@@ -63,7 +62,6 @@ export const pageQuery = graphql`
   query {
     site {
       siteMetadata {
-        title
         blogTitle
         blogDescription
         keywords

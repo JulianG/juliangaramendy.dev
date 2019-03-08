@@ -26,7 +26,7 @@ class BlogIndex extends React.Component {
 
     return (
       <BlogLayout location={this.props.location} title={siteTitle} description={description}>
-        <Header title={siteTitle} description={description} />
+        <Header/>
         <SEO
           title={siteTitle}
           keywords={keywords}
@@ -50,7 +50,6 @@ export const pageQuery = graphql`
     site {
       siteMetadata {
         title
-        description
         keywords
       }
     }
