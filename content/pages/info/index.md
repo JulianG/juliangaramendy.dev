@@ -25,7 +25,11 @@ I also have experience with:
 **Angular, C++, C#, Python, ActionScript**  
 **JSON-RPC, SVN, Jenkins.**  
 
-I made an open-source Chrome extension called [Banana Tabs](https://github.com/JulianG/bananatabs).
+I'm currently working at King.com creating tools for game development teams.
+
+Last year I made an open-source Chrome extension called [Banana Tabs](https://github.com/JulianG/bananatabs).
+
+In the past I help develop successful mobile games such as Farm Heroes Saga and Shuffle Cats.
 
 The rest of the pages are some blog posts I write from time to time.
 
