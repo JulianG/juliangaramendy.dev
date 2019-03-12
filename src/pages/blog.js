@@ -20,7 +20,7 @@ class BlogIndex extends React.Component {
 
     return (
       <BlogLayout>
-        <Header/>
+        <Header />
         <BlogHeader title={blogTitle} description={blogDescription} backLink={`/blog`} />
         <SEO
           title={blogTitle}
@@ -45,11 +45,7 @@ class BlogIndex extends React.Component {
             </div>
           )
         })}
-        <hr
-          style={{
-            marginBottom: rhythm(1),
-          }}
-        />
+        <hr style={{ marginBottom: rhythm(0) }} />
         <Bio />
       </BlogLayout>
     )

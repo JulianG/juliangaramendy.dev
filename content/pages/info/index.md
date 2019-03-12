@@ -9,12 +9,14 @@ credits: [
 ]
 ---
 
-**Hello! I'm Julian.**  
-**I have 18 years’ experience developing mobile and web applications.**
+<br/>
 
-![keyboard](./keyboard.jpg)
+**Hello! My name is Julian.**  
+**I've been developing mobile and web applications for the last 18 years.**
 
-I use SOLID principles and best practices to write well-architectured code that is easy to understand, expresses intention, is easy to maintain and scale, and is properly tested.
+![keyboard](./images/keyboard.jpg)
+
+I use SOLID principles and best practices to write well-architectured code that expresses intention, is easy to understand, maintain and scale, and is properly tested.
 
 My preferred tech stack is:  
 **React, TypeScript, ES6, Javascript, HTML, CSS, Jest.**  
@@ -23,14 +25,17 @@ My preferred tech stack is:
 
 I also have experience with:  
 **Angular, C++, C#, Python, ActionScript**  
-**JSON-RPC, SVN, Jenkins.**  
+**JSON-RPC, SVN.**  
 
-I'm currently working at King.com creating tools for game development teams.
+I'm currently working at [King.com](https://king.com/) creating tools for game development teams.
 
-Last year I made an open-source Chrome extension called [Banana Tabs](https://github.com/JulianG/bananatabs).
+I've recently I made an open-source Chrome extension called [Banana Tabs](https://github.com/JulianG/bananatabs).  
+Some people find it extremely useful, others have completely ignored it.
 
-In the past I help develop successful mobile games such as Farm Heroes Saga and Shuffle Cats.
-
-The rest of the pages are some blog posts I write from time to time.
-
+I've finally started writing a blog: [I Have To Write This Down](/blog).  
 You can find me on [Twitter](https://twitter.com/JulianGWeb) and [GitHub](https://github.com/JulianG/).
+
+<!--
+<a style="box-shadow: none" href="https://twitter.com/JulianGWeb"><img src="./images/twitter-logo.svg" width="20rem" /></a>&nbsp;
+<a style="box-shadow: none" href="https://github.com/JulianG/"><img src="./images/github-logo.svg" width="20rem" /></a>&nbsp;
+-->
