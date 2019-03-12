@@ -34,5 +34,5 @@ I developed corporate websites for several clients and design agencies using HTM
 
 ----
 
-I started my carreer as a front-end developer at **CyberJuegos.com**, building web pages using HTML, CSS, and some ASP.  
+I started my career as a front-end developer at **CyberJuegos.com** during the dot-com bubble, building web pages using HTML, CSS, and some ASP.  
 Later on I was involved in game development in Macromedia Shockwave.
