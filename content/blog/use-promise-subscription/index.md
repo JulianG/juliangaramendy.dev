@@ -13,7 +13,7 @@ I've seen it done in complicated ways so I have to write this down.
 
 ## Quick Example
 
-If you're after a quick example, here you are:
+If you're after a quick example, try this:
 
 ```js
 function BananaComponent() {
@@ -96,7 +96,7 @@ To fix, cancel all subscriptions and asynchronous tasks
 in the componentWillUnmount method.
 ```
 
-The way to fix this is to cancel our request when the component unmounts. In function components, this is done [in the cleanup function of `useEffect`](https://reactjs.org/docs/hooks-effect.html#effects-with-cleanup).
+We can fix this by cancelling our request when the component unmounts. In function components, this is done [in the cleanup function of `useEffect`](https://reactjs.org/docs/hooks-effect.html#effects-with-cleanup).
 
 ```js
   ...
@@ -224,6 +224,7 @@ I hope this was useful.
 
 I would love to hear your thoughts. 
 
-* Am I doing it wrong? 
+* Can you see anything wrong with this approach?
 * Is this better than what you were doing before? 
 * Is it worse?
+* I'm not entirely happy with the `[value, error, isPending]` tuple. Can you think of a better "API" for this?
