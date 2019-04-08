@@ -1,5 +1,5 @@
 ---
-title: Subscribing to a Promise with React.useEffect
+title: Cancelling a Promise with React.useEffect
 date: '2019-04-07'
 type: 'blog-post'
 credits: [
@@ -12,8 +12,6 @@ credits: [
 I've seen it done in complicated ways so I have to write this down.
 
 ## Quick Example
-
-If you're after a quick example, try this:
 
 ```js
 function BananaComponent() {
@@ -37,7 +35,8 @@ function BananaComponent() {
   )
 }
 ```
-<br/>
+
+In the code above, the `fetchBananas` function returns a promise. We can "cancel" the promise by having a conditional in the scope of `useEffect`, preventing the app from setting state after the component has unmounted.
 
 ## Long Explanation
 
@@ -92,8 +91,7 @@ With `useState([])` we define an initial value of for `bananas` so we can render
 ```log
 Warning: Can't perform a React state update on an unmounted component.
 This is a no-op, but it indicates a memory leak in your application.
-To fix, cancel all subscriptions and asynchronous tasks
-in the componentWillUnmount method.
+To fix, cancel all subscriptions and asynchronous tasks in a useEffect cleanup function.
 ```
 
 We can fix this by cancelling our request when the component unmounts. In function components, this is done [in the cleanup function of `useEffect`](https://reactjs.org/docs/hooks-effect.html#effects-with-cleanup).
