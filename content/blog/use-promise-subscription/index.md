@@ -1,6 +1,7 @@
 ---
 title: Cancelling a Promise with React.useEffect
 date: '2019-04-07'
+updated: '2019-04-27'
 type: 'blog-post'
 credits: [
   "Photo by [Alex](https://unsplash.com/photos/ZR48YvUpk04?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText) on [Unsplash](https://unsplash.com)"
@@ -37,6 +38,8 @@ function BananaComponent() {
 ```
 
 In the code above, the `fetchBananas` function returns a promise. We can "cancel" the promise by having a conditional in the scope of `useEffect`, preventing the app from setting state after the component has unmounted.
+
+You can see an [example in codesandbox](https://codesandbox.io/s/pkk3xjn00m).
 
 ## Long Explanation
 
@@ -178,7 +181,7 @@ We can create a **custom hook** where we return a tuple like `[value, error, isP
 In the implementation below, the consumer doesn't need to keep its own state, and the 'pending' state is explicit.
 
 ```js
-export function usePromiseSubscription(promiseOrFunction, defaultValue, deps) {
+export function usePromise(promiseOrFunction, defaultValue) {
   const [state, setState] = React.useState({ value: defaultValue, error: null, isPending: true })
 
   React.useEffect(() => {
@@ -192,7 +195,7 @@ export function usePromiseSubscription(promiseOrFunction, defaultValue, deps) {
       .catch(error => isSubscribed ? setState({ value: defaultValue, error: error, isPending: false }) : null)
 
     return () => (isSubscribed = false)
-  }, deps)
+  }, [promiseOrFunction, defaultValue])
 
   const { value, error, isPending } = state
   return [value, error, isPending]
@@ -204,7 +207,7 @@ Usage:
 ```js
 function BananaComponent() {
 
-  const [bananas, error, pending] = usePromiseSubscription(fetchBananas, [], [])
+  const [bananas, error, pending] = usePromise(fetchBananas, [], [])
 
   render (
     <ul>
@@ -216,7 +219,15 @@ function BananaComponent() {
 }
 ```
 
-I hope this was useful.
+## Why not make it a npm package then?
+
+In the end I made a repo for my custom hooks, starting with this one, and I published it as an npm package:
+
+* npm: https://www.npmjs.com/package/bananahooks
+* repository: https://github.com/JulianG/hooks
+* example: https://codesandbox.io/s/pkk3xjn00m
+
+I hope this is useful.
 
 ## Questions? Comments?
 
@@ -225,4 +236,3 @@ I would love to hear your thoughts.
 * Can you see anything wrong with this approach?
 * Is this better than what you were doing before? 
 * Is it worse?
-* I'm not entirely happy with the `[value, error, isPending]` tuple. Can you think of a better "API" for this?
