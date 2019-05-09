@@ -218,14 +218,11 @@ function BananaComponent() {
   )
 }
 ```
+<br/>
 
 ## Why not make it a npm package then?
 
-In the end I made a repo for my custom hooks, starting with this one, and I published it as an npm package:
-
-* npm: https://www.npmjs.com/package/bananahooks
-* repository: https://github.com/JulianG/hooks
-* example: https://codesandbox.io/s/pkk3xjn00m
+In the end I made a repo for my custom hooks, starting with this one, and I published it as an npm package: [npm](https://www.npmjs.com/package/bananahooks), [github](https://github.com/JulianG/hooks), [codesandbox example](https://codesandbox.io/s/pkk3xjn00m).
 
 I hope this is useful.
 
