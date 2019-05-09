@@ -10,12 +10,12 @@ credits: []
 # Work
 
 I'm currently working at **[King.com](https://king.com/)** creating tools for game development teams.  
-We mostly use React and TypeScript.
+We mostly use React and TypeScript and some C++.
 
 ![Farm Heroes Saga](./images/farm.jpg)
 
-Before that I helped develop successful mobile games such as [Farm Heroes Saga](https://king.com/game/farmheroes) and [Shuffle Cats](https://king.com/game/shufflecats).  
-We used C++ and Actionscript.
+Before that, I developed successful mobile games such as [Farm Heroes Saga](https://king.com/game/farmheroes) and [Shuffle Cats](https://king.com/game/shufflecats).  
+I used C++, C#, ActionScript and Python.
 
 ----
 
@@ -35,4 +35,4 @@ I developed corporate websites for several clients and design agencies using HTM
 ----
 
 I started my career as a front-end developer at **CyberJuegos.com** during the dot-com bubble, building web pages using HTML, CSS, and some ASP.  
-Later on I was involved in game development in Macromedia Shockwave.
+Later on, I was involved in game development in Macromedia Shockwave.
