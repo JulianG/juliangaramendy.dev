@@ -13,12 +13,20 @@ footer {
   font-size: 0.75rem;
 }
 
-:not(pre) code.language-text {
-  background: #ffffee;
-  color: #333;
-  padding-left: 0.2rem;
-  padding-right: 0.2rem;
-  text-shadow: none;
+code.vscode-highlight-code {
+  font-size: 0.85rem;
+  line-height: 166%;
+  font-family: Consolas, Monaco, Andale Mono, Ubuntu Mono, monospace;
+}
+
+p code {
+  font-family: Consolas , Monaco, Andale Mono, Ubuntu Mono, monospace; 
+  background: #eeeeee;
+  padding: 0.2rem;
+  padding-left: 0.4rem;
+  padding-right: 0.4rem;
+  border-radius: 0.2rem;
+  /* text-shadow: none; */
 }
 
 p .gatsby-resp-image-wrapper ~ p {
@@ -30,4 +38,9 @@ p .gatsby-resp-image-wrapper ~ p {
 footer p {
   margin-top: 0;
   margin-bottom: 0;
+}
+
+ul, ol {
+  margin-left: 1rem;
+  line-height: 100%;
 }

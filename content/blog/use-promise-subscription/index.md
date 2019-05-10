@@ -14,7 +14,7 @@ I've seen it done in complicated ways so I have to write this down.
 
 ## Quick Example
 
-```js
+```js{1,3,5}
 function BananaComponent() {
 
   const [bananas, setBananas] = React.useState([])
@@ -43,7 +43,7 @@ You can see an [example in codesandbox](https://codesandbox.io/s/pkk3xjn00m).
 
 ## Long Explanation
 
-Imagine we have a REST API endpoint that gives us a list of bananas. We can get the list by [using `fetch`](https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API/Using_Fetch) which returns a promise. We wrap the call in a nice async function which naturally returns a promise.
+Imagine we have a REST API endpoint that gives us a list of bananas. We can get the list by [using fetch](https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API/Using_Fetch) which returns a promise. We wrap the call in a nice async function which naturally returns a promise.
 
 ```js
 async function fetchBananas() {
