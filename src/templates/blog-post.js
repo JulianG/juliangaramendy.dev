@@ -6,6 +6,8 @@ import { Header } from '../components/Header'
 import SEO from '../components/seo'
 import { rhythm, scale } from '../utils/typography'
 
+import 'gatsby-remark-vscode/styles.css'
+
 class BlogPostTemplate extends React.Component {
   render() {
     const post = this.props.data.markdownRemark
