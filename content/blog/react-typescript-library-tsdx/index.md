@@ -5,11 +5,11 @@ type: 'blog-post'
 ogimage: './tsdx.png'
 ---
 
-I started my personal hooks library and decided to publish it as an **npm package**. Doing this in TypeScript was not straightforward, until: **[palmerhq/tsdx](https://github.com/palmerhq/tsdx)**.  
-Here's what I did. Step by step.
-
 <img src="./tsdx.png" alt="TSDX: Zero-config CLI for TypeScript package development" width="100" />
 
+I started my personal hooks library and decided to publish it as an **npm package**. Doing this in TypeScript was not straightforward, until: **[palmerhq/tsdx](https://github.com/palmerhq/tsdx)**.  
+
+Here's what I did. Step by step.
 
 ## Step 1: Creating the project
 

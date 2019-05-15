@@ -1,6 +1,7 @@
 ---
 title: Testing Opinions
 date: 2019-02-22
+type: 'blog-post'
 ---
 
 **⚠️ Warning! This article is highly opinionated.**
