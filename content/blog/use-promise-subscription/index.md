@@ -14,7 +14,7 @@ I've seen it done in complicated ways so I have to write this down.
 
 ## Quick Example
 
-```js{1,3,5}
+```js
 function BananaComponent() {
 
   const [bananas, setBananas] = React.useState([])
