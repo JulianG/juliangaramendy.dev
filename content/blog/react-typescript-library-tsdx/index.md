@@ -2,13 +2,14 @@
 title: How to publish a React Hooks Library using Typescript and TSDX
 date: 2019-05-15
 type: 'blog-post'
+ogimage: './tsdx.png'
 ---
 
-A few weeks ago, I created a custom React hook in a project. Sometime later I decided to start my personal hooks library and publish it as an **npm package**. Doing this in TypeScript was not straightforward, until: **[palmerhq/tsdx](https://github.com/palmerhq/tsdx)**.
+I started my personal hooks library and decided to publish it as an **npm package**. Doing this in TypeScript was not straightforward, until: **[palmerhq/tsdx](https://github.com/palmerhq/tsdx)**.  
+Here's what I did. Step by step.
 
 <img src="./tsdx.png" alt="TSDX: Zero-config CLI for TypeScript package development" width="100" />
 
-Here's what I did. Step by step.
 
 ## Step 1: Create the project
 
