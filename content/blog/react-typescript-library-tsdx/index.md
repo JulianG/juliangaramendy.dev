@@ -1,5 +1,5 @@
 ---
-title: How to publish a React Hooks Library using Typescript and TSDX
+title: Publishing a React Hooks Library using Typescript and TSDX
 date: 2019-05-15
 type: 'blog-post'
 ogimage: './tsdx.png'
@@ -11,7 +11,7 @@ Here's what I did. Step by step.
 <img src="./tsdx.png" alt="TSDX: Zero-config CLI for TypeScript package development" width="100" />
 
 
-## Step 1: Create the project
+## Step 1: Creating the project
 
 ```js
 $ npx tsdx create bananahooks
@@ -50,7 +50,7 @@ I selected the `react` template, and TSDX installed everything for me.
   https://github.com/jaredpalmer/tsdx/issues
 ```
 
-## Step 2: Add library code and tests
+## Step 2: Adding code and tests
 
 TSDX generates an `index.tsx` file a test file, and an example folder.  
 I deleted the example folder, added my [own code](https://github.com/JulianG/hooks/tree/master/src) and [tests](https://github.com/JulianG/hooks/tree/master/test).
@@ -93,7 +93,7 @@ There's a [known issue](https://github.com/yarnpkg/yarn/issues/1334) when instal
 
 The workaround is to `yarn remove bananahooks`, then delete the `node_modules` folder from the library project, then run `yarn add ../path/to/bananahooks` again. It's annoying.
 
-## Step 5: Publish to NPM
+## Step 5: Publishing to NPM
 
 TSDX generated a `package.json` file with my package name: `bananahooks`, but I had to add the `author`, `license` and `repository` keys to it:
 
@@ -109,8 +109,6 @@ TSDX generated a `package.json` file with my package name: `bananahooks`, but I 
   },
   "license": "MIT",
 ```
-
-### Publishing on NPM Registry
 
 I ran the `npm pack` command which generates a `.tgz` file with the package that would be uploaded to the registry. I find this useful to inspect and make sure I'm including the right files. **The `.tgz` file can be deleted afterwards; it's not needed for publishing.**
 
