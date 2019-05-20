@@ -14,7 +14,7 @@ class BlogIndex extends React.Component {
     const { data } = this.props
     const blogTitle = data.site.siteMetadata.blogTitle
     const blogDescription = data.site.siteMetadata.blogDescription
-    const posts = data.allMarkdownRemark.edges
+    const posts = data.allMdx.edges
     const keywords = data.site.siteMetadata.keywords
     // const rootPath = `${__PATH_PREFIX__}/`
 
@@ -63,7 +63,7 @@ export const pageQuery = graphql`
         keywords
       }
     }
-    allMarkdownRemark(
+    allMdx(
       filter: {frontmatter: {type: {eq: "blog-post"}}}
       sort: { fields: [frontmatter___date], order: DESC }
       ) {

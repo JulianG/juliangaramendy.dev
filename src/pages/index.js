@@ -14,7 +14,7 @@ class BlogIndex extends React.Component {
     const { data } = this.props
     const siteTitle = data.site.siteMetadata.title
     const keywords = data.site.siteMetadata.keywords
-    const post = data.allMarkdownRemark && data.allMarkdownRemark.edges[0]
+    const post = data.allMdx && data.allMdx.edges[0]
     const credits = post && post.node.frontmatter.credits
 
     return (
@@ -26,7 +26,7 @@ class BlogIndex extends React.Component {
           keywords={keywords}
           type="website"
         />
-        {post && <div dangerouslySetInnerHTML={{ __html: post.node.html }} />}
+        {post && <MDXRenderer>{post.code.body}</MDXRenderer>}
       </BlogLayout>
     )
   }
@@ -42,14 +42,16 @@ export const pageQuery = graphql`
         keywords
       }
     }
-    allMarkdownRemark(
+    allMdx(
       filter: {frontmatter: {defaultPage: {eq: true}}}
       sort: { fields: [frontmatter___date], order: DESC }
       ) {
       edges {
         node {
           excerpt
-          html
+          code {
+            body
+          }
           fields {
             slug
           }

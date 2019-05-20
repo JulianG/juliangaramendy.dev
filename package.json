@@ -45,7 +45,7 @@
     "eslint-plugin-react": "^7.11.1",
     "prettier": "^1.14.2"
   },
-  "homepage": "https://bananas.netlify.com/",
+  "homepage": "https://juliangaramendy.dev/",
   "keywords": [
     "gatsby"
   ],
@@ -53,7 +53,7 @@
   "main": "n/a",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/JulianG/juliang-blog.git"
+    "url": "git+https://github.com/JulianG/juliangaramendy.dev.git"
   },
   "scripts": {
     "dev": "gatsby develop",

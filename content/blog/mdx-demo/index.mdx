@@ -1,0 +1,32 @@
+---
+title: MDX Demo
+date: '2019-05-20'
+type: 'blog-post'
+---
+
+import { Demo } from './demo'
+
+```
+import React from 'react'
+
+export const Demo = ({ title }) => {
+
+  const [count, setCount] = React.useState(0)
+
+  const increment = () => setCount(count + 1)
+  const decrement = () => setCount(count - 1)
+
+  return (
+    <div>
+      <p>Count: {count}</p>
+      <button onClick={increment}>+</button>
+      <button onClick={decrement}>-</button>
+    </div>
+  )
+}
+```
+
+<Demo title="MDX works!" />
+
+...
+

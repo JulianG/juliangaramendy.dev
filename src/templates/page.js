@@ -6,7 +6,7 @@ import SEO from '../components/seo'
 
 class BlogPostTemplate extends React.Component {
   render() {
-    const post = this.props.data.markdownRemark
+    const post = this.props.data.mdx
     const blogTitle = this.props.data.site.siteMetadata.blogTitle
     const { ogimage, credits } = post.frontmatter
     const ogImagePath = ogimage && ogimage.childImageSharp.fixed.src
@@ -22,7 +22,7 @@ class BlogPostTemplate extends React.Component {
           type="website"
           image={ogImagePath} />
         {pageTitle && <h1>{pageTitle}</h1>}
-        <div dangerouslySetInnerHTML={{ __html: post.html }} />
+        <MDXRenderer>{post.code.body}</MDXRenderer>
       </BlogLayout>
     )
   }
@@ -37,10 +37,12 @@ export const pageQuery = graphql`
         blogTitle
       }
     }
-    markdownRemark(fields: { slug: { eq: $slug } }) {
+    mdx(fields: { slug: { eq: $slug } }) {
       id
       excerpt(pruneLength: 160)
-      html
+      code {
+        body
+      }
       frontmatter {
         title
         date(formatString: "MMMM DD, YYYY")

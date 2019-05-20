@@ -10,7 +10,7 @@ exports.createPages = async ({ graphql, actions }) => {
 async function metaCreatePagesOfType(graphql, createPage, type) {
   const blogPosts = await getPagesOfType(graphql, type)
   const templatePath = `./src/templates/${type}.js`
-  createPages(createPage, blogPosts.data.allMarkdownRemark.edges, templatePath)
+  createPages(createPage, blogPosts.data.allMdx.edges, templatePath)
 }
 
 function createPages(createPage, posts, blogPostPath) {
@@ -34,7 +34,7 @@ function createPages(createPage, posts, blogPostPath) {
 exports.onCreateNode = ({ node, actions, getNode }) => {
   const { createNodeField } = actions
 
-  if (node.internal.type === `MarkdownRemark`) {
+  if (node.internal.type === `Mdx`) {
     const value = createFilePath({ node, getNode })
     createNodeField({
       name: `slug`,
@@ -55,7 +55,7 @@ async function getPagesOfType(graphql, type) {
 function getQueryForType(type) {
   return `
   {
-    allMarkdownRemark(
+    allMdx(
       filter: {frontmatter: {type: {eq: "${type}"}}}
       sort: { fields: [frontmatter___date], order: DESC }
       limit: 1000
