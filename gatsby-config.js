@@ -66,9 +66,6 @@ module.exports = {
             options: {
               wrapperClassName: 'vscode'
             }
-          },
-          {
-            resolve: `gatsby-remark-prismjs`
           }
         ],
       },
