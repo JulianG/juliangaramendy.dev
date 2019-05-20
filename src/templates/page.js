@@ -2,6 +2,8 @@ import React from 'react'
 import { graphql } from 'gatsby'
 import { BlogLayout } from '../components/Layout'
 import { Header } from '../components/Header'
+import MDXRenderer from 'gatsby-mdx/mdx-renderer'
+
 import SEO from '../components/seo'
 
 class BlogPostTemplate extends React.Component {

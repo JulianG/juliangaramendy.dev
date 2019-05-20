@@ -5,7 +5,7 @@ import Bio from '../components/Bio'
 import { BlogLayout } from '../components/Layout'
 import { Header } from '../components/Header';
 import SEO from '../components/seo'
-import { rhythm } from '../utils/typography'
+import MDXRenderer from 'gatsby-mdx/mdx-renderer'
 
 import './styles.css'
 
@@ -26,7 +26,7 @@ class BlogIndex extends React.Component {
           keywords={keywords}
           type="website"
         />
-        {post && <MDXRenderer>{post.code.body}</MDXRenderer>}
+        {post && post.code && <MDXRenderer>{post.code.body}</MDXRenderer>}
       </BlogLayout>
     )
   }
