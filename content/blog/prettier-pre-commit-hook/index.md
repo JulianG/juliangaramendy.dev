@@ -9,7 +9,7 @@ credits: [
 
 ![stream](./simon-wilkes-691856-unsplash.jpg)
 
-We wanted to improve our developer experience by:
+We want to improve our developer experience by:
 * Preventing broken code being committed/pushed.
 * Avoiding pointless arguments about formatting in our code reviews.
 
