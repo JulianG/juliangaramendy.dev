@@ -15,14 +15,14 @@ We can easily improve our developer experience by:
 
 We decided to use [git pre-commit hooks](https://git-scm.com/book/en/v2/Customizing-Git-Git-Hooks) to help prevent "broken" commits.
 
-We've started from an existing TypeScript project, but here's a [demo repository](https://github.com/JulianG/precommit-hooks-demo) if you want to have a look.
+We started from an existing TypeScript project, but here's a [demo repository](https://github.com/JulianG/precommit-hooks-demo) if you want to have a look.
 
 ## 1. Install [prettier](https://www.npmjs.com/package/prettier), [husky](https://www.npmjs.com/package/husky) and [lint-staged](https://www.npmjs.com/package/lint-staged)
 
 ```js
 yarn add -D prettier husky lint-staged
 ```
-None of these are required at run time so it's important to use `-D`, so that the dependencies are added to "devDependencies".
+None of these are required at run time so it's important to use `-D` so that the dependencies are added to "devDependencies".
 
 ## 2. Configure prettier 
 
@@ -63,7 +63,7 @@ You can of course configure this in [any way you like](https://prettier.io/docs/
   ]
 }
 ```
-This is configured to run pretier and overwrite any **staged files** that match the pattern above, and then staging the new changes (if any). 
+This is configured to run prettier and overwrite any **staged files** that match the pattern above and then staging the new changes (if any). 
 
 ## 4. Create a husky config file: .huskyrc:
 
@@ -80,7 +80,8 @@ This is configuring the pre-commit hook. It will run **`tsc`** and then **`lint-
 ## 5. Success!
 
 Now every time I try to commit, the pre-commit hook will run.
-If, for some reason, I my code doesn't compile, I'll get an error and a chance to fix it before committing.
+If -for some reason- my code doesn't compile I'll get an error and a chance to fix it before committing.
+
 And I don't have to worry about code formatting because **`prettier`** will format any staged files before committing.
 
 ## Demo Repository
