@@ -25,7 +25,10 @@ yarn add -D prettier husky lint-staged
 ```
 None of these are required at run time so it's important to use `-D`, so that the dependencies are added to "devDependencies".
 
-## 2. Create a prettier config file .prettierrc:
+## 2. Configure prettier 
+
+We need to create two files: 
+### .prettierrc:
 
 ```js
 {
@@ -40,6 +43,15 @@ None of these are required at run time so it's important to use `-D`, so that th
 }
 ```
 
+### .prettierignore:
+
+```js
+node_modules
+build
+dist
+res
+coverage
+```
 You can of course configure this in [any way you like](https://prettier.io/docs/en/configuration.html).
 
 ## 3. Create a lint-staged config file: .lintstagedrc:
@@ -72,3 +84,6 @@ Now every time I try to commit, the pre-commit hook will run.
 If, for some reason, I my code doesn't compile, I'll get an error and a chance to fix it before committing.
 And I don't have to worry about code formatting because **`prettier`** will format any staged files before committing.
 
+## Demo Repository
+
+I've setup a very basic [repository](https://github.com/JulianG/precommit-hooks-demo) on GitHub as a demo.
