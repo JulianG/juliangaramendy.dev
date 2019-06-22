@@ -1,6 +1,6 @@
 ---
 title: Testing Opinions
-date: 2019-02-22
+date: '2019-02-22'
 type: 'blog-post'
 ---
 
