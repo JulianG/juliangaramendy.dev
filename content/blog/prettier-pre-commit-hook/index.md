@@ -9,14 +9,13 @@ credits: [
 
 ![stream](./simon-wilkes-691856-unsplash.jpg)
 
-We want to improve our developer experience by:
+We can easily improve our developer experience by:
 * Preventing broken code being committed/pushed.
 * Avoiding pointless arguments about formatting in our code reviews.
 
 We decided to use [git pre-commit hooks](https://git-scm.com/book/en/v2/Customizing-Git-Git-Hooks) to help prevent "broken" commits.
 
-
-We've started from an existing TypeScript project.
+We've started from an existing TypeScript project, but here's a [demo repository](https://github.com/JulianG/precommit-hooks-demo) if you want to have a look.
 
 ## 1. Install [prettier](https://www.npmjs.com/package/prettier), [husky](https://www.npmjs.com/package/husky) and [lint-staged](https://www.npmjs.com/package/lint-staged)
 
