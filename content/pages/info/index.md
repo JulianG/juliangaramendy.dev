@@ -29,7 +29,7 @@ I also have experience with:
 
 I'm currently working at [King.com](https://king.com/) creating tools for game development teams.
 
-I've recently I made an open-source Chrome extension called [Banana Tabs](https://github.com/JulianG/bananatabs).  
+I made an open-source Chrome extension called [Banana Tabs](https://github.com/JulianG/bananatabs).  
 Some people find it extremely useful, others have completely ignored it.
 
 I've finally started writing a blog: [I Have To Write This Down](/blog).  
