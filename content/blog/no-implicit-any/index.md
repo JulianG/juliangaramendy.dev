@@ -1,5 +1,5 @@
 ---
-title: Enabling "noImplicitAny" in TypeScript
+title: Catching bugs with stricter TypeScript
 date: '2019-03-19'
 type: 'blog-post'
 ---
