@@ -4,13 +4,7 @@ date: '2019-07-19'
 type: 'blog-post'
 ---
 
-We recently enabled "noImplicitAny" in a relatively old TypeScript project.
-
-Turning this flag on caused 269 new errors. These were cases where the `any` type was being inferred; for instance, function arguments without a type annotation.
-
-In many cases, the correct type could be easily guessed. In some cases I resorted to explicitly typing `: any`, promising I'd come back to find the correct type.
-
-But most importantly, in a few cases, these errors were highlighting a bug or incorrect code.
+We recently enabled `"noImplicitAny"` in a relatively old TypeScript project. It resulted in 269 new errors. Most were missing type annotations but in a few cases, we found problems with the code. These had been around for months and were not caught by our test suite.
 
 ### TL;DR;
 
