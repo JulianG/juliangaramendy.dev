@@ -1,6 +1,6 @@
 ---
 title: Catching bugs with stricter TypeScript
-date: '2019-03-19'
+date: '2019-07-19'
 type: 'blog-post'
 ---
 
