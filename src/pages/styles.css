@@ -44,3 +44,10 @@ ul, ol {
   margin-left: 1rem;
   line-height: 100%;
 }
+
+pre.txt {
+  white-space: pre-wrap; 
+  background-color: #eeeeee;
+  padding: 0.5rem 1rem 0.5rem 1rem;
+  border-radius: 0.5rem;
+}

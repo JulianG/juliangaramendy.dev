@@ -37,7 +37,7 @@ We had an object specifying one message for each key. This was working before "n
 }
 ```
 The TS error reads:
-<pre>
+<pre class="txt">
 Element implicitly has an 'any' type because type '{ success: string; warning: string; error: string; example: string; typescript: string; javascrip...' has no index signature.
 </pre>
 
@@ -107,13 +107,13 @@ Increasing the "strictness" of our TypeScript configuration can help us catch is
 
 Also, updating our TypeScript version can help a lot. For instance, the initial error we got with TypeScript 3.3 was:
 
-<pre>
+<pre class="txt">
 Element implicitly has an 'any' type because type '{ success: string; warning: string; error: string; example: string; typescript: string; javascrip...' has no index signature.
 </pre>
 
 But with TypeScript 3.5 it's a lot more helpful, especially the second paragraph where it mentions the `'banana'` property we were missing:
 
-<pre>
+<pre class="txt">
 Element implicitly has an 'any' type because expression of type '"success" | "warning" | "error" | "example" | "typescript" | "javascript" | "banana"' can't be used to index type '{ success: string; warning: string; error: string; example: string; typescript: string; javascript: string; }'.
 
 Property 'banana' does not exist on type '{ success: string; warning: string; error: string; example: string; typescript: string; javascript: string; }'.
