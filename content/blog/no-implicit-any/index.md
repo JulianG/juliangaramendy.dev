@@ -2,7 +2,12 @@
 title: Catching bugs with stricter TypeScript
 date: '2019-07-19'
 type: 'blog-post'
+credits: [
+  'Photo by [Pete Hardie](https://unsplash.com/@pjhardie) on [Unsplash](https://unsplash.com/photos/Peyb6JQPGNU)'
+]
 ---
+
+![Photo by Pete Hardie on Unsplash](./fence.jpg)
 
 We recently enabled `"noImplicitAny"` in a relatively old TypeScript project. It resulted in 269 new errors. Most of those were missing type annotations but in a few cases, we found problems with the code. These had been around for months and were not caught by our test suite.
 
