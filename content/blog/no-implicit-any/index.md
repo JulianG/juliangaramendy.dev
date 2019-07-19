@@ -4,7 +4,7 @@ date: '2019-07-19'
 type: 'blog-post'
 ---
 
-We recently enabled `"noImplicitAny"` in a relatively old TypeScript project. It resulted in 269 new errors. Most were missing type annotations but in a few cases, we found problems with the code. These had been around for months and were not caught by our test suite.
+We recently enabled `"noImplicitAny"` in a relatively old TypeScript project. It resulted in 269 new errors. Most of those were missing type annotations but in a few cases, we found problems with the code. These had been around for months and were not caught by our test suite.
 
 ### TL;DR;
 
