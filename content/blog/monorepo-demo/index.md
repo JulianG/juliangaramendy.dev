@@ -247,7 +247,7 @@ export default App;
 
 ## Step 6. Configure watch
 
-I was trying to avoid using [Lerna](https://lerna.js.org/) for as much as I could in favour of the basic functionality of [yarn workspaces](https://yarnpkg.com/blog/2017/08/02/introducing-workspaces/), but I could not find any other way to concurrently run watchers on multiple projects.  
+I was trying to avoid using [Lerna](https://lerna.js.org/) for as much as I could in favour of the basic functionality of [yarn workspaces](https://yarnpkg.com/lang/en/docs/workspaces/), but I could not find any other way to concurrently run watchers on multiple projects.  
 With Lerna I can add a script like so: `lerna run --parallel watch`.
 
 I add a "watch" script in **/packages/app/package.json** which is identical to the existing identical to "start" script.
@@ -313,6 +313,6 @@ Here are some articles I read while creating it:
 
 Yarn & Lerna documentation:
 
-- [Yarn Workspaces](https://yarnpkg.com/blog/2017/08/02/introducing-workspaces/)
+- [Yarn Workspaces](https://yarnpkg.com/lang/en/docs/workspaces/)
 - [Lerna documentation](https://github.com/lerna/lerna/tree/master/commands/run#readme)
 
