@@ -11,13 +11,11 @@ credits: [
 
 At work we have a project spanning across 4 repositories: 3 React apps + 1 TS library (used by the 3 react apps).
 
-**We want to move to a monorepo to simplify the developer workflow and the release process.**
+**We're considering moving those to a monorepo as we think it will simplify the developer workflow and the release process.**
 
 However, the project has a nice way to run any of the 3 apps in **watch mode** (using [Webpack DevServer](https://webpack.js.org/configuration/dev-server/) and [yarn link](https://yarnpkg.com/lang/en/docs/cli/link/)) and make it reload when changes are made to either the app or to the library. **We don't want to lose that functionality.**
 
 I failed to find an article explaining how to do this with all our requirements so I made a [demo repository](https://github.com/JulianG/monorepo-demo) and I wrote this article. 
-
-I was also trying to avoid using **Lerna** for as much as I could in favour of the basic functionality of **yarn workspaces**.
 
 I made a small demo (or proof of concept) repository first. Here are the steps:
 
@@ -33,7 +31,7 @@ I made a small demo (or proof of concept) repository first. Here are the steps:
 
 My monorepo structure will be like this:
 
-```
+```yaml
 root
   - packages
     - app
@@ -46,7 +44,6 @@ root
       - tsconfig.json
   - package.json
   - yarn.lock
-  - lerna.json
 ```
 
 There are two packages: "app" and "math-functions". The first one will have a dependency on the second one.
@@ -55,7 +52,7 @@ There are two packages: "app" and "math-functions". The first one will have a de
 
 I'm calling my root package **typescript-monorepo-demo**:
 
-```
+```log
 > mkdir typescript-monorepo-demo
 > cd typescript-monorepo-demo
 > git init
@@ -82,16 +79,18 @@ The npm init command generates a default **package.json** file which looks like 
 
 I remove the `"main"` and` "test"` keys, and I add  `"private"` and `"workspaces"` keys:
 
-```json
+```diff
 {
   "name": "typescript-monorepo-demo",
   "version": "1.0.0",
   "description": "",
-  "private": true,
-  "workspaces": [
-    "packages/*"
-  ],
++ "private": true,
++ "workspaces": [
++   "packages/*"
++ ],
+- "main": "index.js",
   "scripts": {
+-   "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "JulianG",
   "license": "ISC"
@@ -105,8 +104,6 @@ node_modules
 dist
 ```
 
-
-
 ## Step 3. Create the "app" package
 
 I create a TypeScript React app using **create-react-app**:
@@ -117,8 +114,6 @@ I create a TypeScript React app using **create-react-app**:
 > npx create-react-app app --typescript
 
 ```
-
-
 
 ## Step 4. Create the "math-functions" package
 
@@ -252,6 +247,9 @@ export default App;
 
 ## Step 6. Configure watch
 
+I was trying to avoid using [Lerna](https://lerna.js.org/) for as much as I could in favour of the basic functionality of [yarn workspaces](https://yarnpkg.com/blog/2017/08/02/introducing-workspaces/), but I could not find any other way to concurrently run watchers on multiple projects.  
+With Lerna I can add a script like so: `lerna run --parallel watch`.
+
 I add a "watch" script in **/packages/app/package.json** which is identical to the existing identical to "start" script.
 
 ```json
@@ -299,7 +297,7 @@ Now we can run:
 yarn watch
 ```
 
-And changes to either the React "app" or the "math-functions" package will result in a hot-reload.
+and changes to either the React "app" or the "math-functions" package will result in a hot-reload.
 
 
 
@@ -307,7 +305,7 @@ And changes to either the React "app" or the "math-functions" package will resul
 
 The demo repository is: [https://github.com/JulianG/monorepo-demo](https://github.com/JulianG/monorepo-demo)
 
-Here are some articles I read while creating it.
+Here are some articles I read while creating it:
 
 - [Setting up a monorepo with Lerna for a TypeScript project](https://blog.logrocket.com/setting-up-a-monorepo-with-lerna-for-a-typescript-project-b6a81fe8e4f8/) (Sept 2018)
 - [Typescript: Working with Paths, Packages and Yarn Workspaces](https://medium.com/@rossbulat/typescript-working-with-paths-packages-and-yarn-workspaces-6fbc7087b325) (June 2019)
