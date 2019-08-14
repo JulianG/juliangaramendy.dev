@@ -17,7 +17,7 @@ However, the project has a nice way to run any of the 3 apps in **watch mode** (
 
 I failed to find an article explaining how to do this with all our requirements so I made a [demo repository](https://github.com/JulianG/monorepo-demo) and I wrote this article. 
 
-I made a small demo (or proof of concept) repository first. Here are the steps:
+Here are the steps:
 
 1. Plan the monorepo
 2. Create a new repo and package for the monorepo
