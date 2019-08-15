@@ -1,5 +1,5 @@
 ---
-title: A use case for Generics in TypeScript
+title: A use case for TypeScript Generics
 date: '2019-08-15'
 type: 'blog-post'
 credit: ['Photo by [Joshua Coleman](https://unsplash.com/@joshstyle) on [Unsplash](https://unsplash.com/)']
