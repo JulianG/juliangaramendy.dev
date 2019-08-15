@@ -138,3 +138,10 @@ function isFirstOlder(a: HasAge, b: HasAge) {
   return a.age > b.age;
 }
 ```
+
+## Resources
+
+* [Generics](https://www.typescriptlang.org/docs/handbook/generics.html) (TypeScript Handbook)
+* [Type Assertions](https://www.typescriptlang.org/docs/handbook/basic-types.html#type-assertions) (TypeScript Handbook)
+* [Type Assertion](https://basarat.gitbooks.io/typescript/docs/types/type-assertion.html) (Basarat's TypeScript Deep Dive)
+* [TypeScript Playground](https://www.typescriptlang.org/play/)
