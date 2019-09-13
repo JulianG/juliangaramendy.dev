@@ -16,7 +16,7 @@ Remember our list of games? **There's a new requirement:** We want to let the us
 
 ![my favourite commodore 64 games](./game-list-btn.png)
 
-In order to change the value of `"status"` from `"not-started"` to `"finished"`. We can make a **`PATCH`** request:
+In order to change the value of `"status"` from `"in-progress"` to `"finished"` we make a **`PATCH`** request:
 
 ```js
 const setGameStatus = (id: number, status: Game['status']): Promise<Game> => {
@@ -29,7 +29,7 @@ const setGameStatus = (id: number, status: Game['status']): Promise<Game> => {
 }
 ```
 
-Now on we can call:
+Which we can use like this:
 
 ```js
 const promise = setGameStatus(7, "finished");
@@ -39,7 +39,7 @@ const promise = setGameStatus(7, "finished");
 
 We can approach the problem from the other end: **How would we like to use our hook?**
 
-Let's create a `GameComponent` to render a single game, an onClick handler to mark it as finished.
+Let's create a `GameComponent` to render a single game with an onClick handler to mark it as finished.
 
 ----
 
@@ -61,17 +61,13 @@ const GameComponent = ({ game, markAsFinished }: GameComponentProps) => {
 };
 ```
 
-This new component needs a `game` object and a `markAsFinished` function.
+This new component needs a `game` object and a `markAsFinished` function. So our custom hook should return a function along with list of games, error and pending:
 
-So our custom hook should change from:
+```ts
+//const { games, error, isPending } = useGames();
+  const { games, error, isPending, markAsFinished } = useGames();
+```
 
-```js
-const { games, error, isPending } = useGames();
-```
-to something like:
-```js
-const { games, error, isPending, markAsFinished } = useGames();
-```
 This would allow us to render the list of games like this:
 ```react
 export const App = () => {
@@ -92,9 +88,9 @@ export const App = () => {
   );
 };
 ```
-OK. Now we have to actually do the work of changing our hook:
+That's what we would like to use. Let's change our `useGames` hook implementation.
 
-Here's what the hook looks like so far:
+Here's what it looks like so far:
 
 ```ts
 export const useGames = () => {
@@ -117,16 +113,16 @@ export const useGames = () => {
 };
 ```
 
-With this code (*[see repo](https://github.com/JulianG/minimal-state-management-demo/tree/04-patch-server-data/src)*) we are now sending our changes to the server, but it's not good enough. **Unless we reload the page and fetch the list of games again, our client-side data is not affected.**
+With this code (*[see repo](https://github.com/JulianG/minimal-state-management-demo/tree/04-patch-server-data/src)*) we are now sending our changes to the server, **but unless we reload the page and fetch the list of games again, our client-side data is not affected.**
 
 ### Updating client-side data
 
-Now the server has the updated value, but the client has stale data: The list is not updated after a change.
+Now the server has the updated value, but the client does not: The list is not updated after a change.
 
 ```js
 const markAsFinished = (id: number) => {
   setGameStatus(id, 'finished')
-    .then(game => THEN WHAT!?); // oh no
+    .then(game => ?????); // 🤔
 };
 ```
 
@@ -135,7 +131,7 @@ Our server's `PATCH` request returns a promise with the modified game object whi
 ```ts
 const markAsFinished = (id: number) => {
   setGameStatus(id, 'finished')
-    .then(updateGame); // we need to define updateGame
+    .then(updateGame); // 🤔 we need to define updateGame
 };
 ```
 
@@ -163,7 +159,7 @@ export const useGames = () => {
 
 Oh! We don't have a `setGames` function. Our `useAsyncFunction` does not provide a way to set the value externally. But we don't want to modify it because in a real world project we'd probably replace its functionality with [react-async](https://www.npmjs.com/package/react-async).
 
-We can change our `useGames` custom hook to have keep state, and update it whenever the `fetchedGames` change, or we call `setGames`.
+We can change our `useGames` custom hook to keep state, and update it whenever the `fetchedGames` change (or when we call `setGames`, of course).
 
 ```ts
 export const useGames = () => {
@@ -219,7 +215,8 @@ const useFetchedGames = () => {
 
   return {games, setGames, error, isPending};
 }
-
+```
+```ts
 export const useGames = () => {
   const { games, error, isPending, setGames } = useFetchedGames();
 	...
@@ -229,6 +226,10 @@ export const useGames = () => {
 (*[see the entire file in the repo](https://github.com/JulianG/minimal-state-management-demo/blob/05-update-client-data-refactored/src/useGames.ts)*)
 
 ### Handling errors
+
+```
+❌ 404 Not Found
+```
 
 Just like before, we've forgotten about handling errors. What happens when the `PATCH` request fails?
 
@@ -256,7 +257,7 @@ export const setGameStatus = (id: number, status: Game['status']): Promise<Game>
 We don't want to repeat ourselves so we'll extract the error handling to a new function and use it in both cases.
 
 ```ts
-function httpResponseToJSON<T>(response: Response): Promise<T> {
+function parseResponse<T>(response: Response): Promise<T> {
   if (response.status !== 200) {
     throw new Error(`${response.status} ${response.statusText}`);
   }
@@ -265,7 +266,7 @@ function httpResponseToJSON<T>(response: Response): Promise<T> {
 
 export const getGames = (): Promise<Game[]> => {
   return fetch('http://localhost:3001/games/').then(response =>
-    httpResponseToJSON(response)
+    parseResponse(response)
   );
 };
 
@@ -274,13 +275,13 @@ export const setGameStatus = (id: number, status: Game['status']): Promise<Game>
     method: 'PATCH',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify({ status: status })
-  }).then(response => httpResponseToJSON(response));
+  }).then(response => parseResponse(response));
 };
 ```
 
-To keep things tidy, we move these functions to a new **gameClientAPI.ts** file (*[see repo](https://github.com/JulianG/minimal-state-management-demo/blob/06-error-handling-1/src/gameClientAPI.ts)*). Our `useGames` hook imports the functions from it, we're separating concerns and keep our files short.
+To keep things tidy, we move these functions to a new **gameClientAPI.ts** file (*[see repo](https://github.com/JulianG/minimal-state-management-demo/blob/06-error-handling-1/src/gameClientAPI.ts)*). Our `useGames` hook imports the functions from it. We're separating concerns and keep our files short.
 
-Now we can catch errors from markAsFinished:
+Now we can catch errors from `markAsFinished`:
 
 ```ts
 const markAsFinished = (id: number) => {

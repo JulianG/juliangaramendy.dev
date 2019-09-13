@@ -10,7 +10,9 @@ The final code can be found on [this GitHub repo](https://github.com/JulianG/min
 
 ## Loading Data with Hooks
 
-Let's say we have a REST API with a list of [Commodore 64](https://en.wikipedia.org/wiki/Commodore_64) games. I mean, why not? We want to load the list display the games.
+Let's say we have a REST API with a list of [Commodore 64](https://en.wikipedia.org/wiki/Commodore_64) games. I mean, why not?
+
+**Requirement:** We want to load the list and display the games.
 
 ![my favourite commodore 64 games](./game-list.png)
 
@@ -24,39 +26,9 @@ const getGames = () => {
 };
 ```
 
-We can use this in an index.js/index.tsx like this:
+We can use this in a React app. Our first iteration looks like this:
 
-**index.tsx** (*[see repo](https://github.com/JulianG/minimal-state-management-demo/blob/01-basic-fetching-1/src/index.tsx)*)
-
-```react
-import React from 'react';
-import ReactDOM from 'react-dom';
-
-const getGames = () => {
-  return fetch('http://localhost:3001/games/').then(response => response.json());
-};
-
-getGames().then(games => {
-  ReactDOM.render(
-    <pre>{JSON.stringify(games, null, 2)}</pre>,
-    document.getElementById('root')
-  );
-});
-
-```
-
-In a React app with hooks it looks like this:
-
-**index.tsx** (*[see repo](https://github.com/JulianG/minimal-state-management-demo/tree/01-basic-fetching-2/src)*)
-
-```react
-import React from 'react';
-import ReactDOM from 'react-dom';
-import { App } from './App';
-ReactDOM.render(<App />, document.getElementById('root'));
-```
-
-**App.tsx** (*[see repo](https://github.com/JulianG/minimal-state-management-demo/tree/01-basic-fetching-2/src)*)
+**App.tsx** (rendered by index.tsx) (*[see repo](https://github.com/JulianG/minimal-state-management-demo/tree/01-basic-fetching-2/src)*)
 
 ```react
 import React from 'react';
@@ -137,15 +109,15 @@ function useAsyncFunction<T>(asyncFunction: () => Promise<T>, defaultValue: T) {
   React.useEffect(() => {
     asyncFunction()
       .then(value => setState({ value, error: null, isPending: false }))
-      .catch(error => setState({ value: defaultValue, error: error.toString(), isPending: false }));
-  }, [asyncFunction, defaultValue]); // *
+      .catch(error => setState({ ...state, error: error.toString(), isPending: false }));
+  }, [asyncFunction]); // *
 
   const { value, error, isPending } = state;
   return [value, error, isPending];
 }
 ```
 
-\* *The `useEffect` inside our `useAsyncFunction` will call the async function once and then every time one of its "dependencies" change. Those are:`[asyncFunction, defaultValue]`.*
+\* *The `useEffect` inside our `useAsyncFunction` will call the async function once and then every time one `asyncFunction` changes. For more details: [Using the State Hook](https://reactjs.org/docs/hooks-state.html), [Using the Effect Hook](https://reactjs.org/docs/hooks-effect.html), [Hooks API Reference](https://reactjs.org/docs/hooks-reference.html).*
 
 Now in useGames.ts we can simply use this new custom hook, passing the `getGames` function and the initial value of an empty array as arguments.
 
@@ -194,7 +166,7 @@ Of course, now we **have to** define a `Game` type. But do not despair! We have 
   "year": 1984,
   "genre": "beat'em up",
   "url": "https://en.wikipedia.org/wiki/Kung-Fu_Master_(video_game)",
-  "status": "not-started",
+  "status": "in-progress",
   "img": "http://localhost:3001/img/kung-fu-master.gif"
 }
 ```
@@ -233,6 +205,8 @@ const [games] = useAsyncFunction(getGames, emptyList); // games is of type Game[
 ```
 
 End of TypeScript interlude.
+
+#### Composing our custom hooks
 
 **useAsyncFunction.ts** now looks like this:  (*[see repo](https://github.com/JulianG/minimal-state-management-demo/blob/03-handling-error-pending-1/src/useAsyncFunction.ts)*)
 
@@ -290,6 +264,8 @@ export const useGames = () => {
   return games;
 };
 ```
+
+#### Changing UI to display errors and pending states
 
 Great! But we're stil not handling the error and pending states. We need to change our `App` component:
 
