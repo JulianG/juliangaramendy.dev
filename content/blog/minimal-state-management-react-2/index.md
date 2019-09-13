@@ -6,7 +6,13 @@ type: 'blog-post'
 
 **In this series, instead of using a state-management library or proposing a one-size-fits-all solution, we start from the bare minimum and we build up our state management as we need it.**
 
-In the first article we explained how to [Load and Display Data](https://dev.to/juliang/minimal-state-management-in-react-1el2-temp-slug-388480?preview=baffbcf3d1245bdac7ed54253dbbde16cb1020f2810a8261e2617efb4f5d8238324577fd36b84168f8b7315954c9d7f12485615b20c6d748b4cd111d), in this second article we'll see how to change it.
+----
+
+* In the first article we described how we [load and display data with hooks](../).
+* **In this second article we'll learn how to change remote data with hooks.**÷
+* In the third article we'll see how to [share data between components with React Context](../) without using globals, singletons or resorting to state management libraries like MobX or Redux.
+
+----
 
 The final code can be found on [this GitHub repo](https://github.com/JulianG/minimal-state-management-demo). It's TypeScript, but the type annotations are minimal.
 
@@ -305,7 +311,7 @@ We have successfully wrapped an imperative API in a more declarative API in the 
 
 ## What's next?
 
-As long as the data is used by only one component, there is no need to have a global(ish) store, or use Redux or MobX. But if more than one component require access to the same data, we should "lift" it to a common ancestor component.
+This is fine as long as the data is used by only one component. There is no need to have a global(ish) store, or use Redux or MobX. But if more than one component require access to the same data, we should "lift" it to a common ancestor component.
 
 In cases where that common ancestor is not directly the parent of the consimung components, we can avoid prop-drilling by using React Context.
 

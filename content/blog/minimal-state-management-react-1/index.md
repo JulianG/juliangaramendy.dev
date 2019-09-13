@@ -6,6 +6,14 @@ type: 'blog-post'
 
 **In this series, instead of using a state-management library or proposing a one-size-fits-all solution, we start from the bare minimum and we build up our state management as we need it.**
 
+----
+
+* **In this first article we'll describe how we load and display data with hooks.**
+* In the second article we'll learn how to [change remote data with hooks](../).
+* In the third article we'll see how to [share data between components with React Context](../) without using globals, singletons or resorting to state management libraries like MobX or Redux.
+
+----
+
 The final code can be found on [this GitHub repo](https://github.com/JulianG/minimal-state-management-demo). It's TypeScript, but the type annotations are minimal.
 
 ## Loading Data with Hooks

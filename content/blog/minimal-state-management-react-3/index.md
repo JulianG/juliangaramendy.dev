@@ -6,9 +6,9 @@ type: 'blog-post'
 
 **In this series, instead of using a state-management library or proposing a one-size-fits-all solution, we start from the bare minimum and we build up our state management as we need it.**
 
-In the first and second articles we explained how to [Load and Display Data](https://dev.to/juliang/minimal-state-management-in-react-1el2-temp-slug-388480?preview=baffbcf3d1245bdac7ed54253dbbde16cb1020f2810a8261e2617efb4f5d8238324577fd36b84168f8b7315954c9d7f12485615b20c6d748b4cd111d), and how to [Change Remote Data](./).
-
-In this third article we'll see how to share data between components without using globals, singletons and without the need to use state management libraries like MobX or Redux.
+* In the first article we described how we [load and display data with hooks](../).  
+* In the second article we learned how to [change remote data with hooks](./).
+* **In this third article we'll see how to share data between components with React Context, without using globals, singletons or resorting to state management libraries like MobX or Redux.**
 
 The final code can be found in [this GitHub repo](https://github.com/JulianG/minimal-state-management-demo). It's TypeScript, but the type annotations are minimal.
 
