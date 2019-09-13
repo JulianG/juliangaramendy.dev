@@ -1,5 +1,5 @@
 ---
-title: Minimal State Management in React - Loading Data with Hooks
+title: Minimal State Management in React - 1. Loading Data with Hooks
 date: '2019-09-14'
 type: 'blog-post'
 ---
@@ -8,7 +8,7 @@ type: 'blog-post'
 
 The final code can be found on [this GitHub repo](https://github.com/JulianG/minimal-state-management-demo). It's TypeScript, but the type annotations are minimal.
 
-## Loading and Displaying Data
+## Loading Data with Hooks
 
 Let's say we have a REST API with a list of [Commodore 64](https://en.wikipedia.org/wiki/Commodore_64) games. I mean, why not? We want to load the list display the games.
 

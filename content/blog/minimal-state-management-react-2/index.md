@@ -1,8 +1,8 @@
 ---
-title: Minimal State Management in React - Changing Remote Data with Hooks
+title: Minimal State Management in React - 2. Changing Remote Data with Hooks
 date: '2019-09-15'
 type: 'blog-post'
---- 
+---
 
 **In this series, instead of using a state-management library or proposing a one-size-fits-all solution, we start from the bare minimum and we build up our state management as we need it.**
 

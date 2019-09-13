@@ -1,8 +1,8 @@
 ---
-title: Minimal State Management in React - Sharing Data with React Context
+title: Minimal State Management in React - 3. Sharing Data with React Context
 date: '2019-09-16'
 type: 'blog-post'
---- 
+---
 
 **In this series, instead of using a state-management library or proposing a one-size-fits-all solution, we start from the bare minimum and we build up our state management as we need it.**
 
