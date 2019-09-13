@@ -6,17 +6,21 @@ type: 'blog-post'
 
 **In this series, instead of using a state-management library or proposing a one-size-fits-all solution, we start from the bare minimum and we build up our state management as we need it.**
 
+----
+
 * In the first article we described how we [load and display data with hooks](../).  
 * In the second article we learned how to [change remote data with hooks](./).
 * **In this third article we'll see how to share data between components with React Context, without using globals, singletons or resorting to state management libraries like MobX or Redux.**
+
+----
 
 The final code can be found in [this GitHub repo](https://github.com/JulianG/minimal-state-management-demo). It's TypeScript, but the type annotations are minimal.
 
 ## Sharing Remote Data with React Context
 
-⚠️ **Before we begin**, you may want to check out the [starting point in the repo](https://github.com/JulianG/minimal-state-management-demo/tree/07-adding-styles-and-images/src), which has been improved from the last article with some styling and game screenshots.
+⚠️ **Before we begin**, you may want to check out [this tag from the repo](https://github.com/JulianG/minimal-state-management-demo/tree/07-adding-styles-and-images/src). The project has been improved from the last article with some styling and game screenshots.
 
-Remember our list of games? Good! **There's a third requirement:** We want to display a sign near the top of the page, indicating the total number of games, how many are finished and how many are in progress. Something like this:
+Remember our list of games? **There's a third requirement:** We want to display a sign near the top of the page, indicating the total number of games, how many are finished and how many are in progress. Something like this:
 
 ![List of games with totals panel](./totals.png)
 
