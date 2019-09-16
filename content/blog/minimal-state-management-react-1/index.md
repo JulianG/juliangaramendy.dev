@@ -14,7 +14,7 @@ type: 'blog-post'
 
 ----
 
-The final code can be found on [this GitHub repo](https://github.com/JulianG/minimal-state-management-demo). It's TypeScript, but the type annotations are minimal.
+The final code can be found in this [GitHub repo](https://github.com/JulianG/minimal-state-management-demo). It's TypeScript, but the type annotations are minimal. **Also, please note this is not production code.** In order to focus on state management, may other aspects have not been considered (e.g. [Dependency Invertion](https://en.wikipedia.org/wiki/Dependency_inversion_principle) or optimisation).
 
 ## Loading Data with Hooks
 
@@ -323,3 +323,13 @@ Our code so far looks like this: (*[see repo](https://github.com/JulianG/minimal
 We've seen how to load data from a REST API using React hooks.
 
 In the next post we'll see how to change remote data using an HTTP `PATCH` request, and how to update our client-side data when the request is successful.
+
+## Resources
+
+Further reading:
+
+* [Using the State Hook](https://reactjs.org/docs/hooks-state.html)
+* [Using the Effect Hook](https://reactjs.org/docs/hooks-effect.html)
+* [Hooks API Reference](https://reactjs.org/docs/hooks-reference.html)
+* [When to useMemo and useCallback](https://kentcdodds.com/blog/usememo-and-usecallback/)
+* [Cancelling a Promise with React.useEffect](https://juliangaramendy.dev/use-promise-subscription/)
