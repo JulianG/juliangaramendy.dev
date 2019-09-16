@@ -67,7 +67,7 @@ const GameComponent = ({ game, markAsFinished }: GameComponentProps) => {
 };
 ```
 
-This new component needs a `game` object and a `markAsFinished` function. So our custom hook should return a function along with list of games, error and pending:
+This new component needs a `game` object and a `markAsFinished` function. So our custom hook should return a function along with the list of games, error and pending:
 
 ```ts
 //const { games, error, isPending } = useGames();
