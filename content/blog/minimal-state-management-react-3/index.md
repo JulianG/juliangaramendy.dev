@@ -14,7 +14,7 @@ type: 'blog-post'
 
 ----
 
-The final code can be found in this [GitHub repo](https://github.com/JulianG/minimal-state-management-demo). It's TypeScript, but the type annotations are minimal. **Also, please note this is not production code.** In order to focus on state management, may other aspects have not been considered (e.g. [Dependency Invertion](https://en.wikipedia.org/wiki/Dependency_inversion_principle) or optimisation).
+The final code can be found in this [GitHub repo](https://github.com/JulianG/minimal-state-management-demo). It's TypeScript, but the type annotations are minimal. **Also, please note this is not production code.** In order to focus on state management, many other aspects have not been considered (e.g. [Dependency Invertion](https://en.wikipedia.org/wiki/Dependency_inversion_principle), testing or optimisations).
 
 ## Sharing Remote Data with React Context
 
@@ -26,16 +26,16 @@ Remember our list of games? **There's a third requirement:** We want to display 
 
 ### Lifting State to a common ancestor
 
-**But first** let's imagine our `App` component is getting a bit more complex and we decide to break it into separate components. We'll create a `GamesScreen` and a  `GameGrid` component.
+**But first** let's imagine our application is getting a bit more complex and we decide to break it into separate components. We'll create a `GamesScreen` and a  `GameGrid` component.
 
-```
+```tsx
 App
  +- GamesScreen (useGames hook here)
  		 +- Totals
  		 +- GameGrid
 ```
 
-Now our `App` component is does not concern itself with fetching the games list. We do that in `GamesScreen`.
+Now our `App` component is not responsible for fetching the games list. We do that in `GamesScreen`.
 
 ```tsx
 export const App = () => {
@@ -122,7 +122,7 @@ App
              +- GameGrid (requires the list of games and the markAsFinished function)
 ```
 
-With the above structure we would need to keep the state in `GamesScreen` because it's the lowe common ancestor to both `GameGrid` and `Totals`.
+With the above structure we would need to keep the state in `GamesScreen` because it's the closest common ancestor of `GameGrid` and `Totals`.
 
 The problem is that in order to pass the required props, `MenuBar`, `SomeOtherMenuComponent`, `GamesPageContent` and `SomeOtherComponent` would require props with the list of `games` and the `markAsFinished` function, only to pass it down to some children component.
 
@@ -148,13 +148,7 @@ export const GamesScreen = () => {
 };
 ```
 
-/////
-
-//// from here!
-
-////
-
-If `Totals` and `GameGrid` are far appart they do not share a common parent (only a common ancestor higher up in the tree). That means we can't call the `useGames` hook here and pass some props down without resortingto prop-drilling, as explained above.
+If `Totals` and `GameGrid` are far apart they don't share a common parent (only a common ancestor higher up in the tree). That means we can't call the `useGames` hook here and pass some props down without resorting to prop-drilling, as explained above.
 
 For now we're going to call `useGames` inside each of our components:
 
@@ -189,7 +183,7 @@ export const GameGrid = () => {
 };
 ```
 
-The updated `GameGrid` component does not receive any props, and it has to handle the error and pending states itself.
+The updated `GameGrid` component does not receive any props, but now it has to handle the error and pending states itself.
 
 Updated **Totals.tsx**
 
@@ -213,13 +207,13 @@ export const Totals = () => {
 };
 ```
 
-We only use `{games}` from the custom hook, because we don't need `markAsFinished` function and we don't worry about error and pending states for this small component.
+In the `Totals` component we only use `{games}` from the custom hook, because we don't need `markAsFinished` function and we don't worry about error and pending states for this small component.
 
 You can inspect the code from the repo using the [09-duplicating-state](https://github.com/JulianG/minimal-state-management-demo/tree/09-duplicating-state/src) tag.
 
 **Wait wasn't this about React Context?**
 
-The above code works because both components now access the same server API and request the same list of games. However, when we mark some games as finished, only the `GameGrid` component reflects this. The `Totals` component is not updated.
+The above code works because both components now access the same server API and request the same list of games. Twice. However, when we mark some games as finished, only the `GameGrid` component reflects this. The `Totals` component is not updated.
 
 ![the total panel reports zero finished games but the gamegrid shows 2 games are finished](./wrong-totals.png)
 
@@ -231,7 +225,7 @@ For example, after marking two games as finished, the `GameGrid` component shows
 
 OK. Let's see how we do this with React Context.
 
-We're going to update our `GamesScreen` component, but we could do the same in  `App`.
+We're going to update our `GamesScreen` component.
 
 ```tsx
 export const GamesScreen = () => {
@@ -277,7 +271,7 @@ export const GameGrid = () => {
 
 But there's a problem. If we forget to wrap this component in `GamesContextProvider` or if someone in the future accidentally removes it, there won't be any errors. The list of games will never be loaded, and the context will never change its value.
 
-You can try it. Check out the [10-minimal-context](https://github.com/JulianG/minimal-state-management-demo/tree/10-minimal-context/src) and edit **GamesScreen.tsx** removing the context provider to see that the games never load.
+You can try it. Check out the [10-minimal-context](https://github.com/JulianG/minimal-state-management-demo/tree/10-minimal-context/src) tag and edit **GamesScreen.tsx** removing the context provider to see that the games never load.
 
 A better approach is to use `undefined` as a default value for our context.
 
@@ -336,7 +330,9 @@ Further reading:
 - [Hooks API Reference](https://reactjs.org/docs/hooks-reference.html)
 - [When to useMemo and useCallback](https://kentcdodds.com/blog/usememo-and-usecallback/)
 - [Cancelling a Promise with React.useEffect](https://juliangaramendy.dev/use-promise-subscription/)
-- https://daveceddia.com/context-api-vs-redux/
-- https://kentcdodds.com/blog/how-to-use-react-context-effectively
+- [Using React Context](https://reactjs.org/docs/context.html)
+- [React Hooks Reference: useContext](https://reactjs.org/docs/hooks-reference.html#usecontext).
+- [React Context API vs. Redux](https://daveceddia.com/context-api-vs-redux/)
+- [How to use React Context effectively](https://kentcdodds.com/blog/how-to-use-react-context-effectively)
 
 
