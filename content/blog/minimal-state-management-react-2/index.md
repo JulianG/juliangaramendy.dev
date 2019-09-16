@@ -315,7 +315,7 @@ This is fine as long as the data is used by only one component. There is no need
 
 In cases where that common ancestor is not directly the parent of the consimung components, we can avoid prop-drilling by using React Context.
 
-We'll see how we do that in the next post of this series.
+We'll see how we do that [in the next article](../minimal-state-management-react-3) of this series.
 
 ## Resources
 

@@ -322,7 +322,7 @@ Our code so far looks like this: (*[see repo](https://github.com/JulianG/minimal
 
 We've seen how to load data from a REST API using React hooks.
 
-In the next post we'll see how to change remote data using an HTTP `PATCH` request, and how to update our client-side data when the request is successful.
+In the [next article](../minimal-state-management-react-2) we'll see how to change remote data using an HTTP `PATCH` request, and how to update our client-side data when the request is successful.
 
 ## Resources
 
