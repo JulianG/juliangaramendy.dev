@@ -9,8 +9,8 @@ type: 'blog-post'
 ----
 
 * **In this first article we'll describe how we load and display data with hooks.**
-* In the second article we'll learn how to [change remote data with hooks](../).
-* In the third article we'll see how to [share data between components with React Context](../) without using globals, singletons or resorting to state management libraries like MobX or Redux.
+* In the second article we'll learn how to [change remote data with hooks](../minimal-state-management-react-2).
+* In the third article we'll see how to [share data between components with React Context](../minimal-state-management-react-3) without using globals, singletons or resorting to state management libraries like MobX or Redux.
 
 ----
 
