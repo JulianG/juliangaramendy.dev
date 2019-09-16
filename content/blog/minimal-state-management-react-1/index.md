@@ -38,7 +38,7 @@ We can use this in a React app. Our first iteration looks like this:
 
 **App.tsx** (rendered by index.tsx) (*[see repo](https://github.com/JulianG/minimal-state-management-demo/tree/01-basic-fetching-2/src)*)
 
-```react
+```tsx
 import React from 'react';
 
 const getGames = () => {
@@ -84,7 +84,7 @@ export const useGames = () => {
 
 **App.tsx** (*[see repo](https://github.com/JulianG/minimal-state-management-demo/blob/02-custom-react-hook/src)*)
 
-```react
+```tsx
 import React from 'react';
 import { useGames } from './useGames';
 
@@ -125,7 +125,7 @@ function useAsyncFunction<T>(asyncFunction: () => Promise<T>, defaultValue: T) {
 }
 ```
 
-\* *The `useEffect` inside our `useAsyncFunction` will call the async function once and then every time one `asyncFunction` changes. For more details: [Using the State Hook](https://reactjs.org/docs/hooks-state.html), [Using the Effect Hook](https://reactjs.org/docs/hooks-effect.html), [Hooks API Reference](https://reactjs.org/docs/hooks-reference.html).*
+\* *The `useEffect` inside our `useAsyncFunction` will call the async function once and then every time the `asyncFunction` changes. For more details: [Using the State Hook](https://reactjs.org/docs/hooks-state.html), [Using the Effect Hook](https://reactjs.org/docs/hooks-effect.html), [Hooks API Reference](https://reactjs.org/docs/hooks-reference.html).*
 
 Now in useGames.ts we can simply use this new custom hook, passing the `getGames` function and the initial value of an empty array as arguments.
 
@@ -277,7 +277,7 @@ export const useGames = () => {
 
 Great! But we're stil not handling the error and pending states. We need to change our `App` component:
 
-```react
+```tsx
 import React from 'react';
 import { useGames } from './useGames';
 

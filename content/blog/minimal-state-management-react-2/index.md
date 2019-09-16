@@ -75,7 +75,7 @@ This new component needs a `game` object and a `markAsFinished` function. So our
 ```
 
 This would allow us to render the list of games like this:
-```react
+```tsx
 export const App = () => {
   const { games, error, isPending, markAsFinished } = useGames();
 
