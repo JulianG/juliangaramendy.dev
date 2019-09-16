@@ -56,7 +56,7 @@ export const App = () => {
 };
 ```
 
-On the first render of our `App` component, the `games` array will be empty. Then when the promise returned by `getGames` resolves, the `games` array contains all our games, and they will be displayed in a very basic manner. For more details: [Using the State Hook](https://reactjs.org/docs/hooks-state.html), [Using the Effect Hook](https://reactjs.org/docs/hooks-effect.html), [Hooks API Reference](https://reactjs.org/docs/hooks-reference.html).
+On the first render of our `App` component, the `games` array will be empty. Then when the promise returned by `getGames` resolves, the `games` array contains all our games, and they will be displayed in a very basic manner.
 
 ### 2. Custom React Hook
 
