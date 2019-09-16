@@ -331,7 +331,7 @@ Further reading:
 - [When to useMemo and useCallback](https://kentcdodds.com/blog/usememo-and-usecallback/)
 - [Cancelling a Promise with React.useEffect](https://juliangaramendy.dev/use-promise-subscription/)
 - [Using React Context](https://reactjs.org/docs/context.html)
-- [React Hooks Reference: useContext](https://reactjs.org/docs/hooks-reference.html#usecontext).
+- [React Hooks Reference: useContext](https://reactjs.org/docs/hooks-reference.html#usecontext)
 - [React Context API vs. Redux](https://daveceddia.com/context-api-vs-redux/)
 - [How to use React Context effectively](https://kentcdodds.com/blog/how-to-use-react-context-effectively)
 
