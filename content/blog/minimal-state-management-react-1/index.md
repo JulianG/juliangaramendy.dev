@@ -155,7 +155,7 @@ export const useGames = () => {
 
 **You can skip this section if you're using plain JavaScript.** 
 
-If you're using strict TypeScript (and you should), the above code will not work because of the "noImplicitAny" compiler option. This is because `const emptyList = [];` is implicitly an array of `any`.
+If you're using strict TypeScript, the above code will not work because of the "noImplicitAny" compiler option. This is because `const emptyList = [];` is implicitly an array of `any`.
 
 We can annotate it like `const emptyList: any[] = [];` and move on. **But we're using TypeScript for a reason.** That explicit `any` can (and should) be more specific. 
 
