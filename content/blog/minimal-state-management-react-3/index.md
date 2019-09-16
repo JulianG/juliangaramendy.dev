@@ -14,7 +14,7 @@ type: 'blog-post'
 
 ----
 
-The final code can be found in [this GitHub repo](https://github.com/JulianG/minimal-state-management-demo). It's TypeScript, but the type annotations are minimal.
+The final code can be found in this [GitHub repo](https://github.com/JulianG/minimal-state-management-demo). It's TypeScript, but the type annotations are minimal. **Also, please note this is not production code.** In order to focus on state management, may other aspects have not been considered (e.g. [Dependency Invertion](https://en.wikipedia.org/wiki/Dependency_inversion_principle) or optimisation).
 
 ## Sharing Remote Data with React Context
 
@@ -326,5 +326,17 @@ That's it! The final version of code can be found in the [11-safe-context](https
 ## Conclusion
 
 We have managed to share state in our aplication without making it global and without suffering from prop drilling. Any component requiring access to the games list can use the custom hook provided. This hooks exposes a function to mutate such data in a safe way, while immediately persisting it on the server according to our business logic.
+
+## Resources
+
+Further reading:
+
+- [Using the State Hook](https://reactjs.org/docs/hooks-state.html)
+- [Using the Effect Hook](https://reactjs.org/docs/hooks-effect.html)
+- [Hooks API Reference](https://reactjs.org/docs/hooks-reference.html)
+- [When to useMemo and useCallback](https://kentcdodds.com/blog/usememo-and-usecallback/)
+- [Cancelling a Promise with React.useEffect](https://juliangaramendy.dev/use-promise-subscription/)
+- https://daveceddia.com/context-api-vs-redux/
+- https://kentcdodds.com/blog/how-to-use-react-context-effectively
 
 

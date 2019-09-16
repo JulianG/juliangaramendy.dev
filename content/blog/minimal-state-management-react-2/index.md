@@ -9,16 +9,16 @@ type: 'blog-post'
 ----
 
 * In the first article we described how we [load and display data with hooks](../).
-* **In this second article we'll learn how to change remote data with hooks.**÷
+* **In this second article we'll learn how to change remote data with hooks.**
 * In the third article we'll see how to [share data between components with React Context](../) without using globals, singletons or resorting to state management libraries like MobX or Redux.
 
 ----
 
-The final code can be found on [this GitHub repo](https://github.com/JulianG/minimal-state-management-demo). It's TypeScript, but the type annotations are minimal.
+The final code can be found in this [GitHub repo](https://github.com/JulianG/minimal-state-management-demo). It's TypeScript, but the type annotations are minimal. **Also, please note this is not production code.** In order to focus on state management, may other aspects have not been considered (e.g. [Dependency Invertion](https://en.wikipedia.org/wiki/Dependency_inversion_principle) or optimisation).
 
 ## Changing Remote Data with Hooks
 
-Remember our list of games? **There's a new requirement:** We want to let the user mark each game as "finished". When they do, we send the changes to the server right away.
+We have our list of games from the previous article. **Now there's a new requirement:** We want to let the user mark each game as "finished". When they do, we send the changes to the server right away.
 
 ![my favourite commodore 64 games](./game-list-btn.png)
 
@@ -309,10 +309,20 @@ const markAsFinished = (id: number) => {
 
 We have successfully wrapped an imperative API in a more declarative API in the form of a custom React hook so it can be used in React function components. When a component needs to access the list of games and make changes to it, it can simply import the `useGames` hook.
 
-## What's next?
+### What's next?
 
 This is fine as long as the data is used by only one component. There is no need to have a global(ish) store, or use Redux or MobX. But if more than one component require access to the same data, we should "lift" it to a common ancestor component.
 
 In cases where that common ancestor is not directly the parent of the consimung components, we can avoid prop-drilling by using React Context.
 
 We'll see how we do that in the next post of this series.
+
+## Resources
+
+Further reading:
+
+- [Using the State Hook](https://reactjs.org/docs/hooks-state.html)
+- [Using the Effect Hook](https://reactjs.org/docs/hooks-effect.html)
+- [Hooks API Reference](https://reactjs.org/docs/hooks-reference.html)
+- [When to useMemo and useCallback](https://kentcdodds.com/blog/usememo-and-usecallback/)
+- [Cancelling a Promise with React.useEffect](https://juliangaramendy.dev/use-promise-subscription/)
