@@ -14,7 +14,7 @@ type: 'blog-post'
 
 ----
 
-The final code can be found in this [GitHub repo](https://github.com/JulianG/minimal-state-management-demo). It's TypeScript, but the type annotations are minimal. **Also, please note this is not production code.** In order to focus on state management, many other aspects have not been considered (e.g. [Dependency Invertion](https://en.wikipedia.org/wiki/Dependency_inversion_principle), testing or optimisations).
+The final code can be found in this [GitHub repo](https://github.com/JulianG/minimal-state-management-demo). It's TypeScript, but the type annotations are minimal. **Also, please note this is not production code.** In order to focus on state management, many other aspects have not been considered (e.g. [Dependency Inversion](https://en.wikipedia.org/wiki/Dependency_inversion_principle), testing or optimisations).
 
 ## Sharing Remote Data with React Context
 
