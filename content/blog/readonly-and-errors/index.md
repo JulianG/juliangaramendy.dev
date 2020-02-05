@@ -11,7 +11,7 @@ credits: [
 
 A few weeks ago I learned something about TypeScript errors and utility types.
 
-**The following is true in TypeScript v3.7.5** In my experience, error messages in TS improve a lot with each release, so this may soon be irrelevant.
+**The following is true in TypeScript v3.7.5.** In my experience, error messages in TS improve a lot with each release, so this may soon be irrelevant.
 
 Like it's usual, here's an example with **bananas**.
 
