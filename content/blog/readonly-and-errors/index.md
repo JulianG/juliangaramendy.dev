@@ -9,9 +9,11 @@ credits: [
 
 ![The Dolomites, Italy](https://images.unsplash.com/photo-1499336315816-097655dcfbda?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2110&q=80)
 
-A few months ago I learned something about TypeScript (v3.6) errors and utility types. I wrote this post, but for some reason I forgot to hit the "publish" button, so I'm publishing it now.
+A few weeks ago I learned something about TypeScript errors and utility types.
 
-**The following is true in TypeScript v3.6.3. (and also v3.7.5)** In my experience, error messages in TS improve a lot with each release, so this may soon be irrelevant.
+**The following is true in TypeScript v3.7.5** In my experience, error messages in TS improve a lot with each release, so this may soon be irrelevant.
+
+Like it's usual, here's an example with **bananas**.
 
 I had this `Banana` type:
 
