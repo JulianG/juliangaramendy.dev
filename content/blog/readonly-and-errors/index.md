@@ -13,7 +13,7 @@ A few weeks ago I learned something about TypeScript errors and utility types.
 
 **The following is true in TypeScript v3.7.5.** In my experience, error messages in TS improve a lot with each release, so this may soon be irrelevant.
 
-Like it's usual, here's an example with **bananas**.
+As usual, here's an example with **bananas**.
 
 I had this `Banana` type:
 
@@ -121,3 +121,20 @@ const banana: Banana = bananaMap.get(1)!; // ⚠️ no error, but (*)
 
 > You can see this new example in the [TypeScript Playground](https://www.typescriptlang.org/play/#code/FAFwngDgpgBAQgQwHbITAvDA3sGMBOUCAJgPZIA2YMAlsQFwxICuAtgEZT4DcuBRZStRSsojAM4h8NJAHNeeQiXJUYAY1IVS+Riw5cF-ZUJgB3KDVkALEAH5dbTjz5LBqilDkgr9po4MuAirU3o4oNBTivpLScoauwTAQNGogzIRRjABKQUIAgvj4CGAAPDEysgB8vAC+vMAaSJIw7KgoALIIENm5VJ0QJXpOADTwbQiVGExQpjD9ABQA2nyLAIyjWLQMMOtMCKKMAERgUBRas60oKIejGlo6MAAMAB4AZu+vj48wNQC6wysAEwbLaMYF7A4wQ6EYgtcY3dSabSMF7vL5fH7-FYAZhBdEYuIhYihskInjhVwQCLuyKezy+aO+f2AvwAlPVGs1LqhGIhKVNuR0ugA6WRQEDzVbsmAAehlMC4+G0wAa5GarGKnD5PLG-IAPjBmEhiFBXjIoLDMIKEP1ReLJdK5UxSArCsrVU0QDAEOJxFwQBbtSheeMBeNbWKJVKAITcWXypAuxXaIA).
 
+#### UPDATE:
+
+My friend [Albert](https://twitter.com/aplanap) pointed out that we can get the "nice and short" error message mentioning our `Banana` type if we use `interface` instead of `type`:
+
+```ts
+interface Banana extends Readonly<{
+  id: number;
+  name: string;
+  color: number;
+  weight?: number;
+  length?: number;
+  thumbnails?: string;
+  pictures?: ReadonlyArray<string>;
+}> { }
+```
+
+> You can see this last example in [TypeScript Playground](https://www.typescriptlang.org/play/#code/FASwdgLgpgTgZgQwMZQAQCEFiw1UAe0YAJgM6oBKUCxA9mADYCeAPAN7CqojEBcqYAK4BbAEawA3JwEJhUfqQgxwAcylcktBrRj8hYydIDuUECoAWEAPx6R4mOtQMoYFRHM2Bdw13d3sIAyknorKro4ADiBIEIIwUMH8VDT0zACCMDAIrKGqAHxSAL55qGyohcDAmmCKqKI42ACyCBFJ1HSMTM0RLPr2ADQYDQglALwCUEao3QAUANrScwCMg2U8-CsycvwARExQDNpT9djYO4Oa2rqoAAz4cA9wNzflALr9iwBMq9x8qN9beSoHbxYh1YbnVCXHT8O4PZ7PN4fLhzADMP3WqHRgN2KniLnBpwQkOh1zuz3hL0Kr2ArwAlFIqvRaiccPxMETUONWU0WgA6FRQCAzJYMoA)
