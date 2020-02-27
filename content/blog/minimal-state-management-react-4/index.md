@@ -11,15 +11,17 @@ type: 'blog-post'
 * In the first article we described how we [load and display data with hooks](../minimal-state-management-react-1).  
 * In the second article we learned how to [change remote data with hooks](../minimal-state-management-react-2).
 * In the third article we learned how to [share data between components with React Context](../minimal-state-management-react-3) without using globals, singletons or resorting to state management libraries like MobX or Redux.
-* **In this fourth article we'll see how to share data between using [SWR](https://swr.now.sh/).**
+* **In this fourth article we'll see how to share data between components using [SWR](https://swr.now.sh/).**
 
 In the previous articles we were storing the loaded data within React, in a `useState` hook. But since then SWR was released (Oct 2019).
 
 I first learned about SWR thanks to a video tutorial by Leigh Halliday: "[React Data Fetching with Hooks using SWR](https://youtu.be/oWVW8IqpQ-A)", and I thought it was interesting enough that I could try it on a small internal project at work.
 
-But a few weeks later something clicked in my head and I realised I wasn't just looking for an excuse to try SWR. 
+But a few weeks later [a Twitter thread](https://twitter.com/giuseppegurgone/status/1200381565773262851) took me to [this article](https://medium.com/better-programming/why-you-should-be-separating-your-server-cache-from-your-ui-state-1585a9ae8336); something clicked in my head and I realised I wasn't just looking for an excuse to try SWR. 
 
-**No. I had been doing state management with hooks wrong!**
+**No. I had been doing state management wrong all along!**
+
+![The Scream, by Edvard Munch - National Gallery of Norway](./scream.jpg)
 
 I was storing my remotely fetched data in `useReducer` or `useState` and manually mutating (or via a reducer), and then **maybe reloading** from the server in some cases, but not in others. And I was using React Context to make the data available to unrelated components in my app.
 
@@ -29,7 +31,7 @@ SWR stores the fetched data in a static cache. Therefore there's no need to use 
 
 I refactored my SPA to use SWR and that resulted in a much simpler application logic. In addition, we now benefit from all the nice features that come with SWR such as "focus revalidation" and "refetch on interval".
 
-**Let's refactor our example from the previous articles in this series to use SWR.**
+**Let's refactor our example from the previous three articles to use SWR.**
 
 ## Before SWR
 
@@ -58,12 +60,12 @@ const useFetchedGames = () => {
 };
 ```
 
-The problem with that approach is:
+The problem with this approach is:
 
 1. The list of games is stored twice: first in a `useState` hook inside `useAsyncFunction`, and then in a new `useState` hook.
 2. If the list of games is updated on the server, we never reload it. Here's where SWR shines.
 
-We're going to `useFetchedGames` to use SWR instead of `useState`.
+We're going to refactor `useFetchedGames` to use SWR instead of `useState`.
 
 ```ts
 const useFetchedGames = () => {
@@ -79,13 +81,11 @@ const useFetchedGames = () => {
 
 The full diff can be found in [this git commit](https://github.com/JulianG/minimal-state-management-demo/commit/4b2f4c5a6ff01b6618e653fe0eb637bcda81cf1c).
 
-Note the `"getGames"` string literal, just before the `getGames` function. This is a **key**, in our case it can be anything as long as it is unique for this resource (the list of games). 
-
-*There's a simpler way to use `useSWR` and tht's just passing the URL or path to fetch from. You can [read it in the docs](https://swr.now.sh/#basic-data-loading).*
+Note the `"getGames"` string literal, just before the `getGames` function. This is a **key** to help SWR identify our request. In our case it can be anything as long as it is unique for this resource (the list of games). There's a even simpler way. You can [find it in the docs](https://swr.now.sh/#basic-data-loading).
 
 ## Removing React Context
 
-Now that we're using useSWR we don't need a React context, its provider, nor the useContext hook.
+Now that we're using `useSWR` we don't need a React context, its provider, nor the `useContext` hook.
 
 In the demo project we make our components consume the `useGames` hook directly, instead of the `useGamesContext` one.
 
@@ -116,6 +116,6 @@ With this small refactoring, our app has less code to maintain and we benefit fr
 
 I think Zeit's [SWR](https://swr.now.sh/) (or a similar library) is a much better solution than storing fetched data in a React component using `useState` or `useReducer`.
 
-I continue to store my application state using custom hooks that use `useReducer` and `useState` but for remote data, I prefer to store it in a cache.
+I continue to store my application's UI state using custom hooks that use `useReducer` and `useState` but for remote data, I prefer to store it in a cache.
 
 Please let me know what you think in the comments below.
