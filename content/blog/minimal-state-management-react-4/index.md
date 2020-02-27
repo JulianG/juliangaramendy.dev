@@ -19,7 +19,7 @@ I first learned about SWR thanks to a video tutorial by Leigh Halliday: "[React 
 
 But a few weeks later [a Twitter thread](https://twitter.com/giuseppegurgone/status/1200381565773262851) took me to [this article](https://medium.com/better-programming/why-you-should-be-separating-your-server-cache-from-your-ui-state-1585a9ae8336); something clicked in my head and I realised I wasn't just looking for an excuse to try SWR. 
 
-**No. I had been doing state management wrong all along!**
+**No. I had been doing it wrong all along!**
 
 ![The Scream, by Edvard Munch - National Gallery of Norway](./scream.jpg)
 
