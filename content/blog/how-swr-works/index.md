@@ -171,7 +171,7 @@ export function useAsyncFunction<T>(
         mutate(data) 
         setError(undefined)
       })
-      .catch(error => setError(error.toString()))
+      .catch(e => setError(e.toString()))
   }, [asyncFunction, mutate])
 
   React.useEffect(load, [load])
