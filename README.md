@@ -1,8 +1,8 @@
-This is my Gatsby blog on Netlify: https://bananas.netlify.com/
+This is my Gatsby blog on Netlify: https://juliangaramendy.dev/
 
 [![Netlify Status](https://api.netlify.com/api/v1/badges/9a075c1a-8db0-4c19-82c7-b129808e089b/deploy-status)](https://app.netlify.com/sites/bananas/deploys)
 
-Nothing technically interesting for now. It's based on the Gatsby's blog starter. And below it's the original README.md.
+Nothing technically interesting for now. It's based on the Gatsby's blog starter. Original README.md below.
 
 ----
 
