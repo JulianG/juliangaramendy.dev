@@ -23,10 +23,25 @@ function Bio() {
             />
             <p style={styles.bioText}>
               Written by <strong>{author}</strong>&nbsp;
-              <a style={styles.socialIconLink} href={`https://twitter.com/${social.twitter}`}>
+              <a style={styles.socialIconLink} href="https://dev.to/juliang">
+                <img
+                  style={styles.socialIcon}
+                  src="https://d2fltix0v2e0sb.cloudfront.net/dev-badge.svg"
+                  alt="Julian Garamendy's DEV Profile"
+                />
+              </a>
+              &nbsp;
+              <a
+                style={styles.socialIconLink}
+                href={`https://twitter.com/${social.twitter}`}
+              >
                 <img style={styles.socialIcon} src={TwitterLogo} />
-              </a>&nbsp;
-              <a style={styles.socialIconLink} href={`https://github.com//${social.github}/`}>
+              </a>
+              &nbsp;
+              <a
+                style={styles.socialIconLink}
+                href={`https://github.com//${social.github}/`}
+              >
                 <img style={styles.socialIcon} src={GitHubLogo} />
               </a>
             </p>
@@ -50,7 +65,7 @@ const bioQuery = graphql`
       siteMetadata {
         author
         social {
-          twitter,
+          twitter
           github
         }
       }
@@ -66,11 +81,11 @@ const styles = {
     marginBottom: '0.2rem',
   },
   socialIconLink: {
-    boxShadow: 'none'
+    boxShadow: 'none',
   },
   bioText: {
     marginTop: '1rem',
-    marginBottom: '1rem'
+    marginBottom: '1rem',
   },
   bioImageStyle: {
     marginRight: rhythm(1 / 4),
@@ -78,7 +93,7 @@ const styles = {
     minWidth: 25,
     borderRadius: `100%`,
     float: 'left',
-  }
+  },
 }
 
 export default Bio
