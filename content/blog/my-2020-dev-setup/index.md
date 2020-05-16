@@ -57,3 +57,5 @@ I use [spaceship-prompt](https://github.com/denysdovhan/spaceship-prompt) to cus
 - [Bracket Pair Colorizer](https://marketplace.visualstudio.com/items?itemName=CoenraadS.bracket-pair-colorizer)
 - [Markdown Preview Github Styling](https://marketplace.visualstudio.com/items?itemName=bierner.markdown-preview-github-styles)
 - [Git Graph](https://marketplace.visualstudio.com/items?itemName=mhutchie.git-graph)
+
+**Fira Code** font: https://github.com/tonsky/FiraCode
