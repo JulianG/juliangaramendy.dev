@@ -28,7 +28,7 @@ alias gco="git checkout"
 alias gtree='git log --graph --full-history --all --pretty=format:"%h%x09%d%x20%s"'
 
 # Set Spaceship ZSH as a prompt (https://github.com/denysdovhan/spaceship-prompt)
-SPACESHIP_GIT_SYMBOL="🌈" 
+SPACESHIP_GIT_SYMBOL="⌥ "
 autoload -U promptinit; promptinit
 prompt spaceship
 ```
