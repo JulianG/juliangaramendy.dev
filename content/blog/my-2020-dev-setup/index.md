@@ -4,16 +4,13 @@ date: '2020-05-14'
 type: 'blog-post'
 ---
 
-I have recently setup up a new dev machine. I thought it would be a good idea to make some notes of what I install and configure for future me.
-
 **This is my setup in 2020 on a MacBook Pro running macOS Catalina 10.15.4.**
 
 ## Essentials
 
 **Brave Browser:** https://brave.com/
 
-**iTerm2:** Terminal replacement. https://iterm2.com/.  
-I can sync my iTerm settings between different machines via a file in a Dropbox folder.
+**iTerm2:** https://iterm2.com/.
 
 **Homebrew:** https://brew.sh/
 
