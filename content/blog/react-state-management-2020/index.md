@@ -65,3 +65,5 @@ For these cases I prefer to keep the state [close to where it's used]((https://k
  - [State Management with React](https://kentcdodds.com/blog/application-state-management-with-react) by Kent C. Dodds.
  - [Lifting State Up](https://reactjs.org/docs/lifting-state-up.html). React Blog.
  - [Colocation](https://kentcdodds.com/blog/colocation) by Kent C. Dodds.
+ - I first learned about [SWR](https://swr.now.sh/) thanks to a video tutorial by Leigh Halliday: "[React Data Fetching with Hooks using SWR](https://youtu.be/oWVW8IqpQ-A)".
+
