@@ -9,8 +9,14 @@ credits: []
 
 # Work
 
-I'm currently working at **[King.com](https://king.com/)** creating tools for game development teams.  
-We mostly use React and TypeScript and some C++.
+I work at **[TransferWise](https://transferwise.com)** as a Front End Engineer, using React with TypeScript.
+
+![TransferWise](./images/transferwise.jpg)
+
+----
+
+I used to work at [King.com](https://king.com/) creating tools for game development teams.  
+We mostly used React and TypeScript, and some C++.
 
 ![Farm Heroes Saga](./images/farm.jpg)
 
@@ -23,14 +29,14 @@ During my time at **Miniclip.com** I created video games for the browser.
 
 ![Miniclip games](./images/miniclip-games.png)
 
-We developed singleplayer and multiplayer games in ActionScript 3.  
+We developed single-player and multi-player games in ActionScript 3.  
 We also developed components to integrate third party games with Miniclip's systems.  
 I also contributed with some server-side PHP code.
 
 ----
 
 Before moving to the UK, I was a **Freelance Web Developer**.  
-I developed corporate websites for several clients and design agencies using HTML CSS, JavaScript, PHP, MySQL, and Flash.
+I developed websites for several clients and design agencies using HTML CSS, JavaScript, PHP, MySQL, and Flash.
 
 ----
 
