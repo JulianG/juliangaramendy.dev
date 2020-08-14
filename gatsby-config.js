@@ -96,6 +96,12 @@ module.exports = {
         pathToConfigModule: `src/utils/typography`,
       },
     },
-    `gatsby-remark-prismjs`
+    `gatsby-remark-prismjs`,
+    {
+      resolve: `gatsby-plugin-canonical-urls`,
+      options: {
+        siteUrl: `https://juliangaramendy.dev`,
+      },
+    },
   ],
 }
