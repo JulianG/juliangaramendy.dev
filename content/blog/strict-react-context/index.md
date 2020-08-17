@@ -1,16 +1,9 @@
 ---
-title: Strict React Context
+title: Why I never use React.useContext
 date: '2020-08-13'
 type: 'blog-post'
-credits: [
-  "Photo by [Engjell Gjepali](https://unsplash.com/@iamengjell?utm_source=unsplash&amp;utm_medium=referral&amp;utm_content=creditCopyText) on [Unsplash](https://unsplash.com/)"
-]
-ogimage: './ogimage.jpg'
 ---
 
-![](./tuscany.jpg)
-
-## Summary
 Instead of using `React.createContext` directly, we can use a utility function to ensure the consuming component is rendered within the correct Context Provider.
 
 ```ts
