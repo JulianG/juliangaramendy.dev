@@ -1,7 +1,7 @@
 ---
 title: Persistent REST API with json-server and Glitch
 description: This is the easiest way I know to get a public persistent REST API up and running in under 1 minute, without writing any code.
-tags: rest, nodejs
+tags: rest, json, javascript, glitch
 type: 'blog-post'
 date: '2020-08-30'
 ogimage: https://dev-to-uploads.s3.amazonaws.com/i/j16sy1p2gujx1ckleb6k.jpg
@@ -47,7 +47,6 @@ PATCH  https://json-server-demo.glitch.me/games/1
 DELETE https://json-server-demo.glitch.me/games/1
 ```
 
-
 ### How it works
 
 Glitch projects can run Node.js, but in our case we don't need to write a single line of code. We simply declare our dependency to json-server and our "start" script in  the **package.json** file:
@@ -65,13 +64,11 @@ Glitch projects can run Node.js, but in our case we don't need to write a single
 }
 ```
 
-### Differences with JSON Placeholder and My JSON Server
+By default json-server reads and writes to the db.json file, so all changes made by POST, PATCH, PUT, DELETE http methods are persisted in "disk" in the Glitch project. See [Do you have built-in persistence or a database?](https://glitch.happyfox.com/kb/article/22-do-you-have-built-in-persistence-or-a-database/) in the FAQ.
 
-#### [JSON Placeholder](https://jsonplaceholder.typicode.com/)
-With JSON Placeholder you can't use your own data. But their [guide](https://jsonplaceholder.typicode.com/guide.html) is really good.
+**The answer is YES!**
 
-#### [My JSON Server](https://my-json-server.typicode.com/) by typicode. 
-With My Json Server you can use your own data but "changes are faked and aren't persisted between calls."
+> This means you can: Use files as a flat file database
 
 ### Warning: Glitch Restrictions
 Glitch "projects" seem to take some time to warm up or wake up, and the go back to sleep after a period of inactivity. For this reason I think this quick setup is good for demos or workshops, but not for production.
@@ -80,7 +77,7 @@ Please refer to the links below for more information:
 
 - [Glitch Technical Restrictions](https://glitch.happyfox.com/kb/article/17-what-are-the-technical-restrictions-for-glitch-projects/)
 - [Glitch Project Hours](https://glitch.happyfox.com/kb/article/83-what%E2%80%99s-the-deal-with-project-hours/)
-- [Glitch: Persistence](https://glitch.happyfox.com/kb/article/22-do-you-have-built-in-persistence-or-a-database/)
 
 ----
+
 Photo by [coniferconifer](https://www.flickr.com/people/7656600@N06) on [Wikimedia Commons](https://commons.wikimedia.org/wiki/Category:Koinobori#/media/File:Koinobori_celebrates_coming_Kid's_day_(14030748811).jpg)
