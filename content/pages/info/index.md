@@ -18,19 +18,19 @@ credits: [
 
 I use SOLID principles and best practices to write well-architectured code that expresses intention, is easy to understand, maintain and scale, and is properly tested.
 
-My preferred tech stack is:  
-**React, TypeScript, ES6, Javascript, HTML, CSS, Jest.**  
-**GraphQL, REST, Node.js, Webpack, npm.**  
-**Git, Jenkins, Travis CI.**  
+I usually work with:  
+**React, TypeScript, Next.js, Jest, React Testing Library.**  
+**REST, Node.js.**  
+**Git, Cicle CI, Travis CI.**  
 
 I also have experience with:  
 **Angular, C++, C#, Python, ActionScript**  
 **JSON-RPC, SVN.**  
 
-I'm currently working at [King.com](https://king.com/) creating tools for game development teams.
+I'm currently working at **[TransferWise](https://transferwise.com)** as a Front End Engineer.
 
 I made an open-source Chrome extension called [Banana Tabs](https://github.com/JulianG/bananatabs).  
-Some people find it extremely useful, others have completely ignored it.
+Some people find it useful, others completely ignore it.
 
 I've finally started writing a blog: [I Have To Write This Down](/blog).  
 You can find me on [Twitter](https://twitter.com/JulianGWeb) and [GitHub](https://github.com/JulianG/).
