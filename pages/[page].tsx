@@ -14,7 +14,6 @@ export const Page = ({ title, bodyHtml }: { title: string, bodyHtml: string }): 
         <Navigation />
       </header>
       <section>
-        <h1>{title}</h1>
         <div dangerouslySetInnerHTML={{ __html: bodyHtml }}></div>
       </section>
       <Footer />
