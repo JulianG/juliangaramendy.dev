@@ -26,8 +26,9 @@ export function CommonHead({ title }: Props) {
 export const Navigation: React.FC = () => {
   const r = useRouter();
 
-  const sectionName = r.pathname.split("/").filter((p) => !!p)[0];
-
+  
+  const sectionName = r.asPath.split("/").filter((p) => !!p)[0];
+  
   return (
     <nav>
       <ul>

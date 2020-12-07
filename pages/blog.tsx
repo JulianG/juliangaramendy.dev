@@ -39,12 +39,12 @@ const PostListItem: React.FC<{ post: PostSummary }> = ({ post }) => {
   const publishDate = dayjs(post.date).format("D MMMM, YYYY");
   return (
     <li>
+      <small><strong>{publishDate}</strong></small>
       <h2>
         <a href={`/blog/${post.slug}`} style={{ boxShadow: "none" }}>
           {post.title}
         </a>
       </h2>
-      <small>{publishDate}</small>
       <p>
         This is the easiest way I know to get a public persistent REST API up
         and running in under 1 minute, without writing any code.
