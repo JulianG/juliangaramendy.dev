@@ -2,6 +2,7 @@
 title: My 2020 Dev Setup
 date: '2020-05-14'
 type: 'blog-post'
+description: 'This is my setup in 2020 on a MacBook Pro running macOS Catalina 10.15.4.'
 ---
 
 **This is my setup in 2020 on a MacBook Pro running macOS Catalina 10.15.4.**

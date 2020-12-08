@@ -3,6 +3,7 @@ title: Introducing Banana Tabs
 date: '2018-12-10'
 updated: '2019-02-17'
 type: 'blog-post'
+description: "Has this ever happened to you? You keep lots of tabs in a single window to the point where you can't tell what's what anymore."
 ---
 
 ### Has this ever happened to you?

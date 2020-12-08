@@ -1,12 +1,8 @@
-import { GetServerSideProps } from 'next';
+import { GetStaticProps } from 'next';
 
-
-export const getServerSideProps = async (context) => {
+export const getStaticProps: GetStaticProps = async (context) => {
   
-    context.res.statusCode = 301;
-    context.res.setHeader("Location", '/info');
-    context.res.end("");
-    return;
+  return { redirect: { destination: '/info', permanent: true}}
 
 };
 

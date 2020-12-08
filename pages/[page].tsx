@@ -1,15 +1,15 @@
-import { GetServerSideProps } from "next";
 import React from 'react';
+import { GetStaticPaths, GetStaticProps } from "next";
 import { CommonHead, Footer, Navigation } from '../components';
 import { getPage } from '../lib/fs-api';
 import { legacyBlogPosts } from "../lib/legacy-blogposts";
 
-export const Page = ({ title, bodyHtml }: { title: string, bodyHtml: string }): JSX.Element => {
+export const Page = ({ title, description, bodyHtml }: { title: string, description: string, bodyHtml: string }): JSX.Element => {
 
   return (
     <article>
       <header>
-        <CommonHead title={`${title} - Julian​Garamendy​.dev`} />
+        <CommonHead title={`${title} - Julian​Garamendy​.dev`} description={description} />
         <h1>Julian​Garamendy​.dev</h1>
         <Navigation />
       </header>
@@ -21,21 +21,31 @@ export const Page = ({ title, bodyHtml }: { title: string, bodyHtml: string }): 
   );
 };
 
-export const getServerSideProps: GetServerSideProps = async (context) => {
-  const { page } = context.query;
+export const getStaticProps: GetStaticProps = async (context) => {
+  const page = context.params?.page
 
-  const redirectPath = legacyBlogPosts[`${page}`];
+  const redirectPath = (legacyBlogPosts as any)[`${page}`];
 
   if (redirectPath) {
-    context.res.statusCode = 301;
-    context.res.setHeader("Location", redirectPath);
-    context.res.end("");
-    return;
+    return { redirect: { destination: redirectPath, permanent: true} }
   }
 
+  try {
   const {title, bodyHtml} = await getPage(`${page}`)
-
-  return { props: {title, bodyHtml} };
+  return { props: {title, bodyHtml}, revalidate: 1 };
+  } catch(e) {
+    return {notFound: true}
+  }
 };
+
+export const getStaticPaths: GetStaticPaths = async () => {
+  return {
+    paths: ['info', 'work'].map(page => (
+      { params: { page } }
+    )),
+    fallback: true
+  };
+}
+
 
 export default Page;

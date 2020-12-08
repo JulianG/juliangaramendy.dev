@@ -1,11 +1,13 @@
-import { GetServerSideProps } from "next";
+import { GetStaticProps, GetStaticPaths } from "next";
 import React from "react";
 import dayjs from "dayjs";
 import { Navigation, CommonHead, Footer } from "../../components";
-import { getPostBySlug } from "../../lib/merged-api";
+import { getAllPosts, getPostBySlug } from "../../lib/merged-api";
 import { Post } from '../../lib/types';
 
-export const BlogPostPage = ({ post }: { post: Partial<Post> }): JSX.Element => {
+type Props = { post: Partial<Post> }
+
+export const BlogPostPage = ({ post }: Props): JSX.Element => {
   const publishDate = dayjs(post.date).format("D MMMM, YYYY");
 
   return (
@@ -19,22 +21,31 @@ export const BlogPostPage = ({ post }: { post: Partial<Post> }): JSX.Element => 
         <h1>{post.title}</h1>
         <small>{publishDate}</small>
         {post.coverImage ? <img src={post.coverImage} /> : null}
-        <div dangerouslySetInnerHTML={{ __html: post.bodyHtml }}></div>
+        <div dangerouslySetInnerHTML={{ __html: post.bodyHtml || '' }}></div>
       </section>
       <Footer />
     </article>
   );
 };
 
-export const getServerSideProps: GetServerSideProps = async (context) => {
-  const { slug } = context.query;
+export const getStaticProps: GetStaticProps<Props> = async (context) => {
+  const slug = context.params?.slug
   try {
     const post = await getPostBySlug(`${slug}`);
-    return { props: { post } };
+    return { props: { post }, revalidate: 1 };
   } catch (e) {
-    context.res.statusCode = 404;
-    context.res.end("Not found!!");
-  }
+    return { notFound: true }
+ }
 };
+
+export const getStaticPaths: GetStaticPaths = async () => {
+  const posts = await getAllPosts();
+  return {
+    paths: posts.map(post => (
+      { params: { slug: post.slug } }
+    )),
+    fallback: true
+  };
+}
 
 export default BlogPostPage;

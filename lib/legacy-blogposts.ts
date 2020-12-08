@@ -3,7 +3,7 @@ export const legacyBlogPosts = {
   "avoiding-non-null-assertions": "/blog/avoiding-non-null-assertions",
   "introducing-banana-tabs": "/blog/introducing-banana-tabs",
   "my-2020-dev-setup": "/blog/my-2020-dev-setup",
-  "no-implicit-any": "/blog/no-implicit-any",
+  "no-implicit-any": "/blog/catching-bugs-with-stricter-typescript-13oa",
   "null-checking": "/blog/null-checking",
   "custom-open-graph-images-in-gatsby-blog":
     "/blog/adding-custom-opengraph-images-to-gatsby-starter-blog-66k",

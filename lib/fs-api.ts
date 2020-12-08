@@ -44,7 +44,7 @@ export async function getPostBySlug(slug: string): Promise<Post> {
 
   return {
     slug,
-    title: data.title,
+    title: data.title || '',
     date: data.date || "1970-01-01",
     bodyHtml,
   };
@@ -53,6 +53,7 @@ export async function getPostBySlug(slug: string): Promise<Post> {
 const pagesDirectory = join(process.cwd(), "public/pages");
 
 export async function getPage(slug: string) {
+  
   const fullPath = join(pagesDirectory, slug, `index.md`);
   const fileContents = fs.readFileSync(fullPath, "utf8");
   const { data, content } = matter(fileContents);
@@ -64,7 +65,8 @@ export async function getPage(slug: string) {
   const bodyHtml = await markdownToHtml(bodyMarkdown);
 
   return {
-    title: data.title,
+    title: data.title || '',
+    description: data.description || '',
     bodyHtml,
   };
 }

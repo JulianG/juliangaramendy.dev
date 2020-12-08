@@ -2,9 +2,10 @@
 title: Null Checking in TypeScript
 date: '2019-02-05'
 type: 'blog-post'
+description: 'Following up on the previous post about avoiding non-null-assertion operator, I think it would be good to see some examples of null checking in TypeScript.'
 ---
 
-Following up on the previous gist about [avoiding non-null-assertion operator](https://gist.github.com/JulianG/18af9b9ff582764a87639d61d4587da1/) I think it would be good to see some examples of null checking in TypeScript.
+Following up on the previous post about [avoiding non-null-assertion operator](/blog/avoiding-non-null-assertions), I think it would be good to see some examples of null checking in TypeScript.
 
 Assumming we're using TypeScript with `--strictNullChecks`, and that this is what a banana looks like:
 ```typescript
@@ -176,6 +177,3 @@ function getBananaById(id: number): Banana {
 <br/>
 
 Can you think of other ways of handling null/undefined?
-
-----
-Original Gist: https://gist.github.com/JulianG/bdb60e4b8ba42ff5efc17e88e3ba1085

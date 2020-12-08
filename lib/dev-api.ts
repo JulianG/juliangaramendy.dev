@@ -6,7 +6,7 @@ export async function getAllPosts(): Promise<PostSummary[]> {
   const articles: Array<Article> = await fetch(
     "https://dev.to/api/articles/me/published",
     {
-      headers: { "api-key": process.env.DEVTO_API_KEY },
+      headers: { "api-key": process.env.DEVTO_API_KEY || '' },
     }
   ).then((r) => r.json());
 
@@ -23,17 +23,18 @@ export async function getPostBySlug(slug: string): Promise<Post> {
     "social_image",
   ]);
 
-  const parts = matter(article.body_markdown);
+  const parts = matter(article.body_markdown || '');
 
   const bodyHtml = await markdownToHtml(parts.content);
   return {
-    slug: article.slug,
-    title: article.title,
-    date: article.published_timestamp,
+    slug: article.slug || slug,
+    title: article.title || '',
+    date: article.published_timestamp || '1970-01-01',
     coverImage: article.cover_image,
     socialImage: article.social_image,
     bodyHtml,
   };
+
 }
 
 async function getDevToArticleBySlug(
@@ -47,10 +48,10 @@ async function getDevToArticleBySlug(
   // we could validate `article` here with io-ts or something
 
   if (article.slug !== slug) {
-    throw article;
+    throw 'not found';
   }
 
-  const partialArticle = {};
+  const partialArticle: Partial<Article> = {};
   fields.forEach((field) => (partialArticle[field] = article[field]));
   return partialArticle as Partial<Article>;
 }

@@ -4,15 +4,14 @@ title: 'Info'
 date: '2019-03-07'
 type: 'page'
 defaultPage: true
+description: "My name is Julian. I've been developing mobile and web applications since 2001."
 credits: [
   "Photo by [Andras Vas](https://unsplash.com/photos/Bd7gNnWJBkU?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText) on [Unsplash](https://unsplash.com)"
 ]
 ---
 
-<br/>
-
 **Hello! My name is Julian.**  
-**I've been developing mobile and web applications for the last 18 years.**
+**I've been developing mobile and web applications since 2001.**
 
 ![keyboard](./images/keyboard.jpg)
 

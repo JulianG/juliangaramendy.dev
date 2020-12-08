@@ -1,3 +1,12 @@
+
+# JulianGaramendy.dev
+
+## TODO:
+
+- Favicon
+- open graph / social_image
+- deploy on random domain!
+
 # NextJS Typescript Boilerplate
 
 Bootstrap a developer-friendly NextJS app configured with:

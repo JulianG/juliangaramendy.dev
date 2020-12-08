@@ -1,4 +1,4 @@
-import { GetServerSideProps } from "next";
+import { GetStaticProps } from "next";
 import React from "react";
 import dayjs from "dayjs";
 import { Navigation, CommonHead, Footer } from "../components";
@@ -21,7 +21,7 @@ export const BlogPage = ({
         <h1>I have to write this down</h1>
         <h4>
           A blog about React, TypeScript, and of course bananas. Some of these
-          posts appear on <a href="https://dev.to/juliang">dev.to.</a>
+          posts appear on <a href="https://dev.to/juliang">dev.to</a>.
         </h4>
 
         <ul className="article-list">
@@ -45,15 +45,12 @@ const PostListItem: React.FC<{ post: PostSummary }> = ({ post }) => {
           {post.title}
         </a>
       </h2>
-      <p>
-        This is the easiest way I know to get a public persistent REST API up
-        and running in under 1 minute, without writing any code.
-      </p>
+      <p>{post.description}</p>
     </li>
   );
 };
 
-export const getServerSideProps: GetServerSideProps = async (context) => {
+export const getStaticProps: GetStaticProps = async (context) => {
   const posts = await getAllPosts();
   return { props: { posts } };
 };
