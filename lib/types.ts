@@ -8,6 +8,7 @@ export type PostSummary = {
 export type Post = {
   slug: string;
   title: string;
+  description: string;
   date: string;
   bodyHtml: string;
   coverImage?: string;

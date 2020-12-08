@@ -13,7 +13,7 @@ export const BlogPostPage = ({ post }: Props): JSX.Element => {
   return (
     <article>
       <header>
-        <CommonHead title={`${post.title} - Julian​Garamendy​.dev`} />
+        <CommonHead title={`${post.title} - Julian​Garamendy​.dev`} description={post.description} />
         <h1>Julian​Garamendy​.dev</h1>
         <Navigation />
       </header>

@@ -45,6 +45,7 @@ export async function getPostBySlug(slug: string): Promise<Post> {
   return {
     slug,
     title: data.title || '',
+    description: data.description || '',
     date: data.date || "1970-01-01",
     bodyHtml,
   };

@@ -13,7 +13,7 @@ export const BlogPage = ({
   return (
     <article>
       <header>
-        <CommonHead title="Blog - Julian​Garamendy​.dev" />
+        <CommonHead title="I have to write this down - Julian​Garamendy​.dev" description="A blog about React, TypeScript, and of course bananas." />
         <h1>Julian​Garamendy​.dev</h1>
         <Navigation />
       </header>
