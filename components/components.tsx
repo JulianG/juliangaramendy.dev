@@ -1,8 +1,11 @@
 import * as React from "react";
 import Head from "next/head";
+import { Favicon } from './Favicon';
+import { OpenGraphMeta, TwitterMeta } from './open-graph';
 import { useRouter } from "next/router";
 
 type Props = { title: string, description?: string, openGraphImage?: string };
+
 export function CommonHead({ title, description = '', openGraphImage = '/assets/opengraph-default.png' }: Props) {
 
   return (
@@ -16,18 +19,12 @@ export function CommonHead({ title, description = '', openGraphImage = '/assets/
           href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@300;400&family=Fira+Sans+Condensed:ital,wght@0,300;0,500;1,400&family=Fira+Sans+Extra+Condensed:wght@500;700&display=swap"
           rel="stylesheet"
         />
+        <Favicon />
         <title>{title}</title>
         <meta name="description" content={description} />
         <meta name="image" content={openGraphImage} />
-        <meta property="og:type" content={'article'} />
-        <meta property="og:title" content={title} />
-        <meta property="og:image" content={openGraphImage} />
-        <meta property="og:description" content={description} />
-        <meta name="twitter:card" content="summary" />
-        <meta name="twitter:title" content={title} />
-        <meta name="twitter:description" content={description} />
-        <meta name="twitter:site" content="@JulianGWeb" />
-        <meta name="twitter:image" content={openGraphImage} />
+        <OpenGraphMeta title={title} description={description} openGraphImage={openGraphImage} />
+        <TwitterMeta title={title} description={description} openGraphImage={openGraphImage} />
       </Head>
     </>
   );
@@ -63,19 +60,6 @@ export const Navigation: React.FC = () => {
   );
 };
 
-export const ArticlePageLayout: React.FC = ({ children }) => {
-  return (
-    <article>
-      <header>
-        <CommonHead title={"aaaa"} />
-        <h1>Julian​Garamendy​.dev</h1>
-        <Navigation />
-      </header>
-      <section>{children}</section>
-    </article>
-  );
-};
-
 export const Footer = () => {
   return (
     <footer>
@@ -107,7 +91,6 @@ export const Footer = () => {
     </footer>
   );
 };
-
 
 const styles = {
   socialIcon: {
