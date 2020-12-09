@@ -53,7 +53,7 @@ function articleToPostSummary(article: Article): PostSummary {
 }
 
 function getSlug(url: string) {
-  const parts = url.split('/')
+  const parts = url.split('/').filter((part) => !!part)
   const slug = parts.pop() || ''
   return slug
 }
