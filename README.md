@@ -3,8 +3,9 @@
 
 ## TODO:
 
-- Favicon
-- open graph / social_image
+- Favicon ✅
+- open graph / social_image ✅
+- fix slugs, using list of blog posts? short slugs in frontmatter!
 - deploy on random domain!
 
 # NextJS Typescript Boilerplate
