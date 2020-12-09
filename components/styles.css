@@ -187,3 +187,10 @@ blockquote {
   color: hsla(0, 0%, 0%, 0.59);
   border-left: 0.25rem solid hsla(0, 0%, 0%, 0.5);
 }
+
+pre {
+  font-family: "Fira Code", monospace;
+  background: #2d2d2d;
+  color: #ccc;
+  font-size: 0.9em;
+}

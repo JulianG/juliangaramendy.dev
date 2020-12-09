@@ -7,25 +7,24 @@ export async function getAllPosts(): Promise<PostSummary[]> {
 }
 
 export async function getPostBySlug(slug: string): Promise<Post> {
-  const article = await getDevToArticleBySlug(slug, [
-    'slug',
-    'title',
-    'body_markdown',
-    'published_timestamp',
-    'cover_image',
-    'social_image',
-  ])
+  const articles = await getAllDevArticles()
+
+  const article = articles.find((a) => {
+    return getSlug(a.canonical_url || '') === slug
+  })
+
+  assert(article)
 
   const parts = matter(article.body_markdown || '')
 
   const bodyHtml = await markdownToHtml(parts.content)
   return {
-    slug: article.slug || slug,
+    slug,
     title: article.title || '',
     description: article.description || '',
     date: article.published_timestamp || '1970-01-01',
-    coverImage: article.cover_image,
-    socialImage: article.social_image,
+    coverImage: article.cover_image || '',
+    socialImage: article.social_image || '',
     bodyHtml,
   }
 }
@@ -37,34 +36,31 @@ async function getAllDevArticles() {
       headers: { 'api-key': process.env.DEVTO_API_KEY || '' },
     }
   ).then((r) => r.json())
-  return articles
+  return articles.filter(hasCanonicalUrl)
 }
 
-async function getDevToArticleBySlug(
-  slug: string,
-  fields: Array<keyof Article> = []
-) {
-  const article: Article = await fetch(
-    `https://dev.to/api/articles/juliang/${slug}`
-  ).then((r) => r.json())
-
-  // we could validate `article` here with io-ts or something
-
-  if (article.slug !== slug) {
-    throw 'not found'
-  }
-
-  const partialArticle: Partial<Article> = {}
-  fields.forEach((field) => (partialArticle[field] = article[field]))
-  return partialArticle as Partial<Article>
+function hasCanonicalUrl(article: Article) {
+  return !!article.canonical_url
 }
 
-function articleToPostSummary(a: Article): PostSummary {
+function articleToPostSummary(article: Article): PostSummary {
   return {
-    slug: a.slug,
-    title: a.title,
-    date: a.published_timestamp,
-    description: a.description,
+    slug: getSlug(article.canonical_url || ''),
+    title: article.title,
+    date: article.published_timestamp,
+    description: article.description,
+  }
+}
+
+function getSlug(url: string) {
+  const parts = url.split('/')
+  const slug = parts.pop() || ''
+  return slug
+}
+
+function assert<T>(value: T | null | undefined): asserts value is T {
+  if (value === null || value === undefined) {
+    throw new Error('Assertion failed. value is null or undefined')
   }
 }
 
@@ -86,7 +82,7 @@ export interface Article {
   published_timestamp: string
   cover_image: string
   social_image: string
-  canonical_url: string
+  canonical_url?: string
   created_at: Date
   edited_at: Date
   crossposted_at?: any
