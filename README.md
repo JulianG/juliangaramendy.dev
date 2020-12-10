@@ -8,8 +8,8 @@
 - fix slugs, using list of blog posts? use canonical_url ✅
 - cannot have images taken from jg.dev ✅
 - CSS for pre without specific language? or find what lang to use ✅
-- display collections?
-- credit icon artists!
+- display collections? ❌
+- credit icon artists! ✅
 - ...
 - deploy on random domain!
 

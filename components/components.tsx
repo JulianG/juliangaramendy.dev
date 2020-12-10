@@ -97,7 +97,11 @@ export const Footer = () => {
         <a style={styles.socialIconLink} href={`https://github.com//JulianG`}>
           <img style={styles.socialIcon} src="/assets/github-logo.svg" />
         </a>
-      </p>
+        &nbsp;
+        -
+        &nbsp;
+        <small>Banana icon by Freepik from <a href="https://www.flaticon.com/free-icon/banana_688828">FlatIcon</a>.</small>
+      </p>      
     </footer>
   )
 }

@@ -193,7 +193,7 @@ the rules below are copied from prism.css,
 removing [class*="language-"]
 */
 
-code,
+pre > code,
 pre {
 	color: #ccc;
 	background: none;
@@ -224,6 +224,15 @@ pre {
 	overflow: auto;
 }
 
+
 pre {
 	background: #2d2d2d;
+}
+
+p > code {
+  font-family: "Fira Code", monospace;
+  font-size: 0.9em;
+  background: #ffefb1;
+  padding: 0.05em 0.25em;
+  border-radius: 0.25rem;
 }
