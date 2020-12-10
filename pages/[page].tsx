@@ -2,7 +2,6 @@ import React from 'react';
 import { GetStaticPaths, GetStaticProps } from "next";
 import { CommonHead, Footer, Navigation } from '../components';
 import { getPage } from '../lib/fs-api';
-import { legacyBlogPosts } from "../lib/legacy-blogposts";
 
 export const Page = ({ title, description, bodyHtml }: { title: string, description: string, bodyHtml: string }): JSX.Element => {
 
@@ -23,12 +22,6 @@ export const Page = ({ title, description, bodyHtml }: { title: string, descript
 
 export const getStaticProps: GetStaticProps = async (context) => {
   const page = context.params?.page
-
-  const redirectPath = (legacyBlogPosts as any)[`${page}`];
-
-  if (redirectPath) {
-    return { redirect: { destination: redirectPath, permanent: true} }
-  }
 
   try {
   const {title, bodyHtml} = await getPage(`${page}`)
