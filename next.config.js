@@ -20,7 +20,7 @@ module.exports = {
     },
     {
       source: '/no-implicit-any',
-      destination: '/blog/catching-bugs-with-stricter-typescript-13oa',
+      destination: '/blog/catching-bugs-with-stricter-typescript',
       permanent: true
     },
     {
@@ -30,77 +30,77 @@ module.exports = {
     },
     {
       source: '/custom-open-graph-images-in-gatsby-blog',
-      destination: '/blog/adding-custom-opengraph-images-to-gatsby-starter-blog-66k',
+      destination: '/blog/custom-open-graph-images-in-gatsby-blog',
       permanent: true
     },
     {
       source: '/how-swr-works',
-      destination: '/blog/how-swr-works-4lkb',
+      destination: '/blog/how-swr-works',
       permanent: true
     },
     {
       source: '/json-server-glitch',
-      destination: '/blog/persistent-rest-api-with-json-server-and-glitch-32kc',
+      destination: '/blog/json-server-glitch',
       permanent: true
     },
     {
       source: '/minimal-state-management-react-1',
-      destination: '/blog/loading-and-displaying-data-with-hooks-jlj',
+      destination: '/blog/loading-and-displaying-data-with-hooks',
       permanent: true
     },
     {
       source: '/minimal-state-management-react-2',
-      destination: '/blog/changing-remote-data-with-hooks-565p',
+      destination: '/blog/changing-remote-data-with-hooks',
       permanent: true
     },
     {
       source: '/minimal-state-management-react-3',
-      destination: '/blog/sharing-remote-data-with-react-context-3859',
+      destination: '/blog/sharing-remote-data-with-react-context',
       permanent: true
     },
     {
       source: '/minimal-state-management-react-4',
-      destination: '/blog/managing-remote-data-with-swr-7cf',
+      destination: '/blog/managing-remote-data-with-swr',
       permanent: true
     },
     {
       source: '/prettier-pre-commit-hook',
-      destination: '/blog/configuring-prettier-and-typescript-compiler-as-a-pre-commit-hook-44jh',
+      destination: '/blog/prettier-pre-commit-hook',
       permanent: true
     },
     {
       source: '/react-state-management-2020',
-      destination: '/blog/react-state-management-in-2020-3c58',
+      destination: '/blog/react-state-management-2020',
       permanent: true
     },
     {
       source: '/react-typescript-library-tsdx',
-      destination: '/blog/publishing-a-react-hooks-library-using-typescript-and-tsdx-36cg',
+      destination: '/blog/react-typescript-library-tsdx',
       permanent: true
     },
     {
       source: '/readonly-and-errors',
-      destination: '/blog/readonly-t-and-better-error-messages-3i9l',
+      destination: '/blog/readonly-and-errors',
       permanent: true
     },
     {
       source: '/strict-react-context',
-      destination: '/blog/why-i-never-use-react-usecontext-4ddf',
+      destination: '/blog/strict-react-context',
       permanent: true
     },
     {
       source: '/testing-opinions',
-      destination: '/blog/testing-opinions-3hlh',
+      destination: '/blog/testing-opinions',
       permanent: true
     },
     {
       source: '/use-promise-subscription',
-      destination: '/blog/cancelling-a-promise-with-react-useeffect-3062',
+      destination: '/blog/use-promise-subscription',
       permanent: true
     },
     {
       source: '/when-ts-generics',
-      destination: '/blog/a-use-case-for-generics-in-typescript-20j7',
+      destination: '/blog/when-ts-generics',
       permanent: true
     }]
   },
