@@ -1,0 +1,238 @@
+html {
+  font-size: 20px;
+}
+
+@media (max-width: 800px) {
+  html {
+    font-size: 15px;
+  }
+}
+
+body {
+  font-family: "Fira Sans Condensed", sans-serif;
+  font-weight: 300;
+  line-height: 1.75;
+}
+
+h1,
+h2,
+h3,
+h4 {
+  font-family: "Fira Sans Extra Condensed", sans-serif;
+  font-weight: 500;
+}
+
+h1,
+p,
+ul,
+ol {
+  margin: 0;
+  margin-top: 1em;
+}
+
+h2,
+h3,
+h4,
+h5 {
+  margin: 0;
+  margin-top: 1.5em;
+}
+
+h1 {
+  font-weight: 900;
+  font-size: 40px;
+  line-height: 1.1;
+}
+
+header h1 {
+  font-family: "Fira Sans Extra Condensed", sans-serif;
+  font-weight: 500;
+  font-size: 150%;
+  margin-top: 0.5rem;
+  margin-bottom: 0;
+}
+
+p,
+ul,
+ol {
+  margin-bottom: 1rem;
+}
+
+small {
+  /* font-size: 75%; */
+  margin: 0;
+}
+
+header,
+section,
+footer,
+hr {
+}
+
+hr {
+  margin-top: 1rem;
+}
+
+main,
+article {
+  margin-left: auto;
+  margin-right: auto;
+  max-width: 42rem;
+  padding: 1rem;
+}
+
+nav ul {
+  display: flex;
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+  font-size: 150%;
+  /* font-weight: bold; */
+}
+
+nav ul li {
+  padding-right: 0.5rem;
+  color: #666;
+  font-variant-caps: all-small-caps;
+}
+
+nav ul li a {
+  text-decoration: none;
+}
+nav ul li a.selected {
+  font-weight: bolder;
+  text-decoration: underline;
+}
+
+a {
+  color: #007acc;
+  text-decoration: none;
+}
+a:hover {
+  text-decoration: underline;
+}
+
+footer {
+  margin-top: 3rem;
+}
+
+img {
+  border-radius: 0.25rem;
+}
+
+p.photo {
+  text-align: right;
+  margin-top: -2.5rem;
+  margin-right: 0.5rem;
+  color: rgba(255, 255, 255, 0.5);
+}
+
+p.photo a {
+  color: rgba(255, 255, 255, 0.75);
+}
+
+ul.article-list {
+  list-style: none;
+  margin-left: 0;
+  padding-left: 0;
+}
+
+ul.article-list li {
+  padding: 1em 0;
+}
+
+ul.article-list h2,
+ul.article-list p {
+  margin: 0;
+}
+
+ul.article-list li h2 {
+  margin-top: -0.5rem;
+}
+
+table {
+  border-collapse: collapse;
+}
+
+table th {
+  text-align: left;
+  font-weight: bolder;
+  background-color: #fcfcfc;
+}
+table,
+table td,
+table th {
+  border: 0.1rem solid #ccc;
+  padding: 0.5rem;
+}
+
+img {
+  width: 100%;
+}
+
+blockquote {
+  margin-left: -1.75rem;
+  margin-right: 1.75rem;
+  margin-top: 0;
+  margin-bottom: 1.75rem;
+  
+  padding-left: 1.42188rem;
+  padding-right: 0;
+  padding-top: 0;
+  padding-bottom: 0;
+  
+  font-size: 1.2rem;
+  font-style: italic;
+  line-height: 1.75rem;
+  color: hsla(0, 0%, 0%, 0.59);
+  border-left: 0.25rem solid hsla(0, 0%, 0%, 0.5);
+}
+
+/* 
+the rules below are copied from prism.css,
+removing [class*="language-"]
+*/
+
+pre > code,
+pre {
+	color: #ccc;
+	background: none;
+  font-family: "Fira Code", monospace;
+	font-size: 0.9em;
+	text-align: left;
+	white-space: pre;
+	word-spacing: normal;
+	word-break: normal;
+	word-wrap: normal;
+	line-height: 1.5;
+
+	-moz-tab-size: 4;
+	-o-tab-size: 4;
+	tab-size: 4;
+
+	-webkit-hyphens: none;
+	-moz-hyphens: none;
+	-ms-hyphens: none;
+  hyphens: none;
+  
+  border-radius: 0.25rem;
+}
+
+pre {
+	padding: 1em;
+	margin: .5em 0;
+	overflow: auto;
+}
+
+
+pre {
+	background: #2d2d2d;
+}
+
+p > code {
+  font-family: "Fira Code", monospace;
+  font-size: 0.9em;
+  background: #ffefb1;
+  padding: 0.05em 0.25em;
+  border-radius: 0.25rem;
+}
