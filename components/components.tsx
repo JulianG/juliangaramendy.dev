@@ -9,7 +9,7 @@ export function CommonHead(props: Props) {
   const {
     title,
     description = '',
-    openGraphImage = '/assets/opengraph-default.png',
+    openGraphImage = 'https://juliangaramendy.dev/assets/opengraph-default.png',
   } = props
 
   return (
