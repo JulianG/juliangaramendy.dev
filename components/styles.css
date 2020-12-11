@@ -30,6 +30,17 @@ ol {
   margin-top: 1em;
 }
 
+ul {
+  padding-left: 1.5rem;
+}
+
+@media (max-width: 800px) {
+  ul {
+    padding-left: 1rem;
+  }
+}
+
+
 h2,
 h3,
 h4,
