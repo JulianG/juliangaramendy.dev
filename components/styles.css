@@ -9,7 +9,7 @@ html {
 }
 
 body {
-  font-family: "Fira Sans Condensed", sans-serif;
+  font-family: 'Fira Sans Condensed', sans-serif;
   font-weight: 300;
   line-height: 1.75;
 }
@@ -18,7 +18,7 @@ h1,
 h2,
 h3,
 h4 {
-  font-family: "Fira Sans Extra Condensed", sans-serif;
+  font-family: 'Fira Sans Extra Condensed', sans-serif;
   font-weight: 500;
 }
 
@@ -40,7 +40,6 @@ ul {
   }
 }
 
-
 h2,
 h3,
 h4,
@@ -56,7 +55,7 @@ h1 {
 }
 
 header h1 {
-  font-family: "Fira Sans Extra Condensed", sans-serif;
+  font-family: 'Fira Sans Extra Condensed', sans-serif;
   font-weight: 500;
   font-size: 150%;
   margin-top: 0.5rem;
@@ -74,14 +73,16 @@ small {
   margin: 0;
 }
 
-header,
-section,
-footer,
-hr {
-}
-
 hr {
   margin-top: 1rem;
+  width: 33%;
+  border: 0;
+  border-bottom: 0.1rem solid rgba(0, 0, 0, 0.33);
+  border-radius: 0.05rem;
+}
+
+hr.full {
+  width: 100%;
 }
 
 main,
@@ -192,17 +193,24 @@ blockquote {
   margin-right: 1.75rem;
   margin-top: 0;
   margin-bottom: 1.75rem;
-  
+
   padding-left: 1.42188rem;
   padding-right: 0;
   padding-top: 0;
   padding-bottom: 0;
-  
+
   font-size: 1.2rem;
   font-style: italic;
   line-height: 1.75rem;
   color: hsla(0, 0%, 0%, 0.59);
   border-left: 0.25rem solid hsla(0, 0%, 0%, 0.5);
+}
+
+.socialIcon {
+  width: 1.25rem;
+  height: 1.25rem;
+  vertical-align: bottom;
+  margin-bottom: 0.2rem;
 }
 
 /* 
@@ -212,42 +220,41 @@ removing [class*="language-"]
 
 pre > code,
 pre {
-	color: #ccc;
-	background: none;
-  font-family: "Fira Code", monospace;
-	font-size: 0.9em;
-	text-align: left;
-	white-space: pre;
-	word-spacing: normal;
-	word-break: normal;
-	word-wrap: normal;
-	line-height: 1.5;
+  color: #ccc;
+  background: none;
+  font-family: 'Fira Code', monospace;
+  font-size: 0.9em;
+  text-align: left;
+  white-space: pre;
+  word-spacing: normal;
+  word-break: normal;
+  word-wrap: normal;
+  line-height: 1.5;
 
-	-moz-tab-size: 4;
-	-o-tab-size: 4;
-	tab-size: 4;
+  -moz-tab-size: 4;
+  -o-tab-size: 4;
+  tab-size: 4;
 
-	-webkit-hyphens: none;
-	-moz-hyphens: none;
-	-ms-hyphens: none;
+  -webkit-hyphens: none;
+  -moz-hyphens: none;
+  -ms-hyphens: none;
   hyphens: none;
-  
+
   border-radius: 0.25rem;
 }
 
 pre {
-	padding: 1em;
-	margin: .5em 0;
-	overflow: auto;
+  padding: 1em;
+  margin: 0.5em 0;
+  overflow: auto;
 }
 
-
 pre {
-	background: #2d2d2d;
+  background: #2d2d2d;
 }
 
 p > code {
-  font-family: "Fira Code", monospace;
+  font-family: 'Fira Code', monospace;
   font-size: 0.9em;
   background: #ffefb1;
   padding: 0.05em 0.25em;

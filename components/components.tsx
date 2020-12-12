@@ -22,7 +22,7 @@ export function CommonHead(props: Props) {
         <meta name="description" content={description} />
         <meta name="image" content={openGraphImage} />
         <Favicon />
-        
+
         <link rel="preconnect" href="https://fonts.gstatic.com" />
         <link
           href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@300;400&family=Fira+Sans+Condensed:ital,wght@0,300;0,500;1,400&family=Fira+Sans+Extra+Condensed:wght@500;700&display=swap"
@@ -76,55 +76,34 @@ export const Navigation: React.FC = () => {
 export const Footer = () => {
   return (
     <footer>
-      <hr />
-      <p style={styles.bioText}>
-        Written by <strong>Julian Garamendy</strong>&nbsp;
-        <a style={styles.socialIconLink} href="https://dev.to/juliang">
-          <img
-            style={styles.socialIcon}
-            src="https://d2fltix0v2e0sb.cloudfront.net/dev-badge.svg"
-            alt="Julian Garamendy's DEV Profile"
-          />
-        </a>
-        &nbsp;
-        <a
-          style={styles.socialIconLink}
-          href={`https://twitter.com/JulianGWeb`}
-        >
-          <img style={styles.socialIcon} src="/assets/twitter-logo.svg" />
-        </a>
-        &nbsp;
-        <a style={styles.socialIconLink} href={`https://github.com//JulianG`}>
-          <img style={styles.socialIcon} src="/assets/github-logo.svg" />
-        </a>
-        &nbsp;
-        -
-        &nbsp;
-        <small>Banana icon by Freepik from <a href="https://www.flaticon.com/free-icon/banana_688828">FlatIcon</a>.</small>
-      </p>      
+      <hr className="full" />
+      <div style={{ display: 'flex', gap: '1rem', flexWrap: 'wrap' }}>
+        <div>
+          Written by <strong>Julian Garamendy</strong>&nbsp;
+          <a href="https://dev.to/juliang">
+            <img
+              className="socialIcon"
+              src="https://d2fltix0v2e0sb.cloudfront.net/dev-badge.svg"
+              alt="Julian Garamendy's DEV Profile"
+            />
+          </a>
+          &nbsp;
+          <a href={`https://twitter.com/JulianGWeb`}>
+            <img className="socialIcon" src="/assets/twitter-logo.svg" />
+          </a>
+          &nbsp;
+          <a href={`https://github.com//JulianG`}>
+            <img className="socialIcon" src="/assets/github-logo.svg" />
+          </a>
+        </div>
+        <div>
+          Banana icon by Freepik from{' '}
+          <a href="https://www.flaticon.com/free-icon/banana_688828">
+            FlatIcon
+          </a>
+          .
+        </div>
+      </div>
     </footer>
   )
-}
-
-const styles = {
-  socialIcon: {
-    width: '1.25rem',
-    height: '1.25rem',
-    verticalAlign: 'bottom',
-    marginBottom: '0.2rem',
-  },
-  socialIconLink: {
-    boxShadow: 'none',
-  },
-  bioText: {
-    marginTop: '1rem',
-    marginBottom: '1rem',
-  },
-  bioImageStyle: {
-    marginRight: '0.25rem',
-    marginBottom: 0,
-    minWidth: 25,
-    borderRadius: `100%`,
-    float: 'left',
-  },
 }
