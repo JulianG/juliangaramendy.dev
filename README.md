@@ -11,7 +11,8 @@
 - credit icon artists! ✅
 - deploy on Vercel ✅
 - change DNS settings ✅
-- link to prev nad next blog posts? !!!!!!!
+- link to prev nad next blog posts?
+- use next/link
 - check content styles
 - display collections? ❌
 
