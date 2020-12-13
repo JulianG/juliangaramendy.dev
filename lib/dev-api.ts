@@ -26,6 +26,7 @@ export async function getPostBySlug(slug: string): Promise<Post> {
     coverImage: article.cover_image || '',
     socialImage: article.social_image || '',
     bodyHtml,
+    relatedPosts: {},
   }
 }
 

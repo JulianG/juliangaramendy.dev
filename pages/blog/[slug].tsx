@@ -1,7 +1,7 @@
 import { GetStaticProps, GetStaticPaths } from 'next'
 import React from 'react'
 import dayjs from 'dayjs'
-import { Navigation, CommonHead, Footer } from '../../components'
+import { Navigation, CommonHead, Footer, RelatedPosts } from '../../components'
 import { getAllPosts, getPostBySlug } from '../../lib/merged-api'
 import { Post } from '../../lib/types'
 
@@ -31,6 +31,9 @@ export const BlogPostPage = ({ post }: Props): JSX.Element => {
         {post.coverImage ? <img src={post.coverImage} /> : null}
         <div dangerouslySetInnerHTML={{ __html: post.bodyHtml || '' }}></div>
       </section>
+      <hr className="full" />
+      <RelatedPosts {...post.relatedPosts} />
+      <hr className="full" />
       <Footer />
     </article>
   )

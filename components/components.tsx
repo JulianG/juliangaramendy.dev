@@ -1,5 +1,6 @@
 import * as React from 'react'
 import Head from 'next/head'
+import Link from 'next/link'
 import { Favicon } from './Favicon'
 import { useRouter } from 'next/router'
 
@@ -52,21 +53,21 @@ export const Navigation: React.FC = () => {
     <nav>
       <ul>
         <li>
-          <a href="/info" className={sectionName === 'info' ? 'selected' : ''}>
-            Info
-          </a>
+          <Link href="/info">
+            <a className={sectionName === 'info' ? 'selected' : ''}>Info</a>
+          </Link>
         </li>
 
         <li>
-          <a href="/work" className={sectionName === 'work' ? 'selected' : ''}>
-            Work
-          </a>
+          <Link href="/work">
+            <a className={sectionName === 'work' ? 'selected' : ''}>Work</a>
+          </Link>
         </li>
 
         <li>
-          <a href="/blog" className={sectionName === 'blog' ? 'selected' : ''}>
-            Blog
-          </a>
+          <Link href="/blog">
+            <a className={sectionName === 'blog' ? 'selected' : ''}>Blog</a>
+          </Link>
         </li>
       </ul>
     </nav>
@@ -76,7 +77,6 @@ export const Navigation: React.FC = () => {
 export const Footer = () => {
   return (
     <footer>
-      <hr className="full" />
       <div style={{ display: 'flex', gap: '1rem', flexWrap: 'wrap' }}>
         <div>
           Written by <strong>Julian Garamendy</strong>&nbsp;
