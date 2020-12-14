@@ -13,6 +13,7 @@
 - change DNS settings ✅
 - link to prev nad next blog posts?
 - use next/link
+- cover_images have predictable height?
 - check content styles
 - display collections? ❌
 
