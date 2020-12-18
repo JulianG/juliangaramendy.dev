@@ -20,7 +20,6 @@ export async function getPostBySlug(slug: string): Promise<Post> {
   const relatedPosts = await getRelatedPosts(slug)
   try {
     const post = await getFSPostBySlug(slug)
-    console.log(`\n${slug} - ${post.bodyHtml?.substring(0, 10)}`)
     return { ...post, relatedPosts }
   } catch (e) {
     const post = await getDevPostBySlug(slug)

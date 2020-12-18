@@ -46,6 +46,7 @@ export const getStaticProps: GetStaticProps<Props> = async (context) => {
     const post = await getPostBySlug(`${slug}`)
     return { props: { post }, revalidate: 1 }
   } catch (e) {
+    console.error(`Failed to generate post for slug: ${slug}`)
     return { notFound: true }
   }
 }
