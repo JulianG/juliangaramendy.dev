@@ -1,6 +1,7 @@
 import { markdownToHtml } from './markdownToHtml'
 import matter from 'gray-matter'
 import { Post, PostSummary } from './types'
+import { cache } from './cache'
 
 export async function getAllPosts(): Promise<PostSummary[]> {
   return (await getAllDevArticles()).map(articleToPostSummary)
@@ -26,16 +27,19 @@ export async function getPostBySlug(slug: string): Promise<Post> {
     coverImage: article.cover_image || '',
     socialImage: article.social_image || '',
     bodyHtml,
+    relatedPosts: {},
   }
 }
 
 async function getAllDevArticles() {
-  const articles: Array<Article> = await fetch(
-    'https://dev.to/api/articles/me/published',
-    {
-      headers: { 'api-key': process.env.DEVTO_API_KEY || '' },
-    }
-  ).then((r) => r.json())
+  const articles: Array<Article> = await cache(
+    'dev.to/api/articles/me/published',
+    () =>
+      fetch('https://dev.to/api/articles/me/published', {
+        headers: { 'api-key': process.env.DEVTO_API_KEY || '' },
+      }).then((r) => r.json())
+  )
+
   return articles.filter(hasCanonicalUrl)
 }
 

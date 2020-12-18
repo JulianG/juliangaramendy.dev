@@ -1,19 +1,23 @@
-import { GetStaticProps } from "next";
-import React from "react";
-import dayjs from "dayjs";
-import { Navigation, CommonHead, Footer } from "../components";
-import { getAllPosts } from "../lib/merged-api";
-import { PostSummary } from '../lib/types';
+import React from 'react'
+import { GetStaticProps } from 'next'
+import Link from 'next/link'
+import dayjs from 'dayjs'
+import { Navigation, CommonHead, Footer } from '../components'
+import { getAllPosts } from '../lib/merged-api'
+import { PostSummary } from '../lib/types'
 
 export const BlogPage = ({
   posts,
 }: {
-  posts: Array<PostSummary>;
+  posts: Array<PostSummary>
 }): JSX.Element => {
   return (
     <article>
       <header>
-        <CommonHead title="I have to write this down - Julian​Garamendy​.dev" description="A blog about React, TypeScript, and of course bananas." />
+        <CommonHead
+          title="I have to write this down - Julian​Garamendy​.dev"
+          description="A blog about React, TypeScript, and of course bananas."
+        />
         <h1>Julian​Garamendy​.dev</h1>
         <Navigation />
       </header>
@@ -29,30 +33,33 @@ export const BlogPage = ({
             <PostListItem key={post.slug} post={post} />
           ))}
         </ul>
-        <Footer />
       </section>
+      <hr className="full" />
+      <Footer />
     </article>
-  );
-};
+  )
+}
 
 const PostListItem: React.FC<{ post: PostSummary }> = ({ post }) => {
-  const publishDate = dayjs(post.date).format("D MMMM, YYYY");
+  const publishDate = dayjs(post.date).format('D MMMM, YYYY')
   return (
     <li>
-      <small><strong>{publishDate}</strong></small>
+      <small>
+        <strong>{publishDate}</strong>
+      </small>
       <h2>
-        <a href={`/blog/${post.slug}`} style={{ boxShadow: "none" }}>
-          {post.title}
-        </a>
+        <Link href={`/blog/${post.slug}`}>
+          <a style={{ boxShadow: 'none' }}>{post.title}</a>
+        </Link>
       </h2>
       <p>{post.description}</p>
     </li>
-  );
-};
+  )
+}
 
 export const getStaticProps: GetStaticProps = async (context) => {
-  const posts = await getAllPosts();
-  return { props: { posts } };
-};
+  const posts = await getAllPosts()
+  return { props: { posts } }
+}
 
-export default BlogPage;
+export default BlogPage

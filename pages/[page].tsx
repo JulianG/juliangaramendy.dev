@@ -19,6 +19,7 @@ export const Page = ({ title, description, bodyHtml }: Props): JSX.Element => {
       <section>
         <div dangerouslySetInnerHTML={{ __html: bodyHtml }}></div>
       </section>
+      <hr className="full" />
       <Footer />
     </article>
   )

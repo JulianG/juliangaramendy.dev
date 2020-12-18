@@ -48,6 +48,7 @@ export async function getPostBySlug(slug: string): Promise<Post> {
     description: data.description || '',
     date: data.date || "1970-01-01",
     bodyHtml,
+    relatedPosts: {}
   };
 }
 

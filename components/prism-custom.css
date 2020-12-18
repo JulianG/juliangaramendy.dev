@@ -1,0 +1,48 @@
+/* 
+These rules are needed for markdown block codes without a language
+
+The rules below are copied from prism.css, removing [class*="language-"]
+*/
+
+pre > code,
+pre {
+  color: #ccc;
+  background: none;
+  font-family: 'Fira Code', monospace;
+  font-size: 0.9em;
+  text-align: left;
+  white-space: pre;
+  word-spacing: normal;
+  word-break: normal;
+  word-wrap: normal;
+  line-height: 1.5;
+
+  -moz-tab-size: 4;
+  -o-tab-size: 4;
+  tab-size: 4;
+
+  -webkit-hyphens: none;
+  -moz-hyphens: none;
+  -ms-hyphens: none;
+  hyphens: none;
+
+  border-radius: 0.25rem;
+}
+
+pre {
+  padding: 1em;
+  margin: 0.5em 0;
+  overflow: auto;
+}
+
+pre {
+  background: #2d2d2d;
+}
+
+p > code {
+  font-family: 'Fira Code', monospace;
+  font-size: 0.9em;
+  background: #ffefb1;
+  padding: 0.05em 0.25em;
+  border-radius: 0.25rem;
+}
