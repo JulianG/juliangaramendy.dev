@@ -3,6 +3,7 @@ import Head from 'next/head'
 import Link from 'next/link'
 import { Favicon } from './Favicon'
 import { useRouter } from 'next/router'
+import { removeServiceWorker } from '../lib/remove-service-worker'
 
 type Props = { title: string; description?: string; openGraphImage?: string }
 
@@ -12,6 +13,8 @@ export function CommonHead(props: Props) {
     description = '',
     openGraphImage = 'https://juliangaramendy.dev/assets/opengraph-default.png',
   } = props
+
+  removeServiceWorker()
 
   return (
     <>
