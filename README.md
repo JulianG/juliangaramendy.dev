@@ -11,11 +11,14 @@
 - credit icon artists! ✅
 - deploy on Vercel ✅
 - change DNS settings ✅
-- link to prev nad next blog posts?
-- use next/link
+- link to prev nad next blog posts? ✅
+- use next/link ✅
+- remove gatsby service worker ⬅
 - cover_images have predictable height?
 - check content styles
 - display collections? ❌
+- update to TS 4.1 so we can use --noUncheckedIndexedAccess
+  - https://devblogs.microsoft.com/typescript/announcing-typescript-4-1-rc/#no-unchecked-indexed-access and avoid the type annotations below
 
 # NextJS Typescript Boilerplate
 
