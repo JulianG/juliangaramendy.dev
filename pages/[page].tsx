@@ -3,6 +3,8 @@ import { GetStaticPaths, GetStaticProps } from 'next'
 import { CommonHead, Footer, Navigation } from '../components'
 import { getPage } from '../lib/fs-api'
 
+const ONE_MINUTE = 60
+
 type Props = { title: string; description: string; bodyHtml: string }
 
 export const Page = ({ title, description, bodyHtml }: Props): JSX.Element => {
@@ -30,7 +32,10 @@ export const getStaticProps: GetStaticProps<Props> = async (context) => {
 
   try {
     const { title, bodyHtml } = await getPage(`${page}`)
-    return { props: { title, description: '', bodyHtml }, revalidate: 1 }
+    return {
+      props: { title, description: '', bodyHtml },
+      revalidate: ONE_MINUTE,
+    }
   } catch (e) {
     return { notFound: true }
   }

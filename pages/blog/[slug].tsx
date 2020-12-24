@@ -5,6 +5,8 @@ import { Navigation, CommonHead, Footer, RelatedPosts } from '../../components'
 import { getAllPosts, getPostBySlug } from '../../lib/merged-api'
 import { Post } from '../../lib/types'
 
+const ONE_MINUTE = 60
+
 type Props = { post?: Partial<Post> }
 
 export const BlogPostPage = ({ post }: Props): JSX.Element => {
@@ -44,7 +46,7 @@ export const getStaticProps: GetStaticProps<Props> = async (context) => {
 
   try {
     const post = await getPostBySlug(`${slug}`)
-    return { props: { post }, revalidate: 1 }
+    return { props: { post }, revalidate: ONE_MINUTE }
   } catch (e) {
     console.error(`Failed to generate post for slug: ${slug}`)
     return { notFound: true }
