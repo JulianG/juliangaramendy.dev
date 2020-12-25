@@ -14,6 +14,7 @@
 - link to prev nad next blog posts? ✅
 - use next/link ✅
 - remove gatsby service worker ✅
+- openGraphImage ✅
 - cover_images have predictable height?
 - check content styles
 - display collections? ❌

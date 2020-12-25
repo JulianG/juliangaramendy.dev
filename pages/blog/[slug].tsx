@@ -22,7 +22,7 @@ export const BlogPostPage = ({ post }: Props): JSX.Element => {
         <CommonHead
           title={`${post.title} - Julian​Garamendy​.dev`}
           description={post.description}
-          openGraphImage={post.coverImage}
+          openGraphImage={post.openGraphImage || post.coverImage}
         />
         <h1>Julian​Garamendy​.dev</h1>
         <Navigation />

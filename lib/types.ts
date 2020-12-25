@@ -11,8 +11,8 @@ export type Post = {
   description: string
   date: string
   bodyHtml: string
+  openGraphImage?: string
   coverImage?: string
-  socialImage?: string
   relatedPosts: {
     prev?: PostSummary
     next?: PostSummary

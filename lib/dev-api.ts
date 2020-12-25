@@ -25,7 +25,7 @@ export async function getPostBySlug(slug: string): Promise<Post> {
     description: article.description || '',
     date: article.published_timestamp || '1970-01-01',
     coverImage: article.cover_image || '',
-    socialImage: article.social_image || '',
+    openGraphImage: parts.data.ogimage || '',
     bodyHtml,
     relatedPosts: {},
   }
