@@ -13,6 +13,10 @@ export type Post = {
   bodyHtml: string
   openGraphImage?: string
   coverImage?: string
+  coverImageDimensions?: {
+    width: number
+    height: number
+  }
   relatedPosts: {
     prev?: PostSummary
     next?: PostSummary

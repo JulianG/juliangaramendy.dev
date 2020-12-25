@@ -50,6 +50,11 @@ export async function getPostBySlug(slug: string): Promise<Post> {
     bodyHtml,
     relatedPosts: {},
     openGraphImage: data.ogimage || '',
+    coverImage: data.cover_image || '',
+    coverImageDimensions: {
+      width: 840,
+      height: 353,
+    },
   }
 }
 

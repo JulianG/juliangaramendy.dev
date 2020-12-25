@@ -1,5 +1,8 @@
 
 module.exports = {
+  images: {
+    domains: ['res.cloudinary.com']
+  },
   async redirects() {
     return [{ source: '/', destination: '/info', permanent: true },
     { source: '/hello', destination: '/blog/hello', permanent: true },

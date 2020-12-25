@@ -24,8 +24,12 @@ export async function getPostBySlug(slug: string): Promise<Post> {
     title: article.title || '',
     description: article.description || '',
     date: article.published_timestamp || '1970-01-01',
-    coverImage: article.cover_image || '',
     openGraphImage: parts.data.ogimage || '',
+    coverImage: article.cover_image || '',
+    coverImageDimensions: {
+      width: 840,
+      height: 353,
+    },
     bodyHtml,
     relatedPosts: {},
   }

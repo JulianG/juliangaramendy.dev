@@ -16,6 +16,7 @@
 - remove gatsby service worker ✅
 - openGraphImage ✅
 - clean up code
+- bundle analizer
 - display collections? ❌
 - cover_images have predictable height?
 - check content styles

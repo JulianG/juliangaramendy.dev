@@ -1,4 +1,5 @@
 import { GetStaticProps, GetStaticPaths } from 'next'
+import Image from 'next/image'
 import React from 'react'
 import dayjs from 'dayjs'
 import { Navigation, CommonHead, Footer, RelatedPosts } from '../../components'
@@ -30,7 +31,14 @@ export const BlogPostPage = ({ post }: Props): JSX.Element => {
       <section>
         <h1>{post.title}</h1>
         <small>{publishDate}</small>
-        {post.coverImage ? <img src={post.coverImage} /> : null}
+        {post.coverImage ? (
+          <Image
+            src={post.coverImage}
+            layout="responsive"
+            width={840}
+            height={353}
+          />
+        ) : null}
         <div dangerouslySetInnerHTML={{ __html: post.bodyHtml || '' }}></div>
       </section>
       <hr className="full" />
