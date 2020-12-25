@@ -15,6 +15,7 @@
 - use next/link ✅
 - remove gatsby service worker ✅
 - openGraphImage ✅
+- NextJS Image Component ✅
 - clean up code
 - bundle analizer
 - display collections? ❌
