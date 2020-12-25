@@ -15,11 +15,12 @@
 - use next/link ✅
 - remove gatsby service worker ✅
 - openGraphImage ✅
+- clean up code
+- display collections? ❌
 - cover_images have predictable height?
 - check content styles
-- display collections? ❌
 - update to TS 4.1 so we can use --noUncheckedIndexedAccess
-  - https://devblogs.microsoft.com/typescript/announcing-typescript-4-1-rc/#no-unchecked-indexed-access and avoid the type annotations below
+  - https://devblogs.microsoft.com/typescript/announcing-typescript-4-1-rc/#no-unchecked-indexed-access and avoid some type annotations
 
 # NextJS Typescript Boilerplate
 
