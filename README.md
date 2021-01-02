@@ -16,8 +16,8 @@
 - remove gatsby service worker ✅
 - openGraphImage ✅
 - NextJS Image Component ✅
+- bundle analizer ✅
 - clean up code
-- bundle analizer
 - display collections? ❌
 - cover_images have predictable height?
 - check content styles
