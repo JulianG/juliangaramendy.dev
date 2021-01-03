@@ -14,7 +14,14 @@ export async function cache<T>(key: string, fn: () => Promise<T>): Promise<T> {
 }
 
 function shouldRevalidate(key: string): boolean {
-  return cacheMap[key] ? new Date().getTime() > cacheMap[key].expiresAt : true
+  if (cacheMap[key]) {
+    const rsp = new Date().getTime() > cacheMap[key].expiresAt
+    console.log( rsp ? '❌ cache miss (expired)' : '✅ cache hit!')
+    return rsp
+  } else {
+    console.log('🟡 cache miss (undefined)')
+    return true
+  }
 }
 
 async function revalidateKey<T>(key: string, fn: () => Promise<T>) {
@@ -23,5 +30,6 @@ async function revalidateKey<T>(key: string, fn: () => Promise<T>) {
     value: response,
     expiresAt: new Date().getTime() + EXPIRATION,
   }
+  console.log('setting cache! 🌈')
   return cacheMap[key].value as T
 }

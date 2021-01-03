@@ -39,24 +39,16 @@ async function getAllDevArticles() {
   const articles: Array<Article> = await cache(
     'dev.to/api/articles/me/published',
     async () => {
-      console.log('Fetching from "https://dev.to/api/articles/me/published"...')
-
       const r = await fetch('https://dev.to/api/articles/me/published', {
         headers: { 'api-key': process.env.DEVTO_API_KEY || '' },
       })
-      console.log(`trying to parse json response... type: ${r.type}`)
 
-      try {
-        const json = await r.json()
-        console.log('parsed!')
-        return json
-      } catch (e) {
-        console.error(`Failed to parse json response. ${e}`)
-        console.error(`response is ${r}`)
-        console.error(`trying r.text()...`)
-        const t = await r.text()
-        console.error(`t ${t}`)
-        throw 'Failed to parse json response (see above)'
+      if (r.status >= 200 && r.status < 300) {
+        return r.json()
+      } else {
+        throw new Error(
+          `Error fetching... Status code: ${r.status}, ${r.statusText}`
+        )
       }
     }
   )
