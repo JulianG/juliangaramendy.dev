@@ -39,6 +39,8 @@ async function getAllDevArticles() {
   const articles: Array<Article> = await cache(
     'dev.to/api/articles/me/published',
     async () => {
+      console.log('Fetching from "https://dev.to/api/articles/me/published"...')
+
       const r = await fetch('https://dev.to/api/articles/me/published', {
         headers: { 'api-key': process.env.DEVTO_API_KEY || '' },
       })
