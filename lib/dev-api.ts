@@ -38,10 +38,21 @@ export async function getPostBySlug(slug: string): Promise<Post> {
 async function getAllDevArticles() {
   const articles: Array<Article> = await cache(
     'dev.to/api/articles/me/published',
-    () =>
-      fetch('https://dev.to/api/articles/me/published', {
+    async () => {
+      const r = await fetch('https://dev.to/api/articles/me/published', {
         headers: { 'api-key': process.env.DEVTO_API_KEY || '' },
-      }).then((r) => r.json())
+      })
+      try {
+        return r.json()
+      } catch (e) {
+        console.error(`Failed to parse json response.`)
+        console.error(`response is ${r}`)
+        console.error(`trying r.text()...`)
+        const t = await r.text()
+        console.error(`t ${t}`)
+        throw('Failed to parse json response (see above)')
+      }
+    }
   )
 
   return articles.filter(hasCanonicalUrl)
