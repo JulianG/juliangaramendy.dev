@@ -44,15 +44,19 @@ async function getAllDevArticles() {
       const r = await fetch('https://dev.to/api/articles/me/published', {
         headers: { 'api-key': process.env.DEVTO_API_KEY || '' },
       })
+      console.log(`trying to parse json response... type: ${r.type}`)
+
       try {
-        return r.json()
+        const json = await r.json()
+        console.log('parsed!')
+        return json
       } catch (e) {
-        console.error(`Failed to parse json response.`)
+        console.error(`Failed to parse json response. ${e}`)
         console.error(`response is ${r}`)
         console.error(`trying r.text()...`)
         const t = await r.text()
         console.error(`t ${t}`)
-        throw('Failed to parse json response (see above)')
+        throw 'Failed to parse json response (see above)'
       }
     }
   )
