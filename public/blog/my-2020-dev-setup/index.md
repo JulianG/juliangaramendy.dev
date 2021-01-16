@@ -20,6 +20,7 @@ description: 'This is my setup in 2020 on a MacBook Pro running macOS Catalina 1
 **oh-my-zsh**: https://ohmyz.sh/#install
 
 Adding the following to **~/.zshrc**:
+
 ```bash
 alias gfomm="git fetch origin master:master"
 alias gco="git checkout"
@@ -50,6 +51,7 @@ I use [spaceship-prompt](https://github.com/denysdovhan/spaceship-prompt) to cus
 **yarn:** https://classic.yarnpkg.com/en/docs/install/#mac-stable (`brew install yarn`)
 
 **Visual Studio Code:** https://code.visualstudio.com/. Notable Extensions:
+
 - [Settings Sync](https://marketplace.visualstudio.com/items?itemName=Shan.code-settings-sync)
 - [Quokka](https://quokkajs.com/): "Rapid JavaScript prototyping in your editor."
 - [Bracket Pair Colorizer](https://marketplace.visualstudio.com/items?itemName=CoenraadS.bracket-pair-colorizer)

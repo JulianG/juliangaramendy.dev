@@ -1,4 +1,3 @@
-
 # JulianGaramendy.dev
 
 ## TODO:
