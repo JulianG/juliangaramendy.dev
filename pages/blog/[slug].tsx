@@ -51,7 +51,6 @@ export const BlogPostPage = ({ post }: Props): JSX.Element => {
 
 export const getStaticProps: GetStaticProps<Props> = async (context) => {
   const slug = context.params?.slug
-
   try {
     const post = await getPostBySlug(`${slug}`)
     return { props: { post }, revalidate: ONE_MINUTE }
@@ -64,9 +63,7 @@ export const getStaticProps: GetStaticProps<Props> = async (context) => {
 
 export const getStaticPaths: GetStaticPaths = async () => {
   const posts = await getAllPosts()
-
   const paths = posts.map((post) => ({ params: { slug: post.slug } }))
-
   return {
     paths,
     fallback: false,
