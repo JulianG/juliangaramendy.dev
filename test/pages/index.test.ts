@@ -1,11 +1,11 @@
-import React from "react";
-import { render, fireEvent } from "../testUtils";
-import { BlogPostPage } from "../../pages/blog/[slug]";
+// // import React from "react";
+// // import { render, fireEvent } from "../testUtils";
+// // import { BlogPostPage } from "../../pages/blog/[slug]";
 
-describe("Home page", () => {
-  it("tests", () => {
-    expect(true).toBeTruthy();
-  });
+describe('Home page', () => {
+  it('tests', () => {
+    expect(true).toBeTruthy()
+  })
   // it('matches snapshot', () => {
   //   const { asFragment } = render(<Home />, {})
   //   expect(asFragment()).toMatchSnapshot()
@@ -17,4 +17,4 @@ describe("Home page", () => {
   //   fireEvent.click(getByText('Test Button'))
   //   expect(window.alert).toHaveBeenCalledWith('With typescript and Jest')
   // })
-});
+})

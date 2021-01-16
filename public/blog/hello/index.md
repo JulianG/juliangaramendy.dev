@@ -15,9 +15,9 @@ If everything goes well I should be able to highlight blocks of code like the on
 
 ```typescript
 type Banana = {
-  color: number,
+  color: number
   length: number
-};
+}
 ```
 
 OK. That seems to work.

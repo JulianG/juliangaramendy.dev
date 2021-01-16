@@ -38,10 +38,19 @@ export async function getPostBySlug(slug: string): Promise<Post> {
 async function getAllDevArticles() {
   const articles: Array<Article> = await cache(
     'dev.to/api/articles/me/published',
-    () =>
-      fetch('https://dev.to/api/articles/me/published', {
+    async () => {
+      const r = await fetch('https://dev.to/api/articles/me/published', {
         headers: { 'api-key': process.env.DEVTO_API_KEY || '' },
-      }).then((r) => r.json())
+      })
+
+      if (r.status >= 200 && r.status < 300) {
+        return r.json()
+      } else {
+        throw new Error(
+          `Error fetching... Status code: ${r.status}, ${r.statusText}`
+        )
+      }
+    }
   )
 
   return articles.filter(hasCanonicalUrl)

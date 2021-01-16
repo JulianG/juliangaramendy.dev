@@ -22,11 +22,11 @@ Or worse: you try -like me- to group your tabs by task, or subject, or anything,
 
 ![Banana Tabs extension](./bananatabs-list-wins-short.png)
 
-* You can show or hide each tab or window individually. 
-* You can re-arrange your windows in the list.
-* You can name and rename windows
+- You can show or hide each tab or window individually.
+- You can re-arrange your windows in the list.
+- You can name and rename windows
 
-It's ideal to suspend some task and picking it up later. 
+It's ideal to suspend some task and picking it up later.
 
 You can even rearrange the windows in the list, to keep the most important at the top.
 

@@ -13,19 +13,21 @@ When injecting MobX stores into React components in Typescript, [the recommended
 
 ```typescript
 interface BananaProps {
-  label: string;
-  bananaStore?: BananaStore; // 👎 note the optional operator
+  label: string
+  bananaStore?: BananaStore // 👎 note the optional operator
 }
 
-@inject("bananaStore")
+@inject('bananaStore')
 @observer
 class BananaComponent extends Component<BananaProps> {
-
   render() {
-    const bananas = this.props.bananaStore!.bananas; // 👎 note the non-null assertion operator
-    return <p>{this.props.label}:{bananas}</p>
+    const bananas = this.props.bananaStore!.bananas // 👎 note the non-null assertion operator
+    return (
+      <p>
+        {this.props.label}:{bananas}
+      </p>
+    )
   }
-
 }
 ```
 
@@ -39,35 +41,38 @@ So we believe it would be best to ban the use of `!` and enforce it with a linte
 
 A colleague pointed out [this article](https://medium.com/@prashaantt/strongly-typing-injected-react-props-635a6828acaf) from December 2016, by Prashant Tiwari.
 
-Here the author declares the dependency in a separate interface that extends `Props`, and then the injected props can be accessed using a getter function. 
+Here the author declares the dependency in a separate interface that extends `Props`, and then the injected props can be accessed using a getter function.
 
 ```typescript
 interface InjectedProps extends Props {
-  bananaStore: BananaStore; // 👍 no question mark here
+  bananaStore: BananaStore // 👍 no question mark here
 }
 
 interface BananaProps {
-  label: string;
+  label: string
 }
 
-@inject("bananaStore")
+@inject('bananaStore')
 @observer
 class BananaComponent extends Component<BananaProps> {
-
   get injected() {
-    return this.props as InjectedProps;
+    return this.props as InjectedProps
   }
 
   render() {
-    const bananas = this.injected.bananaStore.bananas; // 👍 no exclamation mark here
-    return <p>{this.props.label}:{bananas}</p>
+    const bananas = this.injected.bananaStore.bananas // 👍 no exclamation mark here
+    return (
+      <p>
+        {this.props.label}:{bananas}
+      </p>
+    )
   }
-
 }
 ```
 
 This is great! More type safety.
 But there are two things I don't like about this solution:
+
 1. It forces us to declare that `InjectedProps` extends `BananaProps`.
 2. When typing `this.injected.` IntelliSense will suggest any injected props and any 'normal' props.
 
@@ -79,28 +84,31 @@ We played around with types for a while with a colleague and I think this soluti
 
 ```typescript
 interface InjectedProps {
-  bananaStore: BananaStore; // 👍 no question mark here, and no interface inheritance
+  bananaStore: BananaStore // 👍 no question mark here, and no interface inheritance
 }
 
 interface BananaProps {
-  label: string;
+  label: string
 }
 
-@inject("bananaStore")
+@inject('bananaStore')
 @observer
 class BananaComponent extends Component<BananaProps> {
-
   get injected(): InjectedProps {
-    return this.props as BananaProps & InjectedProps;
+    return this.props as BananaProps & InjectedProps
   }
 
   render() {
-    const bananas = this.injected.bananaStore.bananas; // 👍 no exclamation mark here
-    return <p>{this.props.label}:{bananas}</p>
+    const bananas = this.injected.bananaStore.bananas // 👍 no exclamation mark here
+    return (
+      <p>
+        {this.props.label}:{bananas}
+      </p>
+    )
   }
-
 }
 ```
+
 Now `InjectedProps` declares `bananaStore` as required and it doesn't extend `BananaProps`. And when accessing `this.injected` IntelliSense will only suggest members of `InjectedProps`, as expected.
 
 If we still want to get "access" to all props, we could write a different getter without the explicit return type:
@@ -110,12 +118,13 @@ get allProps() {
   return this.props as BananaProps & InjectedProps;
 }
 ```
+
 And that is exactly what `this.props` contains: properties from both interfaces; not because `InjectedProps` extends `BananaProps`, but because the run-time injection results in it.
 
 ## Ok, but WHY!?
 
 Once we don't need the non-null assertion operator for injected props, we can enforce a linter rule like [tslint: no-non-null-assertion](https://palantir.github.io/tslint/rules/no-non-null-assertion/) in the entire codebase. This, along with [strictPropertyInitialization](https://mariusschulz.com/blog/typescript-2-7-strict-property-initialization) allows us to rely more on the static typing to avoid run-time null pointer errors.
 
-----
+---
 
 Special thanks to [Albert Plana](https://github.com/aPlana) for his TypeScript wizardry.
