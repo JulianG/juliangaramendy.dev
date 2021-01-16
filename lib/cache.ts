@@ -4,19 +4,20 @@ type CacheEntry = {
 }
 const cacheMap: Record<string, CacheEntry> = {}
 
-const EXPIRATION = 1000 * 60 * 5 // 5 minutes
+const EXPIRATION = 1000 * 60 * 10 // 10 minutes
 
 export async function cache<T>(key: string, fn: () => Promise<T>): Promise<T> {
-  if (shouldRevalidate(key)) {
+  if (await shouldRevalidate(key)) {
     await revalidateKey(key, fn)
   }
-  return cacheMap[key].value as T
+  return retrieveCachedValue(key)
 }
 
-function shouldRevalidate(key: string): boolean {
-  if (cacheMap[key]) {
-    const rsp = new Date().getTime() > cacheMap[key].expiresAt
-    console.log( rsp ? '❌ cache miss (expired)' : '✅ cache hit!')
+async function shouldRevalidate(key: string): Promise<boolean> {
+  const entry = await retrieveCacheEntry(key)
+  if (entry) {
+    const rsp = new Date().getTime() > entry.expiresAt
+    console.log(rsp ? '❌ cache miss (expired)' : '✅ cache hit!')
     return rsp
   } else {
     console.log('🟡 cache miss (undefined)')
@@ -26,10 +27,25 @@ function shouldRevalidate(key: string): boolean {
 
 async function revalidateKey<T>(key: string, fn: () => Promise<T>) {
   const response = await fn()
+  console.log('setting cache! 🌈')
+  await writeCachedValue(key, response)
+  return response
+}
+
+async function retrieveCacheEntry<V>(
+  key: string
+): Promise<{ value: V; expiresAt: number }> {
+  return cacheMap[key] as any
+}
+
+async function retrieveCachedValue<V>(key: string): Promise<V> {
+  const entry = await retrieveCacheEntry<V>(key)
+  return entry.value
+}
+
+async function writeCachedValue<V>(key: string, value: V) {
   cacheMap[key] = {
-    value: response,
+    value,
     expiresAt: new Date().getTime() + EXPIRATION,
   }
-  console.log('setting cache! 🌈')
-  return cacheMap[key].value as T
 }
