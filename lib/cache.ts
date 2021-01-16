@@ -1,19 +1,18 @@
 import sha from 'sha-1'
 import { readJsonFile, writeJsonFile } from './fs-read-write'
 
-type CacheEntry = {
+type CacheEntry<V> = {
   expiresAt: number
-  value: unknown
+  value: V
 }
-const cacheMap: Record<string, CacheEntry> = {}
 
 const EXPIRATION = 1000 * 60 * 10 // 10 minutes
 
-export async function cache<T>(key: string, fn: () => Promise<T>): Promise<T> {
+export async function cache<V>(key: string, fn: () => Promise<V>): Promise<V> {
   if (await shouldRevalidate(key)) {
     return revalidateKey(key, fn)
   } else {
-    const value = await retrieveCachedValue<T>(key)
+    const value = await retrieveCachedValue<V>(key)
     return value!
   }
 }
@@ -22,15 +21,13 @@ async function shouldRevalidate(key: string): Promise<boolean> {
   const entry = await retrieveCacheEntry(key)
   if (entry) {
     const rsp = new Date().getTime() > entry.expiresAt
-    // console.log(rsp ? '❌ cache miss (expired)' : '✅ cache hit!')
     return rsp
   } else {
-    // console.log('🟡 cache miss (undefined)')
     return true
   }
 }
 
-async function revalidateKey<T>(key: string, fn: () => Promise<T>) {
+async function revalidateKey<V>(key: string, fn: () => Promise<V>) {
   const response = await fn()
   // console.log('setting cache! 🌈')
   await writeCachedValue(key, response)
@@ -39,7 +36,7 @@ async function revalidateKey<T>(key: string, fn: () => Promise<T>) {
 
 async function retrieveCacheEntry<V>(
   key: string
-): Promise<{ value: V; expiresAt: number } | undefined> {
+): Promise<CacheEntry<V> | undefined> {
   return readJsonFile(`./.cache-${sha(key)}.json`)
 }
 

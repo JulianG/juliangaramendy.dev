@@ -17,7 +17,7 @@
 - openGraphImage ✅
 - NextJS Image Component ✅
 - bundle analizer ✅
-- Fix flaky build
+- Fix flaky build ✅
 - clean up code
 - display collections? ❌
 - cover_images have predictable height?

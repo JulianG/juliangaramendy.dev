@@ -57,7 +57,7 @@ const PostListItem: React.FC<{ post: PostSummary }> = ({ post }) => {
   )
 }
 
-export const getStaticProps: GetStaticProps = async (context) => {
+export const getStaticProps: GetStaticProps = async () => {
   const posts = await getAllPosts()
   return { props: { posts } }
 }

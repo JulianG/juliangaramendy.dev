@@ -1,5 +1,4 @@
 import fs from 'fs'
-import { WriteFileOptions } from 'fs'
 
 export function readJsonFile<T>(path: string) {
   return new Promise<T | undefined>((resolve, reject) => {
@@ -10,8 +9,10 @@ export function readJsonFile<T>(path: string) {
         let rsp
         try {
           rsp = JSON.parse(data)
-        } catch (e) {}
-        resolve(rsp)
+          resolve(rsp)
+        } catch (e) {
+          reject(e.toString())
+        }
       }
     })
   })
