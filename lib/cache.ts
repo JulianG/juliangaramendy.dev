@@ -6,7 +6,7 @@ type CacheEntry<V> = {
   value: V
 }
 
-const EXPIRATION = 1000 * 60 * 10 // 10 minutes
+const TEN_MINUTES = 1000 * 60 * 10
 
 export async function cache<V>(key: string, fn: () => Promise<V>): Promise<V> {
   if (await shouldRevalidate(key)) {
@@ -48,6 +48,6 @@ async function retrieveCachedValue<V>(key: string): Promise<V | undefined> {
 async function writeCachedValue<V>(key: string, value: V) {
   return writeJsonFile(`./.cache-${sha(key)}.json`, {
     value,
-    expiresAt: new Date().getTime() + EXPIRATION,
+    expiresAt: new Date().getTime() + TEN_MINUTES,
   })
 }

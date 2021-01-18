@@ -6,7 +6,7 @@ import { Navigation, CommonHead, Footer, RelatedPosts } from '../../components'
 import { getAllPosts, getPostBySlug } from '../../lib/merged-api'
 import { Post } from '../../lib/types'
 
-const ONE_MINUTE = 60
+const TEN_MINUTES = 60 * 10
 
 type Props = { post?: Partial<Post> }
 
@@ -53,7 +53,7 @@ export const getStaticProps: GetStaticProps<Props> = async (context) => {
   const slug = context.params?.slug
   try {
     const post = await getPostBySlug(`${slug}`)
-    return { props: { post }, revalidate: ONE_MINUTE }
+    return { props: { post }, revalidate: TEN_MINUTES }
   } catch (e) {
     console.error(`Failed to generate post for slug: ${slug}`)
     return { notFound: true }
@@ -63,10 +63,7 @@ export const getStaticProps: GetStaticProps<Props> = async (context) => {
 export const getStaticPaths: GetStaticPaths = async () => {
   const posts = await getAllPosts()
   const paths = posts.map((post) => ({ params: { slug: post.slug } }))
-  return {
-    paths,
-    fallback: false,
-  }
+  return { paths, fallback: true }
 }
 
 export default BlogPostPage

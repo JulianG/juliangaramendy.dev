@@ -24,7 +24,7 @@ I usually work with:
 **Git, Cicle CI, Travis CI.**
 
 I also have experience with:  
-**Angular, C++, C#, Python, ActionScript**  
+**Angular, C++, C#, Python, ActionScript, PHP**  
 **JSON-RPC, SVN.**
 
 I'm currently working at **[TransferWise](https://transferwise.com)** as a Front End Engineer.
