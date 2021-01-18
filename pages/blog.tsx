@@ -59,7 +59,7 @@ const PostListItem: React.FC<{ post: PostSummary }> = ({ post }) => {
 
 export const getStaticProps: GetStaticProps = async () => {
   const posts = await getAllPosts()
-  return { props: { posts } }
+  return { props: { posts }, revalidate: 1 }
 }
 
 export default BlogPage
