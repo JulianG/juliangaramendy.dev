@@ -1,54 +1,63 @@
 import sha from 'sha-1'
 import { readJsonFile, writeJsonFile } from './fs-read-write'
 
-type CacheEntry<V> = {
-  expiresAt: number
-  value: V
-}
+type CacheEntry<V> =
+  | {
+      status: 'done'
+      expiresAt: number
+      value: V
+    }
+  | {
+      status: 'pending'
+      expiresAt: number
+    }
 
-const ONE_MINUTE = 1000 * 60 * 1
+export function getCached<V>(
+  key: string,
+  fn: () => Promise<V>,
+  cacheDurationMs: number
+) {
+  //
+  const getEntry = async (): Promise<CacheEntry<V> | undefined> =>
+    readJsonFile(`./.cache-${sha(key)}.json`)
 
-export async function cache<V>(key: string, fn: () => Promise<V>): Promise<V> {
-  if (await shouldRevalidate(key)) {
-    return revalidateKey(key, fn)
-  } else {
-    const value = await retrieveCachedValue<V>(key)
-    return value!
+  const writePendingEntry = () =>
+    writeJsonFile(`./.cache-${sha(key)}.json`, {
+      status: 'pending',
+      expiresAt: new Date().getTime() + 10000,
+    })
+
+  const writeEntry = async (value: V) =>
+    writeJsonFile(`./.cache-${sha(key)}.json`, {
+      status: 'done',
+      expiresAt: new Date().getTime() + cacheDurationMs,
+      value,
+    })
+
+  const wait = (t: number) => new Promise((resolve) => setTimeout(resolve, t))
+
+  const revalidate = async (): Promise<V> => {
+    await writePendingEntry()
+    const value = await fn()
+    await writeEntry(value)
+    return value
   }
-}
 
-async function shouldRevalidate(key: string): Promise<boolean> {
-  const entry = await retrieveCacheEntry(key)
-  if (entry) {
-    const rsp = new Date().getTime() > entry.expiresAt
-    return rsp
-  } else {
-    return true
+  const hasExpired = (entry: CacheEntry<V>) =>
+    new Date().getTime() > entry.expiresAt
+
+  const getValue = async (): Promise<V> => {
+    const entry = await getEntry()
+    if (entry) {
+      if (entry.status === 'done' && !hasExpired(entry)) {
+        return entry.value
+      } else if (entry.status === 'pending' && !hasExpired(entry)) {
+        await wait(500)
+        return getValue()
+      }
+    }
+    return revalidate()
   }
-}
 
-async function revalidateKey<V>(key: string, fn: () => Promise<V>) {
-  // console.log('revalidating ...', key)
-  const response = await fn()
-  // console.log('setting cache! 🌈')
-  await writeCachedValue(key, response)
-  return response
-}
-
-async function retrieveCacheEntry<V>(
-  key: string
-): Promise<CacheEntry<V> | undefined> {
-  return readJsonFile(`./.cache-${sha(key)}.json`)
-}
-
-async function retrieveCachedValue<V>(key: string): Promise<V | undefined> {
-  const entry = await retrieveCacheEntry<V>(key)
-  return entry ? entry.value : undefined
-}
-
-async function writeCachedValue<V>(key: string, value: V) {
-  return writeJsonFile(`./.cache-${sha(key)}.json`, {
-    value,
-    expiresAt: new Date().getTime() + ONE_MINUTE,
-  })
+  return getValue()
 }

@@ -1,7 +1,23 @@
 import { markdownToHtml } from './markdownToHtml'
 import matter from 'gray-matter'
 import { Post, PostSummary } from './types'
-import { cache } from './cache'
+import { getCached } from './cache'
+
+async function fetchArticles(): Promise<Article[]> {
+  console.log('fetching articles from dev.to...')
+  const r = await fetch('https://dev.to/api/articles/me/published', {
+    headers: { 'api-key': process.env.DEVTO_API_KEY || '' },
+  })
+
+  if (r.status < 200 || r.status >= 300) {
+    throw new Error(
+      `Error fetching... Status code: ${r.status}, ${r.statusText}`
+    )
+  }
+  return r.json()
+}
+
+const ONE_MINUTE = 1000 * 60 * 1
 
 export async function getAllPosts(): Promise<PostSummary[]> {
   return (await getAllDevArticles()).map(articleToPostSummary)
@@ -36,23 +52,7 @@ export async function getPostBySlug(slug: string): Promise<Post> {
 }
 
 async function getAllDevArticles() {
-  const articles: Array<Article> = await cache(
-    'dev.to/api/articles/me/published',
-    async () => {
-      const r = await fetch('https://dev.to/api/articles/me/published', {
-        headers: { 'api-key': process.env.DEVTO_API_KEY || '' },
-      })
-
-      if (r.status >= 200 && r.status < 300) {
-        return r.json()
-      } else {
-        throw new Error(
-          `Error fetching... Status code: ${r.status}, ${r.statusText}`
-        )
-      }
-    }
-  )
-
+  const articles = await getCached('dev.to.articles', fetchArticles, ONE_MINUTE)
   return articles.filter(hasCanonicalUrl)
 }
 
