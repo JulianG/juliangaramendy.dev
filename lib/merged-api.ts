@@ -1,13 +1,16 @@
 import { Post, PostSummary } from './types'
-import { getPostBySlug as getFSPostBySlug } from './fs-api'
+import {
+  getPostBySlug as getFSPostBySlug,
+  getAllPosts as getAllFSPosts,
+} from './fs-api'
 import {
   getPostBySlug as getDevPostBySlug,
   getAllPosts as getAllDevPosts,
 } from './dev-api'
 
 export async function getAllPosts(): Promise<PostSummary[]> {
-  const [dev] = await Promise.all([getAllDevPosts()])
-  const allPosts = [...dev].sort((post1, post2) =>
+  const [fs, dev] = await Promise.all([getAllFSPosts(), getAllDevPosts()])
+  const allPosts = [...fs, ...dev].sort((post1, post2) =>
     post1.date > post2.date ? -1 : 1
   )
   return allPosts
