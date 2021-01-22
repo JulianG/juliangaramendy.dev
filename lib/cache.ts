@@ -50,10 +50,14 @@ export function getCached<V>(
     const entry = await getEntry()
     if (entry) {
       if (entry.status === 'done' && !hasExpired(entry)) {
+        console.log(`🌤 cache entry is valid`)
         return entry.value
       } else if (entry.status === 'pending' && !hasExpired(entry)) {
         await wait(500)
         return getValue()
+      }
+      if (hasExpired(entry)) {
+        console.log(`🌧 cache entry expired. status: ${entry.status}`)
       }
     }
     return revalidate()
