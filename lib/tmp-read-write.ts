@@ -11,13 +11,8 @@ export function readJsonFile<T>(path: string) {
         resolve(undefined)
       } else {
         try {
-          const rsp = JSON.parse(data)
-          console.log(`✅ Success reading from ${tmpPath(path)}`)
-          resolve(rsp)
+          resolve(JSON.parse(data))
         } catch (e) {
-          console.error(
-            `❌ Error parsing json from ${tmpPath(path)}. ${e.toString()}`
-          )
           reject(e.toString())
         }
       }
@@ -26,15 +21,11 @@ export function readJsonFile<T>(path: string) {
 }
 
 export function writeJsonFile<T>(path: string, data: T) {
-  return new Promise<void>((resolve) => {
+  return new Promise<void>((resolve, reject) => {
     fs.writeFile(tmpPath(path), JSON.stringify(data), 'utf8', (err) => {
       if (err) {
-        console.error(`❌ Error writing to ${tmpPath(path)}`)
-        console.error(err)
-        // reject(err)
-        resolve()
+        reject(err)
       } else {
-        console.log(`🌈 Success writing to ${tmpPath(path)}`)
         resolve()
       }
     })

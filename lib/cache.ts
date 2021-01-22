@@ -1,5 +1,5 @@
 import sha from 'sha-1'
-import { readJsonFile, writeJsonFile } from './fs-read-write'
+import { readJsonFile, writeJsonFile } from './tmp-read-write'
 
 type CacheEntry<V> =
   | {
