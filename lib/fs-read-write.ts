@@ -2,8 +2,6 @@ import fs from 'fs'
 import os from 'os'
 import { join } from 'path'
 
-console.log('os.tmpdir()', os.tmpdir())
-
 const tmpPath = (path: string) => join(os.tmpdir(), path)
 
 export function readJsonFile<T>(path: string) {
@@ -12,11 +10,14 @@ export function readJsonFile<T>(path: string) {
       if (err) {
         resolve(undefined)
       } else {
-        let rsp
         try {
-          rsp = JSON.parse(data)
+          const rsp = JSON.parse(data)
+          console.log(`✅ Success reading from ${tmpPath(path)}`)
           resolve(rsp)
         } catch (e) {
+          console.error(
+            `❌ Error parsing json from ${tmpPath(path)}. ${e.toString()}`
+          )
           reject(e.toString())
         }
       }
