@@ -19,11 +19,15 @@ export function readJsonFile<T>(path: string) {
 }
 
 export function writeJsonFile<T>(path: string, data: T) {
-  return new Promise<void>((resolve, reject) => {
+  return new Promise<void>((resolve) => {
     fs.writeFile(path, JSON.stringify(data), 'utf8', (err) => {
       if (err) {
-        reject(err)
+        console.error(`Error trying to save ${path}`)
+        console.error(err)
+        // reject(err)
+        resolve()
       } else {
+        console.log(`Success writing to ${path}`)
         resolve()
       }
     })
