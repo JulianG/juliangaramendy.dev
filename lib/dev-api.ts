@@ -1,6 +1,6 @@
-import { markdownToHtml } from './markdownToHtml'
 import matter from 'gray-matter'
 import { Post, PostSummary } from './types'
+import { markdownToHtml } from './markdownToHtml'
 import { getCached } from './cache'
 
 async function fetchArticles(): Promise<DevToArticle[]> {
