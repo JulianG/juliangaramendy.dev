@@ -3,8 +3,7 @@ import matter from 'gray-matter'
 import { Post, PostSummary } from './types'
 import { getCached } from './cache'
 
-async function fetchArticles(): Promise<Article[]> {
-  console.log('fetching articles from dev.to...')
+async function fetchArticles(): Promise<DevToArticle[]> {
   const r = await fetch('https://dev.to/api/articles/me/published', {
     headers: { 'api-key': process.env.DEVTO_API_KEY || '' },
   })
@@ -56,11 +55,11 @@ async function getAllDevArticles() {
   return articles.filter(hasCanonicalUrl)
 }
 
-function hasCanonicalUrl(article: Article) {
+function hasCanonicalUrl(article: DevToArticle) {
   return !!article.canonical_url
 }
 
-function articleToPostSummary(article: Article): PostSummary {
+function articleToPostSummary(article: DevToArticle): PostSummary {
   return {
     slug: getSlug(article.canonical_url || ''),
     title: article.title,
@@ -83,7 +82,7 @@ function assert<T>(value: T | null | undefined): asserts value is T {
 
 ///
 
-export interface Article {
+export interface DevToArticle {
   type_of: string
   id: number
   title: string

@@ -3,7 +3,6 @@ import Head from 'next/head'
 import Link from 'next/link'
 import { Favicon } from './Favicon'
 import { useRouter } from 'next/router'
-import { removeServiceWorker } from '../lib/remove-service-worker'
 
 type Props = { title: string; description?: string; openGraphImage?: string }
 
@@ -14,7 +13,7 @@ export function CommonHead(props: Props) {
     openGraphImage = 'https://juliangaramendy.dev/assets/opengraph-default.png',
   } = props
 
-  removeServiceWorker()
+  removeGatsbyServiceWorker()
 
   return (
     <>
@@ -109,4 +108,14 @@ export const Footer = () => {
       </div>
     </footer>
   )
+}
+
+function removeGatsbyServiceWorker() {
+  if (typeof window !== 'undefined') {
+    if ('serviceWorker' in window.navigator) {
+      window.navigator.serviceWorker.ready.then((registration) => {
+        registration.unregister()
+      })
+    }
+  }
 }

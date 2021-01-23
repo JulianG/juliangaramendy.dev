@@ -3,7 +3,7 @@ import { GetStaticProps } from 'next'
 import Link from 'next/link'
 import dayjs from 'dayjs'
 import { Navigation, CommonHead, Footer } from '../components'
-import { getAllPosts } from '../lib/merged-api'
+import { getAllPosts } from '../lib/get-posts'
 import { PostSummary } from '../lib/types'
 
 export const BlogPage = ({

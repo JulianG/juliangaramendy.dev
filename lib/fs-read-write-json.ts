@@ -1,12 +1,8 @@
 import fs from 'fs'
-import os from 'os'
-import { join } from 'path'
-
-const tmpPath = (path: string) => join(os.tmpdir(), path)
 
 export function readJsonFile<T>(path: string) {
   return new Promise<T | undefined>((resolve, reject) => {
-    fs.readFile(tmpPath(path), { encoding: 'utf8' }, (err, data) => {
+    fs.readFile(path, { encoding: 'utf8' }, (err, data) => {
       if (err) {
         resolve(undefined)
       } else {
@@ -22,7 +18,7 @@ export function readJsonFile<T>(path: string) {
 
 export function writeJsonFile<T>(path: string, data: T) {
   return new Promise<void>((resolve, reject) => {
-    fs.writeFile(tmpPath(path), JSON.stringify(data), 'utf8', (err) => {
+    fs.writeFile(path, JSON.stringify(data), 'utf8', (err) => {
       if (err) {
         reject(err)
       } else {

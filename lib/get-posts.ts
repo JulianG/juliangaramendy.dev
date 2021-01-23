@@ -1,11 +1,8 @@
 import { Post, PostSummary } from './types'
-import {
-  getPostBySlug as getDevPostBySlug,
-  getAllPosts as getAllDevPosts,
-} from './dev-api'
+import * as devApi from './dev-api'
 
 export async function getAllPosts(): Promise<PostSummary[]> {
-  const dev = await getAllDevPosts()
+  const dev = await devApi.getAllPosts()
   const allPosts = [...dev].sort((post1, post2) =>
     post1.date > post2.date ? -1 : 1
   )
@@ -14,7 +11,7 @@ export async function getAllPosts(): Promise<PostSummary[]> {
 
 export async function getPostBySlug(slug: string): Promise<Post> {
   const relatedPosts = await getRelatedPosts(slug)
-  const post = await getDevPostBySlug(slug)
+  const post = await devApi.getPostBySlug(slug)
   return { ...post, relatedPosts }
 }
 

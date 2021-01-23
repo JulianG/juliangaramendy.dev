@@ -3,7 +3,7 @@ import Image from 'next/image'
 import React from 'react'
 import dayjs from 'dayjs'
 import { Navigation, CommonHead, Footer, RelatedPosts } from '../../components'
-import { getAllPosts, getPostBySlug } from '../../lib/merged-api'
+import { getAllPosts, getPostBySlug } from '../../lib/get-posts'
 import { Post } from '../../lib/types'
 
 type Props = { post?: Partial<Post> }

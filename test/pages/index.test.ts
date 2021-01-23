@@ -1,6 +1,7 @@
-// // import React from "react";
-// // import { render, fireEvent } from "../testUtils";
-// // import { BlogPostPage } from "../../pages/blog/[slug]";
+/* eslint-disable-next-line no-unused-vars */
+import React from 'react'
+// import { render, fireEvent } from "../testUtils";
+// import { BlogPostPage } from "../../pages/blog/[slug]";
 
 describe('Home page', () => {
   it('tests', () => {

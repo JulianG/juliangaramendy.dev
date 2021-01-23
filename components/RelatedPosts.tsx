@@ -34,8 +34,3 @@ function RelatedBlogPostLink({
     </>
   )
 }
-
-// this should be a table?
-// or use a grid to align the column things
-// Next:     Something        - 2020-12-01
-// Previous: Some Other Thing - 2020-10-10
