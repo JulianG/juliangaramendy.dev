@@ -4,7 +4,7 @@ html {
 
 @media (max-width: 800px) {
   html {
-    font-size: 15px;
+    font-size: 16px;
   }
 }
 
@@ -78,7 +78,7 @@ hr {
   margin-bottom: 2rem;
   width: 33%;
   border: 0;
-  border-bottom: 0.1rem solid rgba(0, 0, 0, 0.33);
+  border-bottom: 0.05rem solid rgba(0, 0, 0, 0.33);
   border-radius: 0.05rem;
 }
 
