@@ -1,6 +1,15 @@
 # JulianGaramendy.dev
 
-## TODO:
+This is the source code for my personal site and blog.
+
+- Pages like "Info" and "Work" are markdown files in the codebase and statically generated.
+- Blog posts are fetched from Dev.to and statically regenerated after each request using NextJS's [Incremental Static Regeneration](https://nextjs.org/docs/basic-features/data-fetching#incremental-static-regeneration). [Here's how](https://juliangaramendy.dev/blog/devto-nextjs-blog).
+### TODO:
+
+- clean up code
+- display collections? ❌
+
+### Done:
 
 - Favicon ✅
 - open graph / social_image ✅
@@ -19,8 +28,6 @@
 - Fix flaky build ✅
 - update to TS 4.1 so we can use --noUncheckedIndexedAccess ✅
 - cover_images have predictable height ✅
-- clean up code
-- display collections? ❌
 
 # NextJS Typescript Boilerplate
 
