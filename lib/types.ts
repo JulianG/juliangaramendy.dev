@@ -21,4 +21,5 @@ export type Post = {
     prev?: PostSummary
     next?: PostSummary
   }
+  mirrors: Array<{ site: string; postUrl: string }>
 }
