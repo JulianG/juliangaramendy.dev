@@ -1,7 +1,7 @@
 import React from 'react'
 import { GetStaticPaths, GetStaticProps } from 'next'
-import { CommonHead, Footer, Navigation } from '../components'
-import { getPage, listPages } from '../lib/get-page'
+import { CommonHead, Footer, Navigation } from '../src/components'
+import { getPage, listPages } from '../src/core/get-page'
 
 type Props = { title: string; description: string; bodyHtml: string }
 

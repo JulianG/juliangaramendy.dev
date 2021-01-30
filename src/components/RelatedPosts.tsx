@@ -1,7 +1,7 @@
 import * as React from 'react'
 import Link from 'next/link'
 import dayjs from 'dayjs'
-import { Post, PostSummary } from '../lib/types'
+import { Post, PostSummary } from '../core/types'
 
 type Props = Post['relatedPosts']
 

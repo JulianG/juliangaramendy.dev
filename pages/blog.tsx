@@ -2,9 +2,9 @@ import React from 'react'
 import { GetStaticProps } from 'next'
 import Link from 'next/link'
 import dayjs from 'dayjs'
-import { Navigation, CommonHead, Footer } from '../components'
-import { getAllPosts } from '../lib/get-posts'
-import { PostSummary } from '../lib/types'
+import { Navigation, CommonHead, Footer } from '../src/components'
+import { getAllPosts } from '../src/core/get-posts'
+import { PostSummary } from '../src/core/types'
 
 export const BlogPage = ({
   posts,

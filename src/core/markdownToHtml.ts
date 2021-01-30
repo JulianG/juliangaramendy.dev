@@ -6,7 +6,7 @@ import rehypePrism from '@mapbox/rehype-prism'
 import html from 'rehype-stringify'
 
 // This seems to be the minimum required to convert markdown to HTML
-// in a safe way (no HTML allowed withing markdown)
+// in a safe way (no HTML allowed within markdown)
 
 // I was going to use remark-html as seen in
 // but the npmjs page https://www.npmjs.com/package/remark-html

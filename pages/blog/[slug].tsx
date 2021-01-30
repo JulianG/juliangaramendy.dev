@@ -3,9 +3,14 @@ import Link from 'next/link'
 import Image from 'next/image'
 import React from 'react'
 import dayjs from 'dayjs'
-import { Navigation, CommonHead, Footer, RelatedPosts } from '../../components'
-import { getAllPosts, getPostBySlug } from '../../lib/get-posts'
-import { Post } from '../../lib/types'
+import {
+  Navigation,
+  CommonHead,
+  Footer,
+  RelatedPosts,
+} from '../../src/components'
+import { getAllPosts, getPostBySlug } from '../../src/core/get-posts'
+import { Post } from '../../src/core/types'
 
 type Props = { post?: Partial<Post> }
 
