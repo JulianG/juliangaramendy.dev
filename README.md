@@ -4,9 +4,11 @@ This is the source code for my personal site and blog.
 
 - Pages like "Info" and "Work" are markdown files in the codebase and statically generated.
 - Blog posts are fetched from Dev.to and statically regenerated after each request using NextJS's [Incremental Static Regeneration](https://nextjs.org/docs/basic-features/data-fetching#incremental-static-regeneration). [Here's how](https://juliangaramendy.dev/blog/devto-nextjs-blog).
+
 ### TODO:
 
 - clean up code
+- write long-overdue tests
 - display collections? ❌
 
 ### Done:
