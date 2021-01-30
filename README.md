@@ -17,12 +17,10 @@
 - NextJS Image Component ✅
 - bundle analizer ✅
 - Fix flaky build ✅
+- update to TS 4.1 so we can use --noUncheckedIndexedAccess ✅
+- cover_images have predictable height ✅
 - clean up code
 - display collections? ❌
-- cover_images have predictable height?
-- check content styles
-- update to TS 4.1 so we can use --noUncheckedIndexedAccess
-  - https://devblogs.microsoft.com/typescript/announcing-typescript-4-1-rc/#no-unchecked-indexed-access and avoid some type annotations
 
 # NextJS Typescript Boilerplate
 
