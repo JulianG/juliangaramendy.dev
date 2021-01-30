@@ -1,4 +1,5 @@
 import { GetStaticProps, GetStaticPaths } from 'next'
+import Link from 'next/link'
 import Image from 'next/image'
 import React from 'react'
 import dayjs from 'dayjs'
@@ -40,10 +41,30 @@ export const BlogPostPage = ({ post }: Props): JSX.Element => {
         <div dangerouslySetInnerHTML={{ __html: post.bodyHtml || '' }}></div>
       </section>
       <hr className="full" />
+      <Mirrors mirrors={post.mirrors} />
+      <hr />
       <RelatedPosts {...post.relatedPosts} />
       <hr className="full" />
       <Footer />
     </article>
+  )
+}
+
+const Mirrors = ({
+  mirrors = [],
+}: {
+  mirrors: Post['mirrors'] | undefined
+}) => {
+  return (
+    <>
+      {mirrors.map((mirror, i) => {
+        return (
+          <p key={i}>
+            {mirror.site}: <Link href={mirror.postUrl}>{mirror.postUrl}</Link>
+          </p>
+        )
+      })}
+    </>
   )
 }
 

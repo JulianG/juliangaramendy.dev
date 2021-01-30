@@ -47,6 +47,7 @@ export async function getPostBySlug(slug: string): Promise<Post> {
     },
     bodyHtml,
     relatedPosts: {},
+    mirrors: [{ site: 'Comment on dev.to', postUrl: article.url }],
   }
 }
 
