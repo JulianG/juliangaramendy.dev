@@ -1,9 +1,7 @@
 import React from 'react'
 import { GetStaticPaths, GetStaticProps } from 'next'
 import { CommonHead, Footer, Navigation } from '../components'
-import { getPage } from '../lib/get-page'
-
-const ONE_MINUTE = 60
+import { getPage, listPages } from '../lib/get-page'
 
 type Props = { title: string; description: string; bodyHtml: string }
 
@@ -34,7 +32,6 @@ export const getStaticProps: GetStaticProps<Props> = async (context) => {
     const { title, bodyHtml } = await getPage(`${page}`)
     return {
       props: { title, description: '', bodyHtml },
-      revalidate: ONE_MINUTE,
     }
   } catch (e) {
     return { notFound: true }
@@ -43,7 +40,7 @@ export const getStaticProps: GetStaticProps<Props> = async (context) => {
 
 export const getStaticPaths: GetStaticPaths = async () => {
   return {
-    paths: ['info', 'work'].map((page) => ({ params: { page } })),
+    paths: listPages().map((page) => ({ params: { page } })),
     fallback: true,
   }
 }

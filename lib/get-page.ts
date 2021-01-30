@@ -27,3 +27,13 @@ export async function getPage(slug: string) {
     bodyHtml,
   }
 }
+
+export function listPages(): string[] {
+  try {
+    const entries = fs.readdirSync(pagesDirectory)
+    return entries.filter((entry) => !!entry && entry.substring(0, 1) !== '.')
+  } catch (e) {
+    console.error(`❌ Failed to listPages: ${e}`)
+    return []
+  }
+}
