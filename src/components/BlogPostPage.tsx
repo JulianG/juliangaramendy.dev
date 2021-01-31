@@ -5,9 +5,13 @@ import dayjs from 'dayjs'
 import { Navigation, CommonHead, Footer, RelatedPosts } from '.'
 import { Post } from '../core/types'
 
-export type BlogPostProps = { post: Partial<Post> }
+export type BlogPostProps = { post?: Partial<Post> }
 
-export const BlogPostPage = ({ post }: BlogPostProps): JSX.Element => {
+export const BlogPostPage = ({ post }: BlogPostProps) => {
+  if (!post) {
+    return null
+  }
+
   const publishDate = dayjs(post.date).format('D MMMM, YYYY')
 
   return (
@@ -48,7 +52,7 @@ type MirrorsProps = { mirrors: Post['mirrors'] | undefined }
 
 function Mirrors({ mirrors = [] }: MirrorsProps) {
   return (
-    <>
+    <section>
       {mirrors.map((mirror, i) => {
         return (
           <p key={i}>
@@ -56,6 +60,6 @@ function Mirrors({ mirrors = [] }: MirrorsProps) {
           </p>
         )
       })}
-    </>
+    </section>
   )
 }

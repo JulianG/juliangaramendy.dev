@@ -7,10 +7,10 @@ type Props = Post['relatedPosts']
 
 export function RelatedPosts({ prev, next }: Props) {
   return (
-    <div className="relatedPosts">
+    <section className="relatedPosts">
       {next && <RelatedBlogPostLink label="Next" post={next} />}
       {prev && <RelatedBlogPostLink label="Previous" post={prev} />}
-    </div>
+    </section>
   )
 }
 
