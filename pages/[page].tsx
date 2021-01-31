@@ -1,31 +1,10 @@
-import React from 'react'
 import { GetStaticPaths, GetStaticProps } from 'next'
-import { CommonHead, Footer, Navigation } from '../src/components'
 import { getPage, listPages } from '../src/core/get-page'
+import { MarkdownPageProps, MarkdownPage } from '../src/components/MarkdownPage'
 
-type Props = { title: string; description: string; bodyHtml: string }
-
-export const Page = ({ title, description, bodyHtml }: Props): JSX.Element => {
-  return (
-    <article>
-      <header>
-        <CommonHead
-          title={`${title} - Julian​Garamendy​.dev`}
-          description={description}
-        />
-        <h1>Julian​Garamendy​.dev</h1>
-        <Navigation />
-      </header>
-      <section>
-        <div dangerouslySetInnerHTML={{ __html: bodyHtml }}></div>
-      </section>
-      <hr className="full" />
-      <Footer />
-    </article>
-  )
-}
-
-export const getStaticProps: GetStaticProps<Props> = async (context) => {
+export const getStaticProps: GetStaticProps<MarkdownPageProps> = async (
+  context
+) => {
   const page = context.params?.page
 
   try {
@@ -45,4 +24,4 @@ export const getStaticPaths: GetStaticPaths = async () => {
   }
 }
 
-export default Page
+export default MarkdownPage
