@@ -1,16 +1,16 @@
 import * as React from 'react'
 import Link from 'next/link'
 import dayjs from 'dayjs'
-import { Post, PostSummary } from '../lib/types'
+import { Post, PostSummary } from '../core/types'
 
 type Props = Post['relatedPosts']
 
 export function RelatedPosts({ prev, next }: Props) {
   return (
-    <div className="relatedPosts">
+    <section className="relatedPosts">
       {next && <RelatedBlogPostLink label="Next" post={next} />}
       {prev && <RelatedBlogPostLink label="Previous" post={prev} />}
-    </div>
+    </section>
   )
 }
 
