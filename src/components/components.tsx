@@ -3,6 +3,7 @@ import Head from 'next/head'
 import Link from 'next/link'
 import { Favicon } from './Favicon'
 import { useRouter } from 'next/router'
+import { logPageView } from '../logging/log-page-view'
 
 type Props = { title: string; description?: string; openGraphImage?: string }
 
@@ -13,7 +14,8 @@ export function CommonHead(props: Props) {
     openGraphImage = 'https://juliangaramendy.dev/assets/opengraph-default.png',
   } = props
 
-  removeGatsbyServiceWorker()
+  useLogPageView()
+  useRemoveGatsbyServiceWorker()
 
   return (
     <>
@@ -110,12 +112,19 @@ export const Footer = () => {
   )
 }
 
-function removeGatsbyServiceWorker() {
-  if (typeof window !== 'undefined') {
-    if ('serviceWorker' in window.navigator) {
-      window.navigator.serviceWorker.ready.then((registration) => {
-        registration.unregister()
-      })
+function useRemoveGatsbyServiceWorker() {
+  React.useEffect(() => {
+    if (typeof window !== 'undefined') {
+      if ('serviceWorker' in window.navigator) {
+        window.navigator.serviceWorker.ready.then((registration) => {
+          registration.unregister()
+        })
+      }
     }
-  }
+  }, [])
+}
+
+function useLogPageView() {
+  const url = typeof window !== 'undefined' ? document.URL : ''
+  React.useEffect(() => logPageView(), [url])
 }
