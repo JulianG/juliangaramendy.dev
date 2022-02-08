@@ -12,7 +12,7 @@ credits:
 ---
 
 **Hello! My name is Julian.**  
-**I've been developing mobile and web applications since 2001.**
+**I'm a software engineer working with web technologies since 2001.**
 
 ![keyboard](./images/keyboard.jpg)
 
@@ -27,15 +27,7 @@ I also have experience with:
 **Angular, C++, C#, Python, ActionScript, PHP**  
 **JSON-RPC, SVN.**
 
-I'm currently working at **[TransferWise](https://transferwise.com)** as a Front End Engineer.
-
-I made an open-source Chrome extension called [Banana Tabs](https://github.com/JulianG/bananatabs).  
-Some people find it useful, others completely ignore it.
+I'm currently working at **[Wise](https://wise.com)** as a [Front End Engineer](https://github.com/JulianG-TW).
 
 I've finally started writing a blog: [I Have To Write This Down](/blog).  
-You can find me on [Twitter](https://twitter.com/JulianGWeb) and [GitHub](https://github.com/JulianG/).
-
-<!--
-<a style="box-shadow: none" href="https://twitter.com/JulianGWeb"><img src="./images/twitter-logo.svg" width="20rem" /></a>&nbsp;
-<a style="box-shadow: none" href="https://github.com/JulianG/"><img src="./images/github-logo.svg" width="20rem" /></a>&nbsp;
--->
+You can find me on [Twitter](https://twitter.com/JulianGWeb) and GitHub [here](https://github.com/JulianG/) and [here](https://github.com/JulianG-TW).
