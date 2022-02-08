@@ -6,9 +6,11 @@ credits: []
 
 # Work
 
-I work at **[TransferWise](https://transferwise.com)** as a Front End Engineer, using React with TypeScript.
+I work at **[Wise](https://wise.com)** (formerly TransferWise) as a Front End Engineer, using React with TypeScript.
 
-![TransferWise](./images/transferwise.jpg)
+Some of my work is on [public repositories](https://github.com/JulianG-TW).
+
+![Wise](./images/transferwise.jpg)
 
 ---
 
