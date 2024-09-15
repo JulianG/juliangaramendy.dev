@@ -28,7 +28,11 @@ I also have experience with:
 **JSON-RPC, SVN.**  
 **Cicle CI, Travis CI**
 
-I'm currently working at **[Wise](https://wise.com)** as a [Front End Engineer](https://github.com/JulianG-TW).
+I'm currently working at **[Wise](https://wise.com)** as a front-end engineer.
 
-I've finally started writing a blog: [I Have To Write This Down](/blog).  
-You can find me on [Twitter](https://twitter.com/JulianGWeb) and GitHub [here](https://github.com/JulianG/) and [here](https://github.com/JulianG-TW).
+I've finally started writing a blog: [I Have To Write This Down](/blog).
+
+My [GitHub profile](https://github.com/JulianG/) is here.
+
+
+
